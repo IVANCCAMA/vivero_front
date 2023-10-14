@@ -44,7 +44,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 npx create-react-app vivero_front
 
 # Comandos de libreiras y dependencias
-npm i
-npm i axios
-npm i firebase
-npm i react-down-router
+### npm i
+### npm i axios
+### npm i firebase
+### npm i react-down-router
