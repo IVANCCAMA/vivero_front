@@ -16,7 +16,7 @@
   .botones2 {
     gap: 20px; /* Espacio entre los botones */
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
    
   }
   

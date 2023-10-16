@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import '../App.css';
 import './formcategoria.css';
@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function FormEditarCategoria() {
   const { id_categoria } = useParams();
-  const [infoCategoria, setInfoCategoria] = useState({
+  const [infoCate, setInfoCate] = useState({
     nombre_categoria: "",
     descripcion_categoria: "",
   });
@@ -19,8 +19,10 @@ function FormEditarCategoria() {
       try {
         const responseCategoria = await axios.get(`http://localhost:4000/api/categorias/${id_categoria}`);
         const infoCategoria = responseCategoria.data;
+        infoCate.nombre_categoria = infoCategoria.nombre_categoria 
+        infoCate.descripcion_categoria = infoCategoria.descripcion_categoria
         console.log("INFORMACION CATEGORÍA RECUPERADA:", infoCategoria);
-        setInfoCategoria(infoCategoria);
+        setInfoCate(infoCategoria);
       } catch (error) {
         console.error('Error al obtener la Categoría:', error);
       }
@@ -59,9 +61,8 @@ function FormEditarCategoria() {
   return (
     <div className="division">
       <div className="division2">
-        
       <Formik
-        initialValues={infoCategoria} // Establece los valores iniciales del formulario con infoCategoria
+        initialValues={infoCate} // Establece los valores iniciales del formulario con infoCategoria
         onSubmit={handleSubmit}
       >
         <Form>

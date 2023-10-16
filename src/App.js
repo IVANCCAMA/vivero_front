@@ -33,7 +33,7 @@ function App() {
             <Route path="/inventario/categoria" element={<Categoria />} />
             <Route path="/inventario/producto/formProducto" element={<FormProducto />} />
             <Route path="/inventario/categoria/formCategoria" element={<Formcategoria/>} />
-            <Route path="/inventario/categoria/editar/:id" element={<Formcategoria/>} />
+            <Route path="/inventario/categoria/editar/:id_categoria" element={<Formcategoria/>} />
             <Route path="/inventario/categoria/editarCategoria/:id_categoria" element={<FormEditarCategoria/>} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
