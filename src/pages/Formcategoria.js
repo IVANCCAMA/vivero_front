@@ -5,16 +5,25 @@ import './formcategoria.css';
 import axios from 'axios';
 
 const FormCategoria = ({ categoriaAEditar }) => {
-  console.log("Categoría a editar recibida en el formulario:", categoriaAEditar);
   const [nombre_categoria, setNombreCategoria] = useState("");
   const [descripcion_categoria, setDescripcionCategoria] = useState("");
   const [modoEdicion, setModoEdicion] = useState(false);
 
+  const obtenerCategoriaPorId = async (id_categoria) => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/categorias/${id_categoria}`);
+      const categoria = response.data;
+      setNombreCategoria(categoria.nombre_categoria);
+      setDescripcionCategoria(categoria.descripcion_categoria);
+      setModoEdicion(true); 
+    } catch (error) {
+      console.error("Error al obtener los datos de la categoría:", error);
+    }
+  };
+
   useEffect(() => {
     if (categoriaAEditar) {
-      // Cargar los datos de la categoría en el formulario
-      setNombreCategoria(categoriaAEditar.nombre_categoria);
-      setDescripcionCategoria(categoriaAEditar.descripcion_categoria);
+      obtenerCategoriaPorId(categoriaAEditar.id_categoria);
     }
   }, [categoriaAEditar]);
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FormCategoria from "../pages/Formcategoria"; // Importa el formulario de creación
+import FormCategoria from "../pages/Formcategoria";
+import { Link } from "react-router-dom";
 
 const CategoriaLista = () => {
   const [categorias, setCategorias] = useState([]);
@@ -37,7 +38,7 @@ const CategoriaLista = () => {
   };
 
   const handleEditar = (categoria) => {
-    console.log("Handle Editar llamado con la categoría:", categoria); // Agrega este console.log
+    console.log("Handle Editar llamado con la categoría:", categoria);
     setCategoriaAEditar(categoria);
     setFormularioAbierto(true);
   };
@@ -53,25 +54,20 @@ const CategoriaLista = () => {
               
               <td className="botones2">
                 <button className="borrar" onClick={() => handleDelete(categoria.id_categoria)}>Borrar</button>
-                <button
-                  className="editar"
-                  onClick={() => {
-                    console.log("Categoría a editar:", categoria);
-                    handleEditar(categoria);
-                  }}
-                >
-                  Editar
-                </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-       </table>
+                <Link to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`} key={categoria.id_categoria}>
+                  <button className="editar" onClick={() => handleEditar(categoria)}>
+                    Editar
+                  </button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       {formularioAbierto && (
         <FormCategoria
           categoriaAEditar={categoriaAEditar}
-          
           onClose={() => setFormularioAbierto(false)}
         />
       )}
