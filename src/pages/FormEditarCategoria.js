@@ -32,10 +32,11 @@ function FormEditarCategoria() {
 
   /* Actualizar o modificar categoría */
   const handleSubmit = async (values) => {
-   /*  try {
+    try {
       const { nombre_categoria, descripcion_categoria } = values;
 
-      const response = await axios.put(`http://localhost:4000/api/categorias/${categoriaAEditar.id_categoria}`, {
+      // Realiza una solicitud PUT para actualizar la categoría
+      const response = await axios.put(`http://localhost:4000/api/categorias/${id_categoria}`, {
         nombre_categoria,
         descripcion_categoria,
       });
@@ -50,7 +51,7 @@ function FormEditarCategoria() {
     } catch (error) {
       console.error("Error al enviar los datos:", error);
       // Puedes mostrar un mensaje de error al usuario
-    } */
+    }
   };
 
   const handleCancelClick = () => {
@@ -66,13 +67,14 @@ function FormEditarCategoria() {
         onSubmit={handleSubmit}
       >
         <Form>
+        <h2>Editar categoría</h2>
           <label className="labelC">Nombre de categoría*</label>
           <Field id="nombre_categoria" name="nombre_categoria" type="text" className="inputC" />
 
           <label className="labelC">Descripción (opcional)</label>
           <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC" />
 
-          <button type="submit" className="bontosave">Guardar cambios</button>
+          <button type="submit" className="bontosave" onClick={handleCancelClick}>Guardar cambios</button>
           <button type="button" className="botoncancel" onClick={handleCancelClick}>
             Cancelar
           </button>
