@@ -1,0 +1,27 @@
+.crearcat {
+  margin-left: 1050px;
+  font-size: 16px;
+  }
+  
+  /* Estilo para el botón "Crear categoria" */
+  .botonC {
+    background-color: #5F8D4E;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  
+  }
+  
+  /* Estilo para el botón "Crear categoria" al pasar el mouse por encima */
+  .botonC:hover {
+    background-color: #203ae4;
+  }
+  .tablee {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+ 

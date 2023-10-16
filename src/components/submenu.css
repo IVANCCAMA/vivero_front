@@ -1,0 +1,52 @@
+/* SubMenuInventario.css */
+
+.sub-menu {
+    background-color: #E5D9B6;
+    padding: 10px;
+    border-radius: 30px;
+    width: 315px;
+    height: 30px;
+    position: relative; /* Añade posición absoluta para desplazar al final */
+    bottom: 20px; /* Establece una distancia desde la parte inferior */
+    left: 0; /* Alinea a la izquierda */
+  }
+  
+  .sub-menu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+  }
+  
+  .producto {
+    background-color: #5F8D4E;
+    padding: 10px;
+    border-radius: 30px;
+    margin-right: 10px;
+    font-size: 16px;
+    height: 18px;
+  }
+  
+  .categoria {
+    background-color: #5F8D4E;
+    padding: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    height: 18px;
+  }
+  
+  .sub-menu-list li {
+    margin-bottom: 10px; /* Espacio entre elementos */
+  }
+  
+  /* Estilos para los enlaces */
+  .sub-menu-list a {
+    text-decoration: none;
+    color: #f5f1f1;
+    font-weight: 500;
+  }
+  
+  .sub-menu-list a:hover {
+    color:#E5D9B6 ;
+  }
+  

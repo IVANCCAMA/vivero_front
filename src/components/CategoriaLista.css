@@ -1,0 +1,49 @@
+.listaCat {
+    width: 100%;
+  }
+  
+ 
+  .listaCat table td, .listaCat table th {
+    width: auto; 
+    padding: 10px; 
+    
+    
+  }
+  
+
+
+  
+  .botones2 {
+    gap: 20px; /* Espacio entre los botones */
+    display: flex;
+    justify-content: end;
+   
+  }
+  
+  .borrar {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+  
+  .editar {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .borrar:hover {
+    background-color: #ff331d;
+  }
+  
+
+  
+  .editar:hover {
+    background-color: #1f78de;
+  }
+
