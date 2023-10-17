@@ -21,7 +21,7 @@ const Categoria = () => {
               <th className='acci'>Acciones</th>
               </table>
             <div>
-            <CategoriaLista />
+            <CategoriaLista/>
             </div>
            
           

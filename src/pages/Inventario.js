@@ -3,7 +3,7 @@ import './inventario.css'
 import '../App.css';
 import SubMenuInventario from "../components/SubMenuInventario";
 import { Link } from "react-router-dom";
-
+import ProductoLista from "../components/productoLista";
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
@@ -76,28 +76,7 @@ function Invetario() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Producto 1</td>
-              <td>Categoría 1</td>
-              <td>10</td>
-              <td>$20.00</td>
-              <td>Tamaño 1</td>
-            </tr>
-            <tr>
-              <td>Producto 2</td>
-              <td>Categoría 2</td>
-              <td>5</td>
-              <td>$15.00</td>
-              <td>Tamaño 2</td>
-            </tr>
-            {/* Agrega descripciones debajo de los datos */}
-            <tr>
-              <td>Descripción de Producto 1</td>
-              <td>Descripción de Categoría 1</td>
-              <td>Descripción de Stock 1</td>
-              <td>Descripción de Precio 1</td>
-              <td>Descripción de Tamaño 1</td>
-            </tr>
+          <ProductoLista/>
             
           </tbody>
         </table>
