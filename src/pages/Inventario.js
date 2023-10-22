@@ -65,21 +65,7 @@ function Invetario() {
       </div>
     </div>
     <div className="ahi">
-    <table className="inventory-table">
-          <thead className="table-header">
-            <tr>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Stock</th>
-              <th>Precio</th>
-              <th>Tamaño</th>
-            </tr>
-          </thead>
-          <tbody>
           <ProductoLista/>
-            
-          </tbody>
-        </table>
 
     </div>
     </div>

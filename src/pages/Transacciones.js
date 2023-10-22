@@ -6,6 +6,5 @@ function Transacciones() {
         <p>Pagina de Transacciones</p>
     </div>
     );
-  }
-  
-  export default Transacciones;
+}
+export default Transacciones;

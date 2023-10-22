@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Menu from './components/menu';
 import Header from './components/Header';
@@ -14,8 +14,10 @@ import Categoria from './pages/categoria';
 import FormProducto from './components/FormProducto'
 import Formcategoria from './pages/Formcategoria'
 import FormEditarCategoria from './pages/FormEditarCategoria';
+import FormEditarProducto from './components/FormEditarProducto';
+import VerProducto from './components/VerProducto';
 function App() {
- 
+
   return (
     <div className="app">
       <Header />
@@ -35,6 +37,8 @@ function App() {
             <Route path="/inventario/categoria/formCategoria" element={<Formcategoria/>} />
             <Route path="/inventario/categoria/editar/:id_categoria" element={<Formcategoria/>} />
             <Route path="/inventario/categoria/editarCategoria/:id_categoria" element={<FormEditarCategoria/>} />
+            <Route path="/inventario/producto/editarProducto/:id_producto" element={<FormEditarProducto/>} />
+            <Route path="/inventario/producto/ver/:id_producto" element={<VerProducto/>}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </div>

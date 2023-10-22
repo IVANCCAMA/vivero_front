@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormCategoria from "../pages/Formcategoria";
 import { Link } from "react-router-dom";
+import "./CategoriaLista.css";
 
 const CategoriaLista = () => {
   const [categorias, setCategorias] = useState([]);
@@ -23,7 +24,8 @@ const CategoriaLista = () => {
   const handleDelete = (id_categoria) => {
     console.log("ID de categoría a eliminar:", id_categoria);
     // Realiza la solicitud de eliminación con el ID de la categoría
-    axios.delete(`http://localhost:4000/api/categorias/${id_categoria}`)
+    axios
+      .delete(`http://localhost:4000/api/categorias/${id_categoria}`)
       .then((response) => {
         if (response.status === 200) {
           // Actualiza el estado después de eliminar la categoría
@@ -44,21 +46,30 @@ const CategoriaLista = () => {
   };
 
   return (
-    <div className="listaCat">
+    <div className="listaCategoria">
       <table className="listaCat">
+        <thead>
+          <tr>
+            <th>Nombre de la Categoría</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
         <tbody>
           {categorias.map((categoria) => (
             <tr key={categoria.id_categoria}>
               <td className="listaCat1">{categoria.nombre_categoria}</td>
               <td className="descripcionCC">{categoria.descripcion_categoria}</td>
-              
-              <td className="botones2">
-                <button className="borrar" onClick={() => handleDelete(categoria.id_categoria)}>Borrar</button>
-                <Link to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`} key={categoria.id_categoria}>
+              <td className="botonCRUD">
+              <Link to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`} key={categoria.id_categoria}>
                   <button className="editar" onClick={() => handleEditar(categoria)}>
                     Editar
                   </button>
                 </Link>
+                <button className="Botonborrar" onClick={() => handleDelete(categoria.id_categoria)}>
+                  Borrar
+                </button>
+                
               </td>
             </tr>
           ))}
@@ -66,10 +77,7 @@ const CategoriaLista = () => {
       </table>
 
       {formularioAbierto && (
-        <FormCategoria
-          categoriaAEditar={categoriaAEditar}
-          onClose={() => setFormularioAbierto(false)}
-        />
+        <FormCategoria categoriaAEditar={categoriaAEditar} onClose={() => setFormularioAbierto(false)} />
       )}
     </div>
   );

@@ -5,6 +5,5 @@ function Empleados() {
         <p>Pagina de Empleados</p>
     </div>
     );
-  }
-  
-  export default Empleados;
+}
+export default Empleados;

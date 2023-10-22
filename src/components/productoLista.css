@@ -1,0 +1,56 @@
+/* productoLista.css */
+.listaProducto {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .listaP {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .listaP th,
+  .listaP td {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .listaP th {
+    background-color: #5F8D4E;
+    color: #fff;
+  }
+  
+  .verP{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .borrarP{
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #ff0d00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .editarP {
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .verP:hover,
+  .borrarP:hover,
+  .editarP:hover {
+    background-color: #5F8D4E;
+  }
+  

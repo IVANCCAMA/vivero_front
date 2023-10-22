@@ -5,6 +5,5 @@ function Reportes() {
         <p>Pagina de Reportes</p>
     </div>
     );
-  }
-  
-  export default Reportes;
+}
+export default Reportes;

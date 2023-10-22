@@ -15,15 +15,9 @@ const Categoria = () => {
       <button  className="botonC">Crear categoria</button>
     </Link>
     </div>
-    <table className='tablee'>
-          <th className='namec'>Nombre</th>
-              <th className='desc'>Descripción</th>
-              <th className='acci'>Acciones</th>
-              </table>
-            <div>
+            <div className='CategoriaLista'>
             <CategoriaLista/>
             </div>
-           
           
           
     </div>

@@ -19,9 +19,7 @@
   .botonC:hover {
     background-color: #203ae4;
   }
-  .tablee {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  .CategoriaLista{
+    padding: 15px;
+    
   }
- 
