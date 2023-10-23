@@ -63,7 +63,7 @@ const ProductoLista = () => {
             <tr key={producto.id_producto}>
               <td>{producto.nombre_producto}</td>
               <td>{producto.id_categoria}</td>
-              <td>{producto.stock_actual_producto}</td>
+              <td>{producto.stok_actual_producto}</td>
               <td>{producto.precio_total_producto}</td>
               <td>{producto.tamanio_producto}</td>
               <td>

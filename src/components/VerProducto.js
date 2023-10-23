@@ -89,8 +89,8 @@
                     ['Tamaño', producto.tamanio_producto],
                     ['Descripción', producto.descripcion_producto],
                     /* ['Stock actual', producto.stock_actual_producto], */
-                    ['Stock actual', producto.stock_actual_producto],
-                    ['Stock mínimo', producto.stock_minimo_producto],
+                    ['Stock actual', producto.stok_actual_producto],
+                    ['Stock mínimo', producto.stok_min_producto],
                 ];
 
                 doc.autoTable(columns, data, {
@@ -173,7 +173,7 @@
             </tbody>
         </table>
 
-                        <button className='botonPdf' onClick={generarPDF}>Generar PDF</button>
+                        <button className='botonPdf' onClick={generarPDF}>Imprimir</button>
                     </div>
                 ) : (
                     <p>Cargando...</p>

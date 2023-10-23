@@ -12,7 +12,6 @@ function Menu() {
         <div className="sidebar">
             {!ocultarMenu && (
                 <div className="menu-lateral">
-                    {/* Contenido del menú */}
                 </div>
             )}
             <ul className="menu-list">
@@ -22,7 +21,7 @@ function Menu() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/inventario" className="menu-link bg-cyan">
+                    <Link to="/inventario/producto" className="menu-link bg-cyan">
                         <i className="fa-solid fa-seedling"></i> Inventario
                     </Link>
                 </li>

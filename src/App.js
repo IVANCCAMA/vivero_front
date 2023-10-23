@@ -27,7 +27,7 @@ function App() {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/inventario" element={<Inventario />} />
+            <Route path="/inventario/producto" element={<Inventario />} />
             <Route path="/inventario/producto" element={<Inventario />} />
             <Route path="/empleados" element={<Empleados />} />
             <Route path="/reportes" element={<Reportes />} />

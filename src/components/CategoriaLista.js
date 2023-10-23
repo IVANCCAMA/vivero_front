@@ -4,6 +4,7 @@ import FormCategoria from "../pages/Formcategoria";
 import { Link } from "react-router-dom";
 import "./CategoriaLista.css";
 
+
 const CategoriaLista = () => {
   const [categorias, setCategorias] = useState([]);
   const [categoriaAEditar, setCategoriaAEditar] = useState(null);

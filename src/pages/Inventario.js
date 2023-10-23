@@ -52,7 +52,7 @@ function Invetario() {
   return (
     <div className="division">
         <div>
-      <p>Inventario</p>
+      <p className="Inventario">Inventario</p>
       <SubMenuInventario /> 
     </div>
     <div className="container">
