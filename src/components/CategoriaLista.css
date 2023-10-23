@@ -1,0 +1,51 @@
+/* CategoriaLista.css */
+.listaCategoria {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-left: 80px;
+  
+}
+
+.listaCat {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.listaCat th,
+.listaCat td {
+  padding: 8px;
+  text-align: left;
+  
+}
+
+.listaCat th {
+  background-color:#5F8D4E;
+  color: #fff;
+}
+
+.Botonborrar{
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #de2b10;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.editar {
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.Botonborrar:hover,
+.editar:hover {
+  background-color: #5F8D4E;
+}

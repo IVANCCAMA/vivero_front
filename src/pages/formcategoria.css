@@ -1,0 +1,49 @@
+.division2 {
+  background-color: #FFFFFF;
+  padding: 18px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  margin: 150px 350px;
+  width: 35%;
+  height: 10%;
+}
+
+.bontosave{
+    background-color: #60aa48; /* Estilo para el botón verde */
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interior del botón */
+    border: none;
+    border-radius: 10px;
+    margin-right: 20px; /* Espacio entre botones */
+    cursor: pointer;
+    font-size: 15px;
+}
+.botoncancel{
+    background-color: red; /* Estilo para el botón rojo */
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interior del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para las etiquetas de los campos de entrada */
+.labelC {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Estilo para los campos de entrada de texto */
+.inputC {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
