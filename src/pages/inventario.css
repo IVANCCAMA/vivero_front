@@ -21,41 +21,35 @@
   margin: -20px 10px;
 }
 
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 50px;
+ 
+}
+
 /* Estilos para el botón de "Agregar producto" */
 .botonA {
   background-color: #5F8D4E;
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: 700px;
+  margin-left: 600px; 
+  margin-top: -15px;
+  
 }
 
 .botonA:hover {
   background-color: #203ae4;
 }
 
-/* Ajusta los estilos según tus preferencias */
-.container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  
-}
-
-/* Estilos para los elementos de búsqueda, categoría y botón */
-.container input,
-.container select,
-.container button {
-  margin-bottom: 10px; /* Espacio entre los elementos */
-  
-}
-.agregarproducto{
-  margin-left: 700px;
-  font-size: 16px;
-}
 /* Estilos para SearchBar */
 .input1[type="text"] {
   padding: 10px;
@@ -64,6 +58,7 @@
   background-color: #E5D9B6;
   margin-bottom: 10px;
   width:200px;
+  text-decoration: none;
 }
 
 i.fas.fa-search {
@@ -81,12 +76,5 @@ i.fas.fa-search {
   width: 100%;
   margin-bottom: 10px;
   background-color: #926D35;
-}
-
-.tabla{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 }
 

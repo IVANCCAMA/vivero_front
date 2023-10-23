@@ -15,7 +15,9 @@ function FormEditarProducto () {
     imagen_producto: "",
     descripcion_producto: "",
     stok_actual_producto: "",
-    stok_min_producto: ""
+    stok_min_producto: "",
+    precio_inicial_producto:"",
+    margen_producto:""
   });   
 
   const [categorias, setCategorias] = useState([]); // Estado para almacenar las categorías
@@ -46,6 +48,8 @@ function FormEditarProducto () {
         infoProducto.descripcion_producto = infoProduct.descripcion_producto
         infoProducto.stok_actual_producto = infoProduct.stok_actual_producto
         infoProducto.stok_min_producto = infoProduct.stok_min_producto
+        infoProducto.precio_inicial_producto = infoProduct.precio_inicial_producto
+        infoProducto.margen_producto = infoProduct.margen_producto
         
         console.log("INFORMACION PRODUCTO RECUPERADA:", infoProducto);
         setinfoProducto(infoProduct);
@@ -67,7 +71,9 @@ function FormEditarProducto () {
         imagen_producto,
         descripcion_producto,
         stok_actual_producto,
-        stok_min_producto } = values;
+        stok_min_producto,
+        precio_inicial_producto,
+        margen_producto} = values;
 
       // Realiza una solicitud PUT para actualizar el producto
       const response = await axios.put(`http://localhost:4000/api/productos/${id_producto}`, {
@@ -78,7 +84,9 @@ function FormEditarProducto () {
         imagen_producto,
         descripcion_producto,
         stok_actual_producto,
-        stok_min_producto
+        stok_min_producto,
+        precio_inicial_producto,
+        margen_producto
       });
 
       if (response.status === 200) {
@@ -130,14 +138,14 @@ function FormEditarProducto () {
     </div>
     <div className="parte2">
         <div>
-          <label htmlFor="initial_price">Precio inicial*</label>
-          <Field id="initial_price" type="number" name="initial_price" className="labelfff"  />
-          <ErrorMessage name="initial_price" component="div" />
+          <label htmlFor="precio_inicial_producto">Precio inicial*</label>
+          <Field id="precio_inicial_producto" type="number" name="precio_inicial_producto" className="labelfff"  />
+          <ErrorMessage name="precio_inicial_producto" component="div" />
         </div>
         <div>
-          <label htmlFor="margin">Margen*</label>
-          <Field id="margin" type="number" name="margin" className="labelfff"  />
-          <ErrorMessage name="margin" component="div" />
+          <label htmlFor="margen_producto">Margen*</label>
+          <Field id="margen_producto" type="number" name="margen_producto" className="labelfff"  />
+          <ErrorMessage name="margen_producto" component="div" />
         </div>
         <div>
           <label htmlFor="precio_total_producto">Precio total*</label>

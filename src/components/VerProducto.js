@@ -164,11 +164,11 @@
                 </tr>
                 <tr>
                     <td><strong>Stock actual:</strong></td>
-                    <td>{producto.stock_actual_producto}</td>
+                    <td>{producto.stok_actual_producto}</td>
                 </tr>
                 <tr className='fila'>
                     <td><strong>Stock mínimo:</strong></td>
-                    <td>{producto.stock_minimo_producto}</td>
+                    <td>{producto.stok_min_producto}</td>
                 </tr>
             </tbody>
         </table>

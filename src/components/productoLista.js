@@ -64,15 +64,8 @@ function ProductoLista({ searchQuery }) {
   };
 
   return (
-    <div className="listaProducto">
-      {/* <div className="buscar">
-        <input
-          type="text"
-          placeholder="Buscar"
-          onChange={(event) => filterProducts(event.target.value)}
-        />
-        
-      </div> */}
+    
+    <div className="listaProductos">
       <div className="container">
         <div className="search-container">
           <input
@@ -84,9 +77,18 @@ function ProductoLista({ searchQuery }) {
           />
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
         </div>
+        <Link to="/inventario/producto/formProducto" className="container">
+        <button className="botonA">Agregar producto</button>
+      </Link>
       </div>
+      <div className="listaProducto">
       {productoNoEncontrado ? (
-        <div className="producto-no-encontrado">Producto no encontrado</div>
+        <div className="producto-no-encontrado">
+        <div className="texto">
+          No se ha encontrado el producto para tu búsqueda, intenta con otro producto o agregar producto para tu inventario
+        </div>
+        <div className="emoji-sad">😞</div>
+      </div>
       ) : (
         <table className="listaP">
           <thead>
@@ -94,6 +96,7 @@ function ProductoLista({ searchQuery }) {
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Stock Actual</th>
+              <th>Stock minimo</th>
               <th>Precio Total</th>
               <th>Tamaño</th>
               <th>Acciones</th>
@@ -105,6 +108,7 @@ function ProductoLista({ searchQuery }) {
                 <td>{producto.nombre_producto}</td>
                 <td>{producto.id_categoria}</td>
                 <td>{producto.stok_actual_producto}</td>
+                <td>{producto.stok_min_producto}</td>
                 <td>{producto.precio_total_producto}</td>
                 <td>{producto.tamanio_producto}</td>
                 <td>
@@ -129,6 +133,7 @@ function ProductoLista({ searchQuery }) {
       {formularioAbierto && (
         <FormProducto productoAEditar={productoAEditar} onClose={() => setFormularioAbierto(false)} />
       )}
+    </div>
     </div>
   );
 }
