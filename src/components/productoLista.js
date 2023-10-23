@@ -1,42 +1,60 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FormProducto from "./FormProducto"; // Assuming FormProducto is the correct component
+import './productoLista.css';
+import FormProducto from "./FormProducto";
 import { Link } from "react-router-dom";
-import "./productoLista.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const ProductoLista = () => {
+function ProductoLista({ searchQuery }) {
   const [productos, setProductos] = useState([]);
   const [productoAEditar, setProductoAEditar] = useState(null);
   const [formularioAbierto, setFormularioAbierto] = useState(false);
+  const [productoNoEncontrado, setProductoNoEncontrado] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/api/productos");
+      setProductos(response.data);
+    } catch (error) {
+      console.error("Error al obtener los productos:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/api/productos");
-        setProductos(response.data);
-      } catch (error) {
-        console.error("Error al obtener los productos:", error);
-      }
-    };
     fetchData();
-  }, []);
+  }, []); // Dependencias vacías para que se ejecute solo una vez
 
-  const handleDelete = (id_producto) => {
-    console.log("ID de producto a eliminar:", id_producto);
-    // Realiza la solicitud de eliminación con el ID del producto
-    axios
-      .delete(`http://localhost:4000/api/productos/${id_producto}`)
-      .then((response) => {
-        if (response.status === 200) {
-          // Actualiza el estado después de eliminar el producto
-          setProductos(productos.filter((producto) => producto.id_producto !== id_producto));
-        } else {
-          console.error("Error al eliminar el producto. Respuesta inesperada:", response);
-        }
-      })
-      .catch((error) => {
-        console.error("Error al eliminar el producto:", error);
+  const filterProducts = (query) => {
+    // Primero, verifica si la consulta está vacía, y si lo está, restablece los productos
+    if (!query) {
+      fetchData();
+      setProductoNoEncontrado(false);
+    } else {
+      const queryLower = query.toLowerCase();
+      const filteredProductos = productos.filter((producto) => {
+        const nombre = producto.nombre_producto.toLowerCase();
+        const tamanio = producto.tamanio_producto.toLowerCase();
+        return nombre.includes(queryLower) || tamanio.includes(queryLower);
       });
+
+      setProductos(filteredProductos);
+      setProductoNoEncontrado(filteredProductos.length === 0);
+    }
+  };
+
+  const handleDelete = async (id_producto) => {
+    try {
+      const response = await axios.delete(`http://localhost:4000/api/productos/${id_producto}`);
+      if (response.status === 200) {
+        // Actualiza el estado después de eliminar el producto
+        setProductos((prevProductos) => prevProductos.filter((producto) => producto.id_producto !== id_producto));
+      } else {
+        console.error("Error al eliminar el producto. Respuesta inesperada:", response);
+      }
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error);
+    }
   };
 
   const handleEditar = (producto) => {
@@ -47,48 +65,72 @@ const ProductoLista = () => {
 
   return (
     <div className="listaProducto">
-      <table className="listaP">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Categoría</th>
-            <th>Stock Actual</th>
-            <th>Precio Total</th>
-            <th>Tamaño</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productos.map((producto) => (
-            <tr key={producto.id_producto}>
-              <td>{producto.nombre_producto}</td>
-              <td>{producto.id_categoria}</td>
-              <td>{producto.stok_actual_producto}</td>
-              <td>{producto.precio_total_producto}</td>
-              <td>{producto.tamanio_producto}</td>
-              <td>
-                <Link to={`/inventario/producto/ver/${producto.id_producto}`} key={producto.id_producto}>
-                  <button className="verP">Ver</button>
-                </Link>
-                <Link to={`/inventario/producto/editarProducto/${producto.id_producto}`} key={producto.id_producto}>
-                  <button className="editarP" onClick={() => handleEditar(producto)}>
-                    Editar
-                  </button>
-                </Link>
-                <button className="borrarP" onClick={() => handleDelete(producto.id_producto)}>
-                  Borrar
-                </button>
-              </td>
+      {/* <div className="buscar">
+        <input
+          type="text"
+          placeholder="Buscar"
+          onChange={(event) => filterProducts(event.target.value)}
+        />
+        
+      </div> */}
+      <div className="container">
+        <div className="search-container">
+          <input
+            className="input1"
+            type="text"
+            placeholder="Buscar"
+            /* value={searchQuery} */
+            onChange={(event) => filterProducts(event.target.value)}
+          />
+          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+        </div>
+      </div>
+      {productoNoEncontrado ? (
+        <div className="producto-no-encontrado">Producto no encontrado</div>
+      ) : (
+        <table className="listaP">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Stock Actual</th>
+              <th>Precio Total</th>
+              <th>Tamaño</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {productos.map((producto) => (
+              <tr key={producto.id_producto}>
+                <td>{producto.nombre_producto}</td>
+                <td>{producto.id_categoria}</td>
+                <td>{producto.stok_actual_producto}</td>
+                <td>{producto.precio_total_producto}</td>
+                <td>{producto.tamanio_producto}</td>
+                <td>
+                  <Link to={`/inventario/producto/ver/${producto.id_producto}`} key={producto.id_producto}>
+                    <button className="verP">Ver</button>
+                  </Link>
+                  <Link to={`/inventario/producto/editarProducto/${producto.id_producto}`} key={producto.id_producto}>
+                    <button className="editarP" onClick={() => handleEditar(producto)}>
+                      Editar
+                    </button>
+                  </Link>
+                  <button className="borrarP" onClick={() => handleDelete(producto.id_producto)}>
+                    Borrar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       {formularioAbierto && (
         <FormProducto productoAEditar={productoAEditar} onClose={() => setFormularioAbierto(false)} />
       )}
     </div>
   );
-};
+}
 
 export default ProductoLista;
