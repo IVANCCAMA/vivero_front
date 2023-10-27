@@ -22,6 +22,7 @@ const FormProducto = () => {
   const handleSubmit = async (values) => {
     try {
       // Realiza una solicitud POST para crear producto
+      console.log('Producto>>>>', values);
       const response = await axios.post('http://localhost:4000/api/productos', values);
 
       if (response.status === 201) {
@@ -124,12 +125,12 @@ const FormProducto = () => {
                       Seleccionar
                     </option>
                     {categorias.map(categoria => (
-                      <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                        {categoria.id_categoria} 
+                      <option key={categoria.id_categoria} value={categoria.nombre_categoria}>
+                        {categoria.nombre_categoria} 
                       </option>
                     ))}
                   </Field>
-                  <ErrorMessage name="id_categoria" component="div" className="error-message"/>
+                  <ErrorMessage name="nombre_categoria" component="div" className="error-message"/>
                 </div>
               </div>
               <div className="parte2">

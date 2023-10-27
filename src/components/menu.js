@@ -26,8 +26,8 @@ function Menu() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/empleados" className="menu-link bg-cyan">
-                        <i className="fa-solid fa-users"></i> Empleados
+                    <Link to="/usuarios" className="menu-link bg-cyan">
+                        <i className="fa-solid fa-users"></i> Usuarios
                     </Link>
                 </li>
                 <li>

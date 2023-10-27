@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Inventario from './pages/Inventario'; // Cambia "Invetario" a "Inventario"
-import Empleados from './pages/Empleados';
+import Usuarios from './pages/Usuarios';
 import Transacciones from './pages/Transacciones';
 import Reportes from './pages/Reportes';
 import NotFound from './pages/Notfound';
@@ -29,7 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/inventario/producto" element={<Inventario />} />
             <Route path="/inventario/producto" element={<Inventario />} />
-            <Route path="/empleados" element={<Empleados />} />
+            <Route path="/Usuarios" element={<Usuarios />} />
             <Route path="/reportes" element={<Reportes />} />
             <Route path="/transacciones" element={<Transacciones />} />
             <Route path="/inventario/categoria" element={<Categoria />} />

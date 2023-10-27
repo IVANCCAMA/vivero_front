@@ -1,9 +1,9 @@
 import '../App.css';
-function Empleados() {
+function Usuarios() {
     return (
     <div className="division">
         <p>Pagina de Empleados</p>
     </div>
     );
 }
-export default Empleados;
+export default Usuarios;

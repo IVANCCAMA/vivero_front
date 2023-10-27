@@ -64,7 +64,7 @@ const Categoria = () => {
         },
       });
 
-      doc.save('ListaCategorias.pdf');
+      doc.save('Lista Categorias.pdf');
     }
   };
 

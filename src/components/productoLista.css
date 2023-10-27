@@ -1,15 +1,16 @@
 /* productoLista.css */
 .listaProducto {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
     padding: 0px;
-    margin-left: 50px;
+    margin-left: 32px;
+
   }
   
   .listaP {
-    width: 104%;
+    width: 100%;
     border-collapse: collapse;
   }
   
@@ -74,7 +75,24 @@
   .emoji-sad {
     font-size: 50px; 
   }
+
+.botonPdfListaP{
+  background-color: #b6704b;;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 40px;
+  margin-left: 670px;
   
+}
+
+.botonPdfListaP:hover{
+  background-color: #203ae4;
+}
+
+
   
   
   
