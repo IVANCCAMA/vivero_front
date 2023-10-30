@@ -16,6 +16,7 @@ import Formcategoria from './pages/Formcategoria'
 import FormEditarCategoria from './pages/FormEditarCategoria';
 import FormEditarProducto from './components/FormEditarProducto';
 import VerProducto from './components/VerProducto';
+import FormUsuario from './pages/FormUsuario';
 function App() {
 
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/inventario/categoria/editarCategoria/:id_categoria" element={<FormEditarCategoria/>} />
             <Route path="/inventario/producto/editarProducto/:id_producto" element={<FormEditarProducto/>} />
             <Route path="/inventario/producto/ver/:id_producto" element={<VerProducto/>}/>
+            <Route path='/usuarios/crearUsuario' element={<FormUsuario/>}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </div>
