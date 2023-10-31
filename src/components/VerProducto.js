@@ -91,6 +91,8 @@
                     /* ['Stock actual', producto.stock_actual_producto], */
                     ['Stock actual', producto.stok_actual_producto],
                     ['Stock mínimo', producto.stok_min_producto],
+                    ['Fecha creacion', producto.fecha_creacion],
+                    ['Fecha modificacion',producto.fecha_modificacion] 
                 ];
 
                 doc.autoTable(columns, data, {
@@ -108,7 +110,7 @@
         };
 
         return (
-                    <div className="division">
+                    <div>
                         <h2 className='h22'>Producto</h2>
                         {producto ? (
                             <div className="detalle">
@@ -123,8 +125,7 @@
                                 )}
                                 </div>
                                 <table className="product-details-table">
-            <tbody>
-            {/* <p className='detallep'>Detalles de producto</p> */}
+            <tbody className='LetraVerProducto'>
             <tr className='campoV'>
                 
                     <td><strong >Campo</strong></td>
@@ -169,6 +170,14 @@
                 <tr className='fila'>
                     <td><strong>Stock mínimo:</strong></td>
                     <td>{producto.stok_min_producto}</td>
+                </tr>
+                <tr>
+                    <td><strong>Fecha creacion:</strong></td>
+                    <td>{producto.fecha_creacion}</td>
+                </tr>
+                <tr className='fila'>
+                    <td><strong>Fecha modificacion:</strong></td>
+                    <td>{producto.fecha_modificacion}</td>
                 </tr>
             </tbody>
         </table>

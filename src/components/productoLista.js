@@ -5,12 +5,16 @@ import FormProducto from "./FormProducto";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import 'jspdf-autotable';
+import { jsPDF } from 'jspdf';
+import penImage from '../img/logo.png';
 
 function ProductoLista({ searchQuery }) {
   const [productos, setProductos] = useState([]);
   const [productoAEditar, setProductoAEditar] = useState(null);
   const [formularioAbierto, setFormularioAbierto] = useState(false);
   const [productoNoEncontrado, setProductoNoEncontrado] = useState(false);
+  /* const [sortedBy, setSortedBy] = useState(''); */
 
   const fetchData = async () => {
     try {
@@ -63,11 +67,79 @@ function ProductoLista({ searchQuery }) {
     setFormularioAbierto(true);
   };
 
+
+
+//GenerarPDF
+const generarPDFListaProductos = () => {
+  if (productos.length>0) {
+      const doc = new jsPDF();
+
+      const imageURL = penImage;
+
+      // Asegúrate de que las coordenadas y dimensiones sean válidas
+      doc.addImage(imageURL, 'JPEG', 1, 1,25,15);
+
+            // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
+            doc.setFontSize(10);
+            doc.text('Vivero Corazon de Bolivia', 25, 10); 
+      
+      // Definir formato del documento
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.setTextColor(0, 0, 0);
+      doc.text('Lista de productos', 80, 20);
+      const startY = 30;
+      
+
+      // Agregar detalles del producto usando jspdf-autotable
+      const columns = ['Nombre','Categoria','Stock actual', 'Stock minimo','Precio total','Tamaño','Fecha creacion','Fecha modificacion'];
+      const data = productos.map((product) => [
+          product.nombre_producto,
+          product.id_categoria,
+          product.stok_actual_producto,
+          product.stok_min_producto,
+          product.precio_total_producto,
+          product.tamanio_producto,
+          product.fecha_creacion,
+          product.fecha_modificacion 
+      ]);
+
+      doc.autoTable(columns, data, {
+          startY: startY,
+          headStyles: {
+              fillColor: [40, 84, 48] // Color verde fuerte en formato RGB
+          },
+          bodyStyles: {
+          fillColor: [229, 217, 182] // Color verde fuerte en formato RGB 
+          }
+      });
+
+      doc.save('Lista Productos.pdf');
+  }
+/* 
+ // Ordena A - Z
+ const handleSortBy = (key) => {
+  const sortedProducts = [...productos];
+
+  if (sortedBy === key) {
+    sortedProducts.reverse();
+  } else {
+    if (key === 'nombre_producto' || key === 'id_categoria') {
+      sortedProducts.sort((a, b) => a[key].localeCompare(b[key]));
+    } else {
+      sortedProducts.sort((a, b) => a[key] - b[key]);
+    }
+  }
+
+  setProductos(sortedProducts);
+  setSortedBy(key);
+}; */
+
+
+};
   return (
-    
-    <div className="listaProductos">
-      <div className="container">
-        <div className="search-container">
+   <div>
+     <div className="container">
           <input
             className="input1"
             type="text"
@@ -76,11 +148,16 @@ function ProductoLista({ searchQuery }) {
             onChange={(event) => filterProducts(event.target.value)}
           />
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
-        </div>
-        <Link to="/inventario/producto/formProducto" className="container">
-        <button className="botonA">Agregar producto</button>
-      </Link>
+        {/* <button onClick={() => sortedBy('nombre_producto')}>Ordenar por Nombre</button>
+       */} 
+        <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Imprimir</button>
+        <Link to="/inventario/producto/formProducto">
+            <button className="botonA">Agregar producto</button>
+          </Link>
       </div>
+      
+    <div className="listaProductos">
+      
       <div className="listaProducto">
       {productoNoEncontrado ? (
         <div className="producto-no-encontrado">
@@ -95,11 +172,13 @@ function ProductoLista({ searchQuery }) {
             <tr>
               <th>Nombre</th>
               <th>Categoría</th>
-              <th>Stock Actual</th>
+              <th>Stock actual</th>
               <th>Stock minimo</th>
-              <th>Precio Total</th>
+              <th>Precio total</th>
               <th>Tamaño</th>
-              <th>Acciones</th>
+              <th>Fecha creacion</th>
+              <th>Fecha modificacion</th>
+              <th>Acciones</th> 
             </tr>
           </thead>
           <tbody>
@@ -111,6 +190,9 @@ function ProductoLista({ searchQuery }) {
                 <td>{producto.stok_min_producto}</td>
                 <td>{producto.precio_total_producto}</td>
                 <td>{producto.tamanio_producto}</td>
+                <td>{producto.fecha_creacion}</td>
+                <td>{producto.fecha_modificacion}</td> 
+                
                 <td>
                   <Link to={`/inventario/producto/ver/${producto.id_producto}`} key={producto.id_producto}>
                     <button className="verP">Ver</button>
@@ -123,6 +205,7 @@ function ProductoLista({ searchQuery }) {
                   <button className="borrarP" onClick={() => handleDelete(producto.id_producto)}>
                     Borrar
                   </button>
+                  
                 </td>
               </tr>
             ))}
@@ -135,6 +218,7 @@ function ProductoLista({ searchQuery }) {
       )}
     </div>
     </div>
+   </div>
   );
 }
 

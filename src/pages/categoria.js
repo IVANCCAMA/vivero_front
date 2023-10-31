@@ -64,13 +64,13 @@ const Categoria = () => {
         },
       });
 
-      doc.save('ListaCategorias.pdf');
+      doc.save('Lista Categorias.pdf');
     }
   };
 
   return (
-    <div className="division">
-      <p>Categoría</p>
+    <div >
+      <p className='TextoCategoria'>Categoría</p>
       <SubMenuInventario />
       <div className="botonesCat">
         <div className="crearcat">

@@ -1,12 +1,9 @@
 .crearcat {
-  margin-left: 800px; /* Ajusta este valor según tu diseño */
+
+text-align: end;
   font-size: 16px;
 }
 
-.botonesCat {
-  display: flex;
-  justify-content: space-between;
-}
 
 .botonesCat button {
   margin: 0 5px; /* Agrega un margen entre los botones */
@@ -32,7 +29,7 @@
   padding: 14px;
 }
 .botonImprimirLista {
-  background-color: #958f1f; /* Color de fondo azul */
+  background-color: #b6704b; /* Color de fondo azul */
   color: #fff; /* Color del texto blanco */
   padding: 10px 20px; /* Relleno interno del botón */
   border: none; /* Sin borde */
@@ -44,4 +41,6 @@
 .botonImprimirLista:hover {
   background-color: #e6d777; /* Color de fondo azul más oscuro al pasar el mouse por encima */
 }
-
+.TextoCategoria{
+  text-align: start;
+}

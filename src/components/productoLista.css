@@ -1,83 +1,78 @@
 /* productoLista.css */
-.listaProducto {
-    max-width: 1000px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    margin-left: 50px;
-  }
-  
-  .listaP {
-    width: 104%;
-    border-collapse: collapse;
-  }
-  
-  .listaP th,
-  .listaP td {
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .listaP th {
-    background-color: #5F8D4E;
-    color: #fff;
-  }
-  
-  .verP{
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #ff9900;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .borrarP{
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #de2b10;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .editarP {
-    padding: 5px 10px;
-    margin: 5px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .verP:hover,
-  .borrarP:hover,
-  .editarP:hover {
-    background-color: #5F8D4E;
-  }
 
-  .producto-no-encontrado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center; 
-    padding: 30px; 
-  }
-  
-  .texto {
-    font-size: 16px; 
-    margin-bottom: 10px; 
-  }
-  
-  .emoji-sad {
-    font-size: 50px; 
-  }
-  
-  
-  
-  
-  
-  
-  
+.listaProducto {
+  max-width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.listaP {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.listaP th,
+.listaP td {
+  padding: 8px;
+  text-align: center;
+}
+
+.listaP th {
+  background-color: #5F8D4E;
+  color: #fff;
+}
+
+.botonPdfListaP {
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #4f350f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.verP, .borrarP, .editarP{
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.borrarP {
+  background-color: #de2b10;
+}
+
+.editarP {
+  background-color: #007BFF;
+}
+
+.verP:hover,
+.borrarP:hover,
+.editarP:hover,
+.botonPdfListaP:hover {
+  background-color: #5F8D4E;
+}
+
+.producto-no-encontrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.texto {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.emoji-sad {
+  font-size: 50px;
+}
+
+.botonPdfListaP {
+  margin-left: 0; /* Ajustado margen izquierdo para centrar en pantallas más pequeñas */
+}

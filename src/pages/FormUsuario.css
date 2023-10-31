@@ -1,0 +1,55 @@
+/* Estilo para el contenedor del formulario */
+.form-container {
+    margin-top: 27px;
+    margin-left: 240px;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container h2 {
+    text-align: center;
+  }
+  
+  /* Estilo para etiquetas y campos de entrada */
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Estilo para el botón de registro */
+  .form-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para el formulario en general */
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  

@@ -1,7 +1,7 @@
 import '../App.css';
 function NotFound() {
     return (
-    <div className="division">
+    <div className="s">
         <p>La pagina no se ha encontrado</p>
     </div>
     );

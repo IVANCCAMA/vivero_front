@@ -110,7 +110,7 @@ function FormEditarProducto () {
 
   return (
 
-    <div className="division">
+    <div>
       <div className='division1'>
       <Formik initialValues={infoProducto} onSubmit={handleSubmit}>
   <Form>

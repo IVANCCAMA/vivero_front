@@ -7,7 +7,7 @@ import ProductoLista from "../components/productoLista";
 function Inventario() {
 
   return (
-    <div className="division">
+    <div className="">
       <div>
         <p className="Inventario">Inventario</p>
         <SubMenuInventario />

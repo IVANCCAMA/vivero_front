@@ -1,14 +1,13 @@
-.division {
-    text-align: center; /* Centrar horizontalmente el contenido dentro de la clase "division" */
-  }
+
 .h22{
     text-align: center;
-    margin-left: 500px;
+    font-size: 20px;
 }
   .detalle {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente dentro de la clase "detalle" */
+   
     
     
   }
@@ -17,15 +16,14 @@
     text-align: left; /* Alinea el texto en la tabla a la izquierda */
     margin: 0 auto; /* Centra la tabla horizontalmente */
     border-collapse: collapse; /* Colapsa los bordes de la tabla */
-    width: 100%; /* Ajusta el ancho de la tabla según tus necesidades */
-    margin-left: 250px;
-    margin-top: 7px;
+    width: 50%; /* Ajusta el ancho de la tabla según tus necesidades */
+    
     
   }
   
   .product-details-table td {
-    padding: 2.5px; /* Espaciado interior de las celdas */
-    border: 2px solid #ddd; /* Borde alrededor de las celdas */
+    padding: 2px; /* Espaciado interior de las celdas */
+    border: 1px solid #ddd; /* Borde alrededor de las celdas */
     
     
   }
@@ -33,39 +31,39 @@
   .product-details-table td:first-child {
     font-weight: bold; /* Texto en negrita en la primera columna */
   }
-  
-  /* Estilos adicionales según sea necesario */
 .campoV{
     background-color: #285430;
     color: #ddd;
     
     
 }
+.LetraVerProducto{
+  font-size: 15px;
+}
 
 .fila{
     background-color: #E5D9B6;
 }
 .botonPdf {
-    margin-left: 500px; /* Ajusta el margen izquierdo según tus necesidades */
-    margin-top: 15px;
-    padding: 10px 20px; /* Ajusta el relleno (padding) para hacer el botón más grande */
-    background-color: #5F8D4E; /* Cambia el color de fondo del botón */
-    color: #fff; /* Cambia el color del texto a blanco */
-    border: none; /* Quita el borde */
-    border-radius: 5px; /* Agrega bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    
+    margin-top: 5px;
+    padding: 10px 20px; 
+    background-color: #5F8D4E; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
 }
 
 .botonPdf:hover {
-    background-color: #A4BE7B
-    ; /* Cambia el color de fondo al pasar el cursor */
+    background-color: #A4BE7B;                    
 }
 .imagenV{
-margin-left: 500px;
-margin-top: -7px;
+
+margin-top: -20px;
 }
 .detallep{
-    font-size: 5px;
+    
     margin-top: -25px;
     
 }
