@@ -7,18 +7,18 @@ import './formproducto.css'
 
 function FormEditarProducto () {
     const { id_producto } = useParams();
-  const [infoProducto, setinfoProducto] = useState({
-    id_categoria: "",
-    nombre_producto: "",
-    precio_total_producto:"",
-    tamanio_producto: "",
-    imagen_producto: "",
-    descripcion_producto: "",
-    stok_actual_producto: "",
-    stok_min_producto: "",
-    precio_inicial_producto:"",
-    margen_producto:""
-  });   
+    const [infoProducto, setinfoProducto] = useState({
+      id_categoria: "",
+      nombre_producto: "",
+      precio_total_producto:"",
+      tamanio_producto: "",
+      imagen_producto: "",
+      descripcion_producto: "",
+      stok_actual_producto: "",
+      stok_min_producto: "",
+      precio_inicial_producto:"",
+      margen_producto:""
+    });   
 
   const [categorias, setCategorias] = useState([]); // Estado para almacenar las categorías
 
