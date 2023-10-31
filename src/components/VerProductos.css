@@ -1,15 +1,13 @@
-.division {
-    text-align: center; /* Centrar horizontalmente el contenido dentro de la clase "division" */
-  }
+
 .h22{
     text-align: center;
-    margin-left: 500px;
-    font-size: 22px;
+    font-size: 20px;
 }
   .detalle {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente dentro de la clase "detalle" */
+   
     
     
   }
@@ -18,8 +16,8 @@
     text-align: left; /* Alinea el texto en la tabla a la izquierda */
     margin: 0 auto; /* Centra la tabla horizontalmente */
     border-collapse: collapse; /* Colapsa los bordes de la tabla */
-    width: 100%; /* Ajusta el ancho de la tabla según tus necesidades */
-    margin-left: 250px;
+    width: 50%; /* Ajusta el ancho de la tabla según tus necesidades */
+    
     
   }
   
@@ -33,20 +31,21 @@
   .product-details-table td:first-child {
     font-weight: bold; /* Texto en negrita en la primera columna */
   }
-  
-  /* Estilos adicionales según sea necesario */
 .campoV{
     background-color: #285430;
     color: #ddd;
     
     
 }
+.LetraVerProducto{
+  font-size: 15px;
+}
 
 .fila{
     background-color: #E5D9B6;
 }
 .botonPdf {
-    margin-left: 450px; 
+    
     margin-top: 5px;
     padding: 10px 20px; 
     background-color: #5F8D4E; 
@@ -60,11 +59,11 @@
     background-color: #A4BE7B;                    
 }
 .imagenV{
-margin-left: 500px;
+
 margin-top: -20px;
 }
 .detallep{
-    font-size: 5px;
+    
     margin-top: -25px;
     
 }

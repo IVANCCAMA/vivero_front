@@ -36,7 +36,7 @@ const FormCategoria = () => {
   };
 
   return (
-    <div className="division">
+    <div >
       <div className="division2">
         <Formik initialValues={{ nombre_categoria: "", descripcion_categoria: "" }} onSubmit={handleSubmit}>
           <Form>

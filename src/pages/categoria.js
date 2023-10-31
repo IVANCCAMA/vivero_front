@@ -69,8 +69,8 @@ const Categoria = () => {
   };
 
   return (
-    <div className="division">
-      <p>Categoría</p>
+    <div >
+      <p className='TextoCategoria'>Categoría</p>
       <SubMenuInventario />
       <div className="botonesCat">
         <div className="crearcat">

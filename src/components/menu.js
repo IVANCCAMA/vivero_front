@@ -9,7 +9,7 @@ function Menu() {
     const ocultarMenu = rutasParaOcultarMenu.includes(location.pathname);
 
     return (
-        <div className="sidebar">
+        <div className="Menu">
             {!ocultarMenu && (
                 <div className="menu-lateral">
                 </div>

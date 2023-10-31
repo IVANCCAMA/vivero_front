@@ -46,7 +46,7 @@ const FormProducto = () => {
   };
 
   return (
-    <div className="division">
+    <div>
       <div className='division1'>
       <Formik
   initialValues={{

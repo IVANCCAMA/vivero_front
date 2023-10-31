@@ -138,10 +138,8 @@ const generarPDFListaProductos = () => {
 
 };
   return (
-    
-    <div className="listaProductos">
-      <div className="container">
-        <div className="search-container">
+   <div>
+     <div className="container">
           <input
             className="input1"
             type="text"
@@ -150,16 +148,16 @@ const generarPDFListaProductos = () => {
             onChange={(event) => filterProducts(event.target.value)}
           />
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
-        </div>
         {/* <button onClick={() => sortedBy('nombre_producto')}>Ordenar por Nombre</button>
        */} 
         <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Imprimir</button>
-        
-        <Link to="/inventario/producto/formProducto" className="container">
-        <button className="botonA">Agregar producto</button>
-      </Link>
-      
+        <Link to="/inventario/producto/formProducto">
+            <button className="botonA">Agregar producto</button>
+          </Link>
       </div>
+      
+    <div className="listaProductos">
+      
       <div className="listaProducto">
       {productoNoEncontrado ? (
         <div className="producto-no-encontrado">
@@ -220,6 +218,7 @@ const generarPDFListaProductos = () => {
       )}
     </div>
     </div>
+   </div>
   );
 }
 

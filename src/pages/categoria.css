@@ -1,12 +1,9 @@
 .crearcat {
-  margin-left: 800px; /* Ajusta este valor según tu diseño */
+
+text-align: end;
   font-size: 16px;
 }
 
-.botonesCat {
-  display: flex;
-  justify-content: space-between;
-}
 
 .botonesCat button {
   margin: 0 5px; /* Agrega un margen entre los botones */
@@ -44,4 +41,6 @@
 .botonImprimirLista:hover {
   background-color: #e6d777; /* Color de fondo azul más oscuro al pasar el mouse por encima */
 }
-
+.TextoCategoria{
+  text-align: start;
+}

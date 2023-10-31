@@ -20,12 +20,10 @@ import FormUsuario from './pages/FormUsuario';
 function App() {
 
   return (
-    <div className="app">
-      <Header />
-      <div className="content">
+    <div className='grid-container'>
+      <header className='header'>HEADER</header>
         <Menu />
-        
-        <div className="main-content">
+        <main className='main'>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/inventario/producto" element={<Inventario />} />
@@ -43,11 +41,9 @@ function App() {
             <Route path='/usuarios/crearUsuario' element={<FormUsuario/>}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
-        </div>
-      </div>
-      <Footer />
+          </main>
+      <footer className='footer'>FOOTER</footer>
     </div>
   );
 }
-
 export default App;

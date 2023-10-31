@@ -110,7 +110,7 @@
         };
 
         return (
-                    <div className="division">
+                    <div>
                         <h2 className='h22'>Producto</h2>
                         {producto ? (
                             <div className="detalle">
@@ -125,8 +125,7 @@
                                 )}
                                 </div>
                                 <table className="product-details-table">
-            <tbody>
-            {/* <p className='detallep'>Detalles de producto</p> */}
+            <tbody className='LetraVerProducto'>
             <tr className='campoV'>
                 
                     <td><strong >Campo</strong></td>
