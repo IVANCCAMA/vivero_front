@@ -182,22 +182,22 @@ const generarPDFListaProductos = () => {
             </tr>
           </thead>
           <tbody>
-            {productos.map((producto) => (
+            {productos.map((producto, index) => (
               <tr key={producto.id_producto}>
-                <td>{producto.nombre_producto}</td>
-                <td>{producto.id_categoria}</td>
-                <td>{producto.stok_actual_producto}</td>
-                <td>{producto.stok_min_producto}</td>
-                <td>{producto.precio_total_producto}</td>
-                <td>{producto.tamanio_producto}</td>
-                <td>{producto.fecha_creacion}</td>
-                <td>{producto.fecha_modificacion}</td> 
+                <td key={1}>{producto.nombre_producto}</td>
+                <td key={2}>{producto.id_categoria}</td>
+                <td key={3}>{producto.stok_actual_producto}</td>
+                <td key={4}>{producto.stok_min_producto}</td>
+                <td key={5}>{producto.precio_total_producto}</td>
+                <td key={6}>{producto.tamanio_producto}</td>
+                <td key={7}>{producto.fecha_creacion}</td>
+                <td key={8}>{producto.fecha_modificacion}</td> 
                 
                 <td>
-                  <Link to={`/inventario/producto/ver/${producto.id_producto}`} key={producto.id_producto}>
+                  <Link to={`/inventario/producto/ver/${producto.id_producto}`}>
                     <button className="verP">Ver</button>
                   </Link>
-                  <Link to={`/inventario/producto/editarProducto/${producto.id_producto}`} key={producto.id_producto}>
+                  <Link to={`/inventario/producto/editarProducto/${producto.id_producto}`}>
                     <button className="editarP" onClick={() => handleEditar(producto)}>
                       Editar
                     </button>
