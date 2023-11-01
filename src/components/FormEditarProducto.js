@@ -7,18 +7,18 @@ import './formproducto.css'
 
 function FormEditarProducto () {
     const { id_producto } = useParams();
-  const [infoProducto, setinfoProducto] = useState({
-    id_categoria: "",
-    nombre_producto: "",
-    precio_total_producto:"",
-    tamanio_producto: "",
-    imagen_producto: "",
-    descripcion_producto: "",
-    stok_actual_producto: "",
-    stok_min_producto: "",
-    precio_inicial_producto:"",
-    margen_producto:""
-  });   
+    const [infoProducto, setinfoProducto] = useState({
+      id_categoria: "",
+      nombre_producto: "",
+      precio_total_producto:"",
+      tamanio_producto: "",
+      imagen_producto: "",
+      descripcion_producto: "",
+      stok_actual_producto: "",
+      stok_min_producto: "",
+      precio_inicial_producto:"",
+      margen_producto:""
+    });   
 
   const [categorias, setCategorias] = useState([]); // Estado para almacenar las categorías
 
@@ -75,6 +75,8 @@ function FormEditarProducto () {
         precio_inicial_producto,
         margen_producto} = values;
 
+        console.log('valores enviados', values);
+
       // Realiza una solicitud PUT para actualizar el producto
       const response = await axios.put(`http://localhost:4000/api/productos/${id_producto}`, {
         id_categoria,
@@ -129,7 +131,7 @@ function FormEditarProducto () {
     </option>
     {categorias.map(categoria => (
       <option key={categoria.id_categoria} value={categoria.id_categoria}>
-        {categoria.id_categoria} 
+        {categoria.nombre_categoria} 
       </option>
     ))}
   </Field>
