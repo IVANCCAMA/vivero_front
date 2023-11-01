@@ -17,11 +17,15 @@ import FormEditarCategoria from './pages/FormEditarCategoria';
 import FormEditarProducto from './components/FormEditarProducto';
 import VerProducto from './components/VerProducto';
 import FormUsuario from './pages/FormUsuario';
+import logo from './img/logo.png';
 function App() {
 
   return (
     <div className='grid-container'>
-      <header className='header'>HEADER</header>
+      <header className='header'>
+      {/* <img className='logo' src={logo} alt="Logo" />
+        <p className='texto'>SISTEMA GESTION DE INVENTARIO</p> */}
+      </header>
         <Menu />
         <main className='main'>
           <Routes>

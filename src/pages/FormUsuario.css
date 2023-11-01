@@ -1,55 +1,53 @@
-/* Estilo para el contenedor del formulario */
-.form-container {
-    margin-top: 27px;
-    margin-left: 240px;
-    width: 500px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+
+.flex {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: start;
   
-  .form-container h2 {
-    text-align: center;
+}
+
+@media (max-width:991.98px) {
+  .padding {
+      padding: 1.5rem
   }
-  
-  /* Estilo para etiquetas y campos de entrada */
-  .form-group {
-    margin-bottom: 10px;
+}
+
+@media (max-width:767.98px) {
+  .padding {
+      padding: 1rem
   }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .form-input,
-  .form-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  /* Estilo para el botón de registro */
-  .form-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #0074d9;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .form-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Estilo para el formulario en general */
-  .form {
-    display: flex;
-    flex-direction: column;
-  }
-  
+}
+
+.padding {
+  padding: 5rem
+}
+
+
+.card {
+  background: #fff;
+  border-width: 0;
+  border-radius: .25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  margin-bottom: 1.5rem
+}
+
+
+.card-header {
+  background-color: transparent;
+  border-color: rgba(160, 175, 185, .15);
+  background-clip: padding-box
+}
+
+.card-body p:last-child {
+  margin-bottom: 0
+}
+
+.card-hide-body .card-body {
+  display: none
+}
+
+.form-check-input.is-invalid~.form-check-label,
+.was-validated .form-check-input:invalid~.form-check-label {
+  color: #f54394
+}
