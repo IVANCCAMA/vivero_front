@@ -52,7 +52,8 @@ const FormProducto =() =>{
 
   const handleCancelClick = () => {
     // Navega hacia atrás en la historia del navegador
-    navegar('/inventario/producto')
+    /* navegar('/inventario/producto') */
+    window.history.back();
   };
 
   return (
@@ -88,7 +89,7 @@ const FormProducto =() =>{
                   </option>
                   {categorias.map(categoria => (
                     <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                      {categoria.id_categoria} 
+                      {categoria.nombre_categoria} 
                     </option>
                   ))}
                 </Field>

@@ -16,6 +16,10 @@ function ProductoLista({ searchQuery }) {
   const [productoNoEncontrado, setProductoNoEncontrado] = useState(false);
   /* const [sortedBy, setSortedBy] = useState(''); */
 
+  useEffect(() => {
+    fetchData();
+  }, []); // Dependencias vacías para que se ejecute solo una vez|
+
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:4000/api/productos");
@@ -24,10 +28,6 @@ function ProductoLista({ searchQuery }) {
       console.error("Error al obtener los productos:", error);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []); // Dependencias vacías para que se ejecute solo una vez
 
   const filterProducts = (query) => {
     // Primero, verifica si la consulta está vacía, y si lo está, restablece los productos
@@ -138,8 +138,8 @@ const generarPDFListaProductos = () => {
 
 };
   return (
-   <div>
-     <div className="container">
+  <div>
+    <div className="container">
           <input
             className="input1"
             type="text"
@@ -182,16 +182,16 @@ const generarPDFListaProductos = () => {
             </tr>
           </thead>
           <tbody>
-            {productos.map((producto, index) => (
+            {productos.map((producto) => (
               <tr key={producto.id_producto}>
-                <td key={1}>{producto.nombre_producto}</td>
-                <td key={2}>{producto.id_categoria}</td>
-                <td key={3}>{producto.stok_actual_producto}</td>
-                <td key={4}>{producto.stok_min_producto}</td>
-                <td key={5}>{producto.precio_total_producto}</td>
-                <td key={6}>{producto.tamanio_producto}</td>
-                <td key={7}>{producto.fecha_creacion}</td>
-                <td key={8}>{producto.fecha_modificacion}</td> 
+                <td>{producto.nombre_producto}</td>
+                <td>{producto.nombre_categoria}</td>
+                <td>{producto.stok_actual_producto}</td>
+                <td>{producto.stok_min_producto}</td>
+                <td>{producto.precio_total_producto}</td>
+                <td>{producto.tamanio_producto}</td>
+                <td>{producto.fecha_creacion}</td>
+                <td>{producto.fecha_modificacion}</td> 
                 
                 <td>
                   <Link to={`/inventario/producto/ver/${producto.id_producto}`}>

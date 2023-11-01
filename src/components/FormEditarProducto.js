@@ -75,6 +75,8 @@ function FormEditarProducto () {
         precio_inicial_producto,
         margen_producto} = values;
 
+        console.log('valores enviados', values);
+
       // Realiza una solicitud PUT para actualizar el producto
       const response = await axios.put(`http://localhost:4000/api/productos/${id_producto}`, {
         id_categoria,
@@ -129,7 +131,7 @@ function FormEditarProducto () {
     </option>
     {categorias.map(categoria => (
       <option key={categoria.id_categoria} value={categoria.id_categoria}>
-        {categoria.id_categoria} 
+        {categoria.nombre_categoria} 
       </option>
     ))}
   </Field>
