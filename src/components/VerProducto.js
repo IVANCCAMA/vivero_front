@@ -82,7 +82,7 @@
                 const data = [
                     ['Id', producto.id_producto],
                     ['Nombre', producto.nombre_producto],
-                    ['Categoría', producto.id_categoria],
+                    ['Categoría', producto.nombre_categoria],
                     ['Precio inicial', producto.precio_inicial_producto],
                     ['Margen', producto.margen_producto],
                     ['Precio total', producto.precio_total_producto],
@@ -141,7 +141,7 @@
                 </tr>
                 <tr>
                     <td><strong>Categoría:</strong></td>
-                    <td>{producto.id_categoria}</td>
+                    <td>{producto.nombre_categoria}</td>
                 </tr>
                 <tr className='fila'>
                     <td><strong>Precio inicial:</strong></td>
