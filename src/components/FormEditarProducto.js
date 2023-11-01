@@ -115,93 +115,97 @@ function FormEditarProducto () {
     <div>
       <div className='division1'>
       <Formik initialValues={infoProducto} onSubmit={handleSubmit}>
-  <Form>
-    <h2>Editar producto</h2>
-    <div className="parte1">
-      <div>
-        <label htmlFor="nombre_producto">Nombre de producto*</label>
-        <Field id="nombre_producto" type="text" name="nombre_producto" className="labelf" />
-        <ErrorMessage name="nombre_producto" component="div" />
-      </div>
-      <div>
-  <label htmlFor="id_categoria">Categoría*</label>
-  <Field id="id_categoria" as="select" name="id_categoria" className="labelf">
-    <option value="" disabled>
-      Seleccionar
-    </option>
-    {categorias.map(categoria => (
-      <option key={categoria.id_categoria} value={categoria.id_categoria}>
-        {categoria.nombre_categoria} 
-      </option>
-    ))}
-  </Field>
-  <ErrorMessage name="id_categoria" component="div" />
-</div>
-    </div>
-    <div className="parte2">
-        <div>
-          <label htmlFor="precio_inicial_producto">Precio inicial*</label>
-          <Field id="precio_inicial_producto" type="number" name="precio_inicial_producto" className="labelfff"  />
-          <ErrorMessage name="precio_inicial_producto" component="div" />
-        </div>
-        <div>
-          <label htmlFor="margen_producto">Margen*</label>
-          <Field id="margen_producto" type="number" name="margen_producto" className="labelfff"  />
-          <ErrorMessage name="margen_producto" component="div" />
-        </div>
-        <div>
-          <label htmlFor="precio_total_producto">Precio total*</label>
-          <Field id="precio_total_producto" type="number" name="precio_total_producto"  className="labelfff" />
-          <ErrorMessage name="precio_total_producto" component="div" />
-        </div>
-        </div>
-        <div className="parte3">
-        <div>
-          <label htmlFor="tamanio_producto">Tamaño*</label>
-          <Field id="tamanio_producto" as="select" name="tamanio_producto" className="labelf1" >
-            <option value="" disabled>
-              Seleccionar
-            </option>
-            <option value="Grande">Grande</option>
-            <option value="Mediano">Mediano</option>
-            <option value="Pequenio">Pequeño</option>
-          </Field>
-        </div>
-        <div>
-          <label htmlFor="imagen_producto">Subir imagen (opcional)</label>
-          <Field id="imagen_producto"  name="imagen_producto" className="labelf1"  />
-          <ErrorMessage name="imagen_producto" component="div" />
-        </div>
-        </div>
+        <Form>
+          <h2>Editar producto</h2>
 
-        <div className="parte 4">
-        <div>
-          <label htmlFor="descripcion_producto" className="desp">Descripcion (opcional)</label>
-          <Field  id="descripcion_producto" type="textarea" name="descripcion_producto" style={{ height: '60px' }}  className="labelff"  />
-          <ErrorMessage name="descripcion_producto" component="div" />
-        </div>
-        </div>
-        <div className="parte1">
-        <div>
-          <label htmlFor="stok_actual_producto">Stock actual*</label>
-          <Field id="stok_actual_producto" type="number" name="stok_actual_producto" className="labelf2" />
-          <ErrorMessage name="stok_actual_producto" component="div" />
-        </div>
-        <div>
-          <label htmlFor="stok_min_producto">Stock minimo*
-          </label>
-          <Field id="stok_min_producto" type="number" name="stok_min_producto" className="labelf2" >
-          </Field>
-          <ErrorMessage name="stok_min_producto" component="div" />
-        </div>
-        </div>
-    
-    <div className='botones'>
-      <button className='botonverde' type="submit" onClick={handleCancelClick}>Guardar</button>
-      <button className='botonrojo' onClick={handleCancelClick}>Cancelar</button>
-    </div>
-  </Form>
-</Formik>
+          <div className="parte1">
+            <div>
+              <label htmlFor="nombre_producto">Nombre de producto*</label>
+              <Field id="nombre_producto" type="text" name="nombre_producto" className="labelf" />
+              <ErrorMessage name="nombre_producto" component="div" />
+            </div>
+            <div>
+        <label htmlFor="id_categoria">Categoría*</label>
+        <Field id="id_categoria" as="select" name="id_categoria" className="labelf">
+          <option value="" disabled>
+            Seleccionar
+          </option>
+          {categorias.map(categoria => (
+            <option key={categoria.id_categoria} value={categoria.id_categoria}>
+              {categoria.nombre_categoria} 
+            </option>
+          ))}
+        </Field>
+        <ErrorMessage name="id_categoria" component="div" />
+      </div>
+          </div>
+
+          <div className="parte2">
+            <div>
+              <label htmlFor="precio_inicial_producto">Precio inicial*</label>
+              <Field id="precio_inicial_producto" type="number" name="precio_inicial_producto" className="labelfff"  />
+              <ErrorMessage name="precio_inicial_producto" component="div" />
+            </div>
+            <div>
+              <label htmlFor="margen_producto">Margen*</label>
+              <Field id="margen_producto" type="number" name="margen_producto" className="labelfff"  />
+              <ErrorMessage name="margen_producto" component="div" />
+            </div>
+            <div>
+              <label htmlFor="precio_total_producto">Precio total*</label>
+              <Field id="precio_total_producto" type="number" name="precio_total_producto"  className="labelfff" />
+              <ErrorMessage name="precio_total_producto" component="div" />
+            </div>
+          </div>
+
+          <div className="parte3">
+          <div>
+            <label htmlFor="tamanio_producto">Tamaño*</label>
+            <Field id="tamanio_producto" as="select" name="tamanio_producto" className="labelf1" >
+              <option value="" disabled>
+                Seleccionar
+              </option>
+              <option value="Grande">Grande</option>
+              <option value="Mediano">Mediano</option>
+              <option value="Pequenio">Pequeño</option>
+            </Field>
+          </div>
+          <div>
+            <label htmlFor="imagen_producto">Subir imagen (opcional)</label>
+            <Field id="imagen_producto"  name="imagen_producto" className="labelf1"  />
+            <ErrorMessage name="imagen_producto" component="div" />
+          </div>
+          </div>
+
+          <div className="parte 4">
+          <div>
+            <label htmlFor="descripcion_producto" className="desp">Descripcion (opcional)</label>
+            <Field  id="descripcion_producto" type="textarea" name="descripcion_producto" style={{ height: '60px' }}  className="labelff"  />
+            <ErrorMessage name="descripcion_producto" component="div" />
+          </div>
+          </div>
+          
+          <div className="parte1">
+          <div>
+            <label htmlFor="stok_actual_producto">Stock actual*</label>
+            <Field id="stok_actual_producto" type="number" name="stok_actual_producto" className="labelf2" />
+            <ErrorMessage name="stok_actual_producto" component="div" />
+          </div>
+          <div>
+            <label htmlFor="stok_min_producto">Stock minimo*
+            </label>
+            <Field id="stok_min_producto" type="number" name="stok_min_producto" className="labelf2" >
+            </Field>
+            <ErrorMessage name="stok_min_producto" component="div" />
+          </div>
+          </div>
+          
+          <div className='botones'>
+            <button className='botonverde' type="submit">Guardar</button>
+            <button className='botonrojo' onClick={handleCancelClick}>Cancelar</button>
+          </div>
+        </Form>
+      </Formik>
       </div>
     </div>
   );
