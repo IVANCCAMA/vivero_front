@@ -14,10 +14,6 @@
   text-align: center;
   padding: 10px;
   border-radius: 30px;
-  max-width: 70%;
-  width: 70%;
-  height: 70px;
-  justify-content: space-between;
 }
 
 /* Estilos para el botón de "Agregar producto" */
@@ -42,8 +38,6 @@
   border: 1px solid #E5D9B6;
   border-radius: 10px;
   background-color: #E5D9B6;
-  margin-bottom: 10px;
-  width: 100%; /* Ancho completo en dispositivos móviles */
   text-decoration: none;
 }
 

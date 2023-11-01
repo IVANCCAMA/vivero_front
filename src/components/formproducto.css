@@ -1,121 +1,26 @@
-.division1 {
-    background-color: #FFFFFF;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
+/* Estilos para centrar el formulario en el centro de la página */
+.form-container {
     display: flex;
-    justify-content: center; 
-    width: 35%;
-    height: 10%;
-    
-}
-
-h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.botones {
-    display: flex;
-    justify-content: center; 
-}
-
-.botonverde {
-    background-color: #60aa48; 
-    color: #fff; 
-    padding: 10px 20px; 
-    border: none;
-    border-radius: 10px;
-    margin-right: 20px; 
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.botonrojo {
-    background-color: red; /* Estilo para el botón rojo */
-    color: #fff; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interior del botón */
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.parte1, .parte2, .parte3, .parte4, .parte5 {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 2px;
-    margin-left: 10px;
-}
-
-.labelf {
-    width: 90%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color:#A4BE7B;
     
-    /* Otros estilos que desees aplicar al Field */
 }
-.labelff{
-    width: 90%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin-bottom: 15px;
+
+.h3-registrar{
+  text-align: center;
+}
+  
+  /* Estilos para el formulario */
+  .form-content {
+    max-width: 550px; /* Ancho máximo del formulario */
+    width: 100%;
+    padding: 30px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #A4BE7B;
-    margin-left: 10px;
-}
-
-.desp{
-    margin-left: 10px;
-}
-.labelff textarea {
-    text-align: left; 
-    vertical-align: top;
-}
-
-.labelfff{
-    width: 75%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #A4BE7B;
-}
-
-.labelf1{
-    width: 87%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #A4BE7B;
-}
-
-.labelf2{
-    width: 80%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #A4BE7B;
-}
-
-.has-error {
-    border: 2px solid red; 
-    
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .required-field {
-    font-size: 2px; 
-  }
-
-  .error-message {
-    color: red; 
-    font-size: 10px;
-    margin-top: -2px; 
-  }
+.btn-form{
+  text-align: center; 
+}

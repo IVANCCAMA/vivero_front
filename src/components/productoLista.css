@@ -5,11 +5,19 @@
   padding: 10px;
   font-size: 16px;
 }
+.botones-A-I {
+  width: 100%; /* Ancho completo en dispositivos móviles */
+  flex-direction: column;
+  align-items: end;
+  text-align: end; /* Centra el contenido en dispositivos móviles */
+  justify-content: end;
+}
 
 .listaP {
   width: 100%;
   border-collapse: collapse;
 }
+
 
 .listaP th,
 .listaP td {
@@ -24,12 +32,13 @@
 
 .botonPdfListaP {
   padding: 5px 10px;
-  margin: 5px;
+  margin: 20px;
   background-color: #4f350f;
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  height: 40px;
 }
 .verP, .borrarP, .editarP{
   padding: 5px 10px;

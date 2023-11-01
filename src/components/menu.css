@@ -1,29 +1,50 @@
-.menu-list {
-    list-style: none;
-    padding: 0px;
-    
-  }
-.sidebar {
-  position:fixed;
-    width: 250px;
-    height: 83.6%;
-    background-color:#E5D9B6;
-    color: #fff;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    margin-top: 65px;
-    
-    
-  }  
-  .menu-link {
-    color: #000;
-    text-decoration: none;
-    padding: 23px;
-    display: block;
-    
-  }
+/* Estilos generales para el menú */
+.Menu {
+  display: flex;
+  flex-direction: column;
   
+  background-color: #E5D9B6; /* Color de fondo del menú */
+  color: black; /* Color del texto del menú */
+  min-height: 10vh; 
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #285430;
+  padding: 10px;
+  display: block;
+  font-size: 18px;
+}
+
+.menu-link i {
+  margin-right: 10px;
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media (max-width: 767px) {
+  .Menu {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #E5D9B6;
+    min-height: auto; 
+  }
+
+  .menu-list {
+    flex-direction: row;
+  }
+
+  .menu-link {
+    font-size: 16px;
+  }
+}
+
   .menu-link:hover {
     
     background-color: #F3F4E9;

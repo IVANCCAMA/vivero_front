@@ -150,10 +150,12 @@ const generarPDFListaProductos = () => {
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
         {/* <button onClick={() => sortedBy('nombre_producto')}>Ordenar por Nombre</button>
        */} 
+        <div className="botones-A-I">
         <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Imprimir</button>
         <Link to="/inventario/producto/formProducto">
             <button className="botonA">Agregar producto</button>
           </Link>
+        </div>
       </div>
       
     <div className="listaProductos">
