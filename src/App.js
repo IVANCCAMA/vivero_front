@@ -1,8 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Menu from './components/menu';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './pages/Home';
 import Inventario from './pages/Inventario'; // Cambia "Invetario" a "Inventario"
 import Usuarios from './pages/Usuarios';
@@ -23,8 +21,10 @@ function App() {
   return (
     <div className='grid-container'>
       <header className='header'>
-      {/* <img className='logo' src={logo} alt="Logo" />
-        <p className='texto'>SISTEMA GESTION DE INVENTARIO</p> */}
+      <div>
+      <img className='logo' src={logo} alt="Logo" />
+        <h1 className='texto'>SISTEMA GESTION DE INVENTARIO</h1>
+      </div>
       </header>
         <Menu />
         <main className='main'>

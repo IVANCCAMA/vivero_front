@@ -105,7 +105,7 @@ function FormUsuario() {
             </Col>
           </Form.Group>
 
-          <Form.Group as={Row} className="mb-2" controlId="validationFormik02">
+          <Form.Group as={Row} className="mb-1" controlId="validationFormik02">
             <Form.Label column sm="2">Cédula de Identidad:</Form.Label>
             <Col sm="10">
             <Form.Control
@@ -123,7 +123,7 @@ function FormUsuario() {
             </Col>
           </Form.Group>
 
-          <Form.Group as={Row} className="mb-2" controlId="validationFormik03">
+          <Form.Group as={Row} className="mb-1" controlId="validationFormik03">
             <Form.Label column sm="2">Numero de celular:</Form.Label>
             <Col sm="10">
             <Form.Control
@@ -141,7 +141,7 @@ function FormUsuario() {
             </Col>
           </Form.Group>
 
-          <Form.Group as={Row} className="mb-2" controlId="validationFormik04">
+          <Form.Group as={Row} className="mb-1" controlId="validationFormik04">
             <Form.Label column sm="2">Correo Electronico:</Form.Label>
             <Col sm="10">
             <Form.Control
