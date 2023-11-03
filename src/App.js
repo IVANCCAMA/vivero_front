@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Menu from './components/menu';
 import Header from './components/Header';
@@ -46,7 +46,7 @@ function App() {
             <Route path="/*" element={<NotFound />} />
           </Routes>
           </main>
-      <footer className='footer'>FOOTER</footer>
+      <footer className='footer'>Vivero Corazon de Bolivia & Todos los derechos reservados 2023</footer>
     </div>
   );
 }

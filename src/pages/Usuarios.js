@@ -1,12 +1,23 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
+import './Usuario.css'
+import Button from 'react-bootstrap/Button';
+import UsuarioLista from './UsuarioLista';
 function Usuarios() {
     return (
-    <div className="division">
-        <p>Pagina de Empleados</p>
-        <Link to="/usuarios/crearUsuario" className="container">
-        <button className="botonUruario">Agregar usuario</button>
-        </Link>
+    <div className="">
+        <p>Lista de Usuarios</p>
+        <div className='botonUsuario'>
+        <Button href="/usuarios/crearUsuario"  
+        type=""
+        style={{ backgroundColor: '#4f350f'}}>
+        Imprimir</Button> {' '}
+        <Button href="/usuarios/crearUsuario"  
+        type="submit"
+        style={{ backgroundColor: '#5F8D4E' }}>
+        Agregar usuario</Button>
+        </div>
+        <UsuarioLista/>
+        
     </div>
     );
 }
