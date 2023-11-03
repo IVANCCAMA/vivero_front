@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Menu from './components/menu';
 import Home from './pages/Home';
-import Inventario from './pages/Inventario'; // Cambia "Invetario" a "Inventario"
+import Inventario from './pages/Inventario'; 
 import Usuarios from './pages/Usuarios';
 import Transacciones from './pages/Transacciones';
 import Reportes from './pages/Reportes';
@@ -15,7 +15,9 @@ import FormEditarCategoria from './pages/FormEditarCategoria';
 import FormEditarProducto from './components/FormEditarProducto';
 import VerProducto from './components/VerProducto';
 import FormUsuario from './pages/FormUsuario';
+import Login from './pages/Login';
 import logo from './img/logo.png';
+
 function App() {
 
   return (
@@ -43,6 +45,7 @@ function App() {
             <Route path="/inventario/producto/editarProducto/:id_producto" element={<FormEditarProducto/>} />
             <Route path="/inventario/producto/ver/:id_producto" element={<VerProducto/>}/>
             <Route path='/usuarios/crearUsuario' element={<FormUsuario/>}/>
+            <Route path='/login' element={<Login/>}/>
             <Route path="/*" element={<NotFound />} />
           </Routes>
           </main>
