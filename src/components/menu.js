@@ -16,7 +16,7 @@ function Menu() {
             )}
             <ul className="menu-list">
                 <li>
-                    <Link to="/" className="menu-link">
+                    <Link to="/home" className="menu-link">
                         <i className="fa-solid fa-house"></i> Inicio
                     </Link>
                 </li>
