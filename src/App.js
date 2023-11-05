@@ -14,6 +14,8 @@ import FormEditarCategoria from './pages/FormEditarCategoria';
 import FormEditarProducto from './components/FormEditarProducto';
 import VerProducto from './components/VerProducto';
 import FormUsuario from './pages/FormUsuario';
+import FormEditarUsuario from './pages/FormEditarUsuario';
+import VerUsuario from './pages/VerUsuario';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -44,6 +46,8 @@ function App() {
                   <Route path="/inventario/producto/editarProducto/:id_producto" element={<FormEditarProducto />} />
                   <Route path="/inventario/producto/ver/:id_producto" element={<VerProducto />} />
                   <Route path='/usuarios/crearUsuario' element={<FormUsuario />} />
+                  <Route path="/usuarios/editarUsuario/:id_usuario" element={<FormEditarUsuario />} />
+                  <Route path="/usuarios/ver/:id_usuario" element={<VerUsuario />} />
                   <Route path="/*" element={<NotFound />} />
                 </Routes>
               </main>

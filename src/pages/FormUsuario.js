@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
@@ -12,7 +12,20 @@ import './FormUsuario.css';
 
 
 function FormUsuario() {
+
   const navegar = useNavigate();
+  const [tipodeUsuarios, settipodeUsuarios] = useState([]);
+
+  useEffect(() => {
+    // Hacer una solicitud GET para obtener la lista de categorías
+    axios.get('http://localhost:4000/api/tipoUsuario')
+      .then(response => {
+        settipodeUsuarios(response.data); // Almacena las categorías en el estado
+      })
+      .catch(error => {
+        console.error("Error al cargar las categorías:", error);
+      });
+  }, []);
 
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -21,7 +34,7 @@ function FormUsuario() {
     console.log("Usuario objeto>>>> ", usuario);
 
     // Verificamos que los campos obligatorios no estén vacíos
-    if (usuario.nombre_usuario || usuario.ci_usuario || usuario.celular_usuario 
+    if (usuario.nombre_usuario ||usuario.id_tipo_usuario|| usuario.ci_usuario || usuario.celular_usuario 
       || usuario.correo_usuario || usuario.contrasenia_usuario || usuario.fecha_nacimiento_usuario
       || usuario.genero_usuario|| usuario.rol_usuario)
       {
@@ -54,6 +67,7 @@ function FormUsuario() {
   };
 
   const validationSchema = yup.object().shape({
+    id_tipo_usuario:yup.number().required("Campo obligatorio"),
     nombre_usuario: yup.string().required('Campo obligatorio'),
     ci_usuario: yup.string().required('Campo obligatorio'),
     celular_usuario: yup.string().required('Campo obligatorio'),
@@ -61,7 +75,7 @@ function FormUsuario() {
     contrasenia_usuario: yup.string().required('Campo obligatorio'),
     fecha_nacimiento_usuario: yup.string().required('Campo obligatorio'),
     genero_usuario: yup.string().required('Campo obligatorio'),
-    rol_usuario: yup.string().required('Campo obligatorio'),
+    /* rol_usuario: yup.string().required('Campo obligatorio'), */
   });
 
   return (
@@ -69,19 +83,20 @@ function FormUsuario() {
       <div className='form-contentUsuario'>
     <Formik
       initialValues={{
-        nombre_usuario: '',
-        ci_usuario: '',
-        celular_usuario: '',
-        correo_usuario: '',
-        contrasenia_usuario: '',
-        fecha_nacimiento_usuario: '',
-        genero_usuario: '',
-        rol_usuario: '',
+        id_tipo_usuario: undefined,
+        nombre_usuario: undefined,
+        ci_usuario: undefined,
+        celular_usuario: undefined,
+        correo_usuario: undefined,
+        contrasenia_usuario: undefined,
+        fecha_nacimiento_usuario: undefined,
+        genero_usuario: undefined
+        /* rol_usuario: '', */
       }}
-      onSubmit={(values) => {
-        console.log('Valores enviados:', values);
-      }}
-      validationSchema={validationSchema}
+      onSubmit={handleSubmit} 
+        validationSchema={validationSchema}
+      
+      
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form noValidate onSubmit={handleSubmit}>
@@ -92,7 +107,7 @@ function FormUsuario() {
             <Form.Control
               type="text"
               name="nombre_usuario"
-              value={values.nombre_usuario}
+              /* value={values.nombre_usuario} */
               placeholder='Nombre completo'
               onChange={handleChange}
               isInvalid={touched.nombre_usuario && !!errors.nombre_usuario}
@@ -111,7 +126,7 @@ function FormUsuario() {
             <Form.Control
               type="number"
               name="ci_usuario"
-              value={values.ci_usuario}
+              /* value={values.ci_usuario} */
               placeholder='Numero de Cedula de identidad'
               onChange={handleChange}
               isInvalid={touched.ci_usuario && !!errors.ci_usuario}
@@ -129,7 +144,7 @@ function FormUsuario() {
             <Form.Control
               type="number"
               name="celular_usuario"
-              value={values.celular_usuario}
+              /* value={values.celular_usuario} */
               placeholder='Numero de celular'
               onChange={handleChange}
               isInvalid={touched.celular_usuario && !!errors.celular_usuario}
@@ -147,7 +162,7 @@ function FormUsuario() {
             <Form.Control
               type="email"
               name="correo_usuario"
-              value={values.correo_usuario}
+              /* value={values.correo_usuario} */
               placeholder='Correo Electronico'
               onChange={handleChange}
               isInvalid={touched.correo_usuario && !!errors.correo_usuario}
@@ -165,7 +180,7 @@ function FormUsuario() {
             <Form.Control
               type="password"
               name="contrasenia_usuario"
-              value={values.contrasenia_usuario}
+              /* value={values.contrasenia_usuario} */
               placeholder='Contraseña'
               onChange={handleChange}
               isInvalid={touched.contrasenia_usuario && !!errors.contrasenia_usuario}
@@ -183,7 +198,7 @@ function FormUsuario() {
             <Form.Control
               type="date"
               name="fecha_nacimiento_usuario"
-              value={values.fecha_nacimiento_usuario}
+              /* value={values.fecha_nacimiento_usuario} */
               placeholder='Fecha de nacimiento'
               onChange={handleChange}
               isInvalid={touched.fecha_nacimiento_usuario && !!errors.fecha_nacimiento_usuario}
@@ -202,12 +217,12 @@ function FormUsuario() {
               aria-label="Default select example"
               type="text"
               name="genero_usuario"
-              value={values.genero_usuario}
+              /* value={values.genero_usuario} */
               onChange={handleChange}
               isInvalid={touched.genero_usuario && !!errors.genero_usuario}
               style={{ backgroundColor: '#A4BE7B' }}
             >
-              <option value="">Seleccionar:</option>
+              <option value="">Seleccionar</option>
               <option value="Femenino">Femenino</option>
               <option value="Masculino">Masculino</option>
               <option value="Prefiero no decirlo">Prefiero no decirlo</option>
@@ -224,19 +239,21 @@ function FormUsuario() {
               <Form.Select
                 aria-label="Default select example"
                 type="text"
-                name="rol_usuario"
-                value={values.rol_usuario}
+                name="id_tipo_usuario"
+                value={values.id_tipo_usuario} 
                 onChange={handleChange}
-                isInvalid={touched.rol_usuario && !!errors.rol_usuario}
+                isInvalid={touched.id_tipo_usuario && !!errors.id_tipo_usuario}
                 style={{ backgroundColor: '#A4BE7B' }}
               >
                 <option value="">Seleccionar</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Gerente">Gerente</option>
-                <option value="Empleado de Inventario">Empleado de Inventario</option>
+                {tipodeUsuarios.map(usuarioT =>(
+                  <option key={usuarioT.id_tipo_usuario} value={usuarioT.id_tipo_usuario}>
+                  {usuarioT.tipo_usuario}
+                    </option>
+                ))}
               </Form.Select>
               <Form.Control.Feedback type="invalid">
-                {errors.rol_usuario}
+                {errors.id_tipo_usuario}
               </Form.Control.Feedback>
               </Col>
             </Form.Group>

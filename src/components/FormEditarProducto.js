@@ -35,7 +35,7 @@ useEffect(() => {
       setCategorias(response.data); // Almacena las categorías en el estado
     })
     .catch(error => {
-      console.error("Error al cargar las categorías:", error);
+      console.error("Error al cargar los tipos de usuarios:", error);
     });
 }, []); // El segundo argumento [] asegura que esto solo se ejecute una vez al cargar el componente
 
@@ -201,7 +201,7 @@ const handleSubmit = async (values) => {
                     <Field
                       type="number"
                       name="margen_producto"
-                      placeholder="Precio inicial"
+                      placeholder="Margen"
                       className={`form-control ${touched.margen_producto && errors.margen_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
                     />
