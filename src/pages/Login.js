@@ -1,39 +1,64 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import imgLogin from "../img/imgLogin.png";
-import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 function Login() {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [contrasenia_usuario, setContrasenia_usuario] = useState("");
+  const [correo_usuario, setCorreo_usuario] = useState(""); // Corregido el nombre aquí
   const [passwordError, setpasswordError] = useState("");
-  const [emailError, setemailError] = useState("");
+  const [Correo_usuarioError, setCorreo_usuarioError] = useState("");
+  const navigate = useNavigate();
 
-  const handleValidation = (event) => {
+  const handleValidation = () => {
     let formIsValid = true;
-  
-    if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+
+    if (!correo_usuario.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
       formIsValid = false;
-      setemailError("Correo electrónico no válido");
+      setCorreo_usuarioError("Correo electrónico no válido");
     } else {
-      setemailError("");
+      setCorreo_usuarioError("");
     }
-  
-    if (!password.match(/^[0-9a-zA-Z]{8,22}$/)) {
+
+    if (
+      !contrasenia_usuario
+      /* .match(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,22}$/
+      ) */
+    ) {
       formIsValid = false;
-      setpasswordError(
-        "La contraseña debe tener al menos 8 caracteres y como máximo 22 caracteres, y puede incluir letras mayúsculas, letras minúsculas y números."
-      );
+      setpasswordError("La contraseña debe cumplir con los requisitos de seguridad.");
     } else {
       setpasswordError("");
     }
-  
+
     return formIsValid;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (correo_usuario !== "" && contrasenia_usuario !== "") {
+      console.log("Correo recibido :", correo_usuario);
+      console.log("Contraseña recibida :", contrasenia_usuario);
+      // Realiza una solicitud POST para autenticar al usuario
+      const validacion = await axios.post("http://localhost:4000/api/usuarios/autenticar", {
+          correo_usuario: correo_usuario, 
+          contrasenia_usuario: contrasenia_usuario,
+        })
+        if (validacion) {
+            navigate("/home");
+          } else {
+            alert("Usuario no encontrado");
+          }
+    }
   };
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    handleValidation();
+    if (handleValidation()) {
+      handleSubmit(e);
+    }
   };
 
   return (
@@ -50,17 +75,17 @@ function Login() {
               <h2 className="text-center">Iniciar Sesión</h2>
               <label>Email</label>
               <input
-                type="email"
+                type="correo_usuario"
                 className="form-control"
                 id="EmailInput"
                 name="EmailInput"
                 aria-describedby="emailHelp"
-                placeholder="Ingrese email"
+                placeholder="Ingrese correo_usuario"
                 style={{ backgroundColor: "#E0E0E0" }}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
               />
               <small id="emailHelp" className="text-danger form-text">
-                {emailError}
+                {Correo_usuarioError}
               </small>
             </div>
             <div className="form-group">
@@ -71,7 +96,7 @@ function Login() {
                 id="exampleInputPassword1"
                 placeholder="Ingrese contraseña"
                 style={{ backgroundColor: "#E0E0E0" }}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(event) => setContrasenia_usuario(event.target.value)}
               />
               <small id="passworderror" className="text-danger form-text">
                 {passwordError}
@@ -85,10 +110,9 @@ function Login() {
               />
               <label className="form-check-label">Recordar contraseña</label>
             </div>
-            <Button href="/home">Iniciar Sesión</Button>
-            {/* <button type="submit" className="btn-login btn-primary">
+            <button type="submit" className="btn-login btn-primary">
               Iniciar Sesión
-            </button> */}
+            </button>
           </form>
         </div>
       </div>

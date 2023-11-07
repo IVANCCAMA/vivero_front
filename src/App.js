@@ -19,6 +19,7 @@ import VerUsuario from './pages/VerUsuario';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import FormTransacciones from './pages/FormTransacciones';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
                   <Route path='/usuarios/crearUsuario' element={<FormUsuario />} />
                   <Route path="/usuarios/editarUsuario/:id_usuario" element={<FormEditarUsuario />} />
                   <Route path="/usuarios/ver/:id_usuario" element={<VerUsuario />} />
+                  <Route path='/transacciones/formTransacciones' element={<FormTransacciones/>}/>
                   <Route path="/*" element={<NotFound />} />
                 </Routes>
               </main>

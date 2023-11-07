@@ -40,6 +40,11 @@ function Menu() {
                         <i className="fa-solid fa-signal"></i> Reportes
                     </Link>
                 </li>
+                <li className='cerrarSesion'>
+                    <Link to="/" className="menu-link bg-cyan">
+                        <i className="fas fa-sign-out-alt"></i> Cerrar Sesion
+                    </Link>
+                </li>
             </ul>
         </div>
     );

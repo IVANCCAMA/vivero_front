@@ -64,7 +64,7 @@ return(
                 <td>{usuario.ci_usuario}</td>
                 <td>{usuario.celular_usuario}</td>
                 <td>{usuario.correo_usuario}</td>
-                <td>{usuario.id_tipo_usuario}</td>
+                <td>{usuario.tipo_usuario}</td>
                 <td>{usuario.fecha_registro_usuario}</td> 
                 <td>{usuario.fecha_modificacion}</td>  
 

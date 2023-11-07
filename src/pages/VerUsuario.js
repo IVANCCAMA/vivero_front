@@ -60,9 +60,10 @@ const VerUsuario = () => {
                 ['Correo', usuario.correo_usuario],
                 ['Contraseña', usuario.contrasenia_usuario],
                 ['Fecha de nacimiento', usuario.fecha_nacimiento_usuario],
+                ['Genero', usuario.genero_usuario],
                 ['Rol', usuario.id_tipo_usuario],
                 ['Fecha de creacion', usuario.fecha_registro_usuario],
-                ['Fecha de modifiacion',usuario.fecha_modificacion] 
+                ['Fecha de modificacion',usuario.fecha_modificacion] 
             ];
 
             doc.autoTable(columns, data, {
@@ -121,17 +122,22 @@ const VerUsuario = () => {
                 <td>{usuario.fecha_nacimiento_usuario}</td>
             </tr>
             <tr className='fila'>
+                <td><strong>Genero:</strong></td>
+                <td>{usuario.genero_usuario}</td>
+            </tr>
+            <tr >
                 <td><strong>Rol:</strong></td>
                 <td>{usuario.id_tipo_usuario}</td>
             </tr>
-            <tr>
+            <tr className='fila'>
                 <td><strong>Fecha de creacion:</strong></td>
                 <td>{usuario.fecha_registro_usuario}</td>
             </tr>
-            <tr className='fila'>
+            <tr >
                 <td><strong>Fecha de modificacion:</strong></td>
                 <td>{usuario.fecha_modificacion}</td>
             </tr>
+            
         </tbody>
     </table>
 

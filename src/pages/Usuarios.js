@@ -53,7 +53,7 @@ function Usuarios() {
                 usuario.ci_usuario,
                 usuario.celular_usuario,
                 usuario.correo_usuario,
-                usuario.id_tipo_usuario,
+                usuario.tipo_usuario,
                 usuario.fecha_registro_usuario,
             ]);
         
