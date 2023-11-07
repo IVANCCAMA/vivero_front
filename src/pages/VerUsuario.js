@@ -61,7 +61,7 @@ const VerUsuario = () => {
                 ['Contraseña', usuario.contrasenia_usuario],
                 ['Fecha de nacimiento', usuario.fecha_nacimiento_usuario],
                 ['Genero', usuario.genero_usuario],
-                ['Rol', usuario.id_tipo_usuario],
+                ['Rol', usuario.tipo_usuario],
                 ['Fecha de creacion', usuario.fecha_registro_usuario],
                 ['Fecha de modificacion',usuario.fecha_modificacion] 
             ];
@@ -127,7 +127,7 @@ const VerUsuario = () => {
             </tr>
             <tr >
                 <td><strong>Rol:</strong></td>
-                <td>{usuario.id_tipo_usuario}</td>
+                <td>{usuario.tipo_usuario}</td>
             </tr>
             <tr className='fila'>
                 <td><strong>Fecha de creacion:</strong></td>
