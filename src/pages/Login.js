@@ -39,20 +39,29 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (correo_usuario !== "" && contrasenia_usuario !== "") {
-      console.log("Correo recibido :", correo_usuario);
-      console.log("Contraseña recibida :", contrasenia_usuario);
-      // Realiza una solicitud POST para autenticar al usuario
-      const validacion = await axios.post("http://localhost:4000/api/usuarios/autenticar", {
-          correo_usuario: correo_usuario, 
+      console.log("Correo recibido:", correo_usuario);
+      console.log("Contraseña recibida:", contrasenia_usuario);
+  
+      try {
+        // Realiza una solicitud POST para autenticar al usuario
+        const validacion = await axios.post("http://localhost:4000/api/usuarios/autenticar", {
+          correo_usuario: correo_usuario,
           contrasenia_usuario: contrasenia_usuario,
-        })
+        });
+  
         if (validacion) {
-            navigate("/home");
-          } else {
-            alert("Usuario no encontrado");
-          }
+          navigate("/home");
+        } else {
+          alert("Usuario no encontrado");
+        }
+      } catch (error) {
+        // Manejo de errores
+        console.error("Error al autenticar al usuario:", error);
+        alert("Nombre de usuario o contraseña invalida.");
+      }
     }
   };
+  
 
   const loginSubmit = (e) => {
     e.preventDefault();
