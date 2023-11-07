@@ -1,53 +1,40 @@
-
-.flex {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  text-align: start;
+/* Estilos para centrar el formulario en el centro de la página */
+.form-containerUsuario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  
   
 }
 
-@media (max-width:991.98px) {
-  .padding {
-      padding: 1.5rem
+.h3-registrar {
+  text-align: center;
+}
+
+/* Estilos para el formulario */
+.form-contentUsuario {
+  max-width: 700px;
+    width: 100%;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-form {
+  text-align: center;
+}
+
+/* Estilos para hacer que el formulario sea responsivo en tablet y celular */
+@media (max-width: 768px) {
+  .form-content {
+      width: 95%; /* Reducir aún más el ancho en pantallas más pequeñas */
+      padding: 10px; /* Reducir el espacio interior */
   }
 }
 
-@media (max-width:767.98px) {
-  .padding {
-      padding: 1rem
-  }
-}
-
-.padding {
-  padding: 5rem
-}
-
-
-.card {
-  background: #fff;
-  border-width: 0;
-  border-radius: .25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
-  margin-bottom: 1.5rem
-}
-
-
-.card-header {
-  background-color: transparent;
-  border-color: rgba(160, 175, 185, .15);
-  background-clip: padding-box
-}
-
-.card-body p:last-child {
-  margin-bottom: 0
-}
-
-.card-hide-body .card-body {
-  display: none
-}
-
-.form-check-input.is-invalid~.form-check-label,
-.was-validated .form-check-input:invalid~.form-check-label {
-  color: #f54394
+.btn-usuario{
+  text-align: center;
 }

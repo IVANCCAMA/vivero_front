@@ -49,4 +49,8 @@
     
     background-color: #F3F4E9;
   }
-  
+  .cerrarSesion{
+    align-items: end;
+    justify-content: end;
+    margin-top: 300px;
+  }

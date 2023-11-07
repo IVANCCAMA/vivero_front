@@ -1,0 +1,39 @@
+/* En Login.css */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-color: #FFFFFE;
+  width: 900px;
+  margin-left: 350px;
+  margin-top: 100px;
+}
+.letraInicio{
+  text-align: none;
+}
+
+
+.sidebar-image {
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-check {
+  margin-top: 10px;
+}
+
+.btn-login {
+  background-color: #5F8D4E;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

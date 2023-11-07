@@ -110,8 +110,10 @@
         };
 
         return (
+                <div>
+                    <h2 className='h22'>Producto</h2>
                     <div>
-                        <h2 className='h22'>Producto</h2>
+                        
                         {producto ? (
                             <div className="detalle">
                                 <div className='imagenV'>
@@ -120,7 +122,7 @@
                                         /* src={`data:image/jpeg;base64,${producto.imagen_producto}`} */
                                         src="https://picsum.photos/200/200"
                                         alt="Producto"
-                                        style={{ maxWidth: '200px' }}
+                                        style={{ maxWidth: '180px' }}
                                     />
                                 )}
                                 </div>
@@ -187,6 +189,7 @@
                 ) : (
                     <p>Cargando...</p>
                 )}
+            </div>
             </div>
         );
     };

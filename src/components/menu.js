@@ -16,7 +16,7 @@ function Menu() {
             )}
             <ul className="menu-list">
                 <li>
-                    <Link to="/" className="menu-link">
+                    <Link to="/home" className="menu-link">
                         <i className="fa-solid fa-house"></i> Inicio
                     </Link>
                 </li>
@@ -38,6 +38,11 @@ function Menu() {
                 <li>
                     <Link to="/reportes" className="menu-link bg-cyan">
                         <i className="fa-solid fa-signal"></i> Reportes
+                    </Link>
+                </li>
+                <li className='cerrarSesion'>
+                    <Link to="/" className="menu-link bg-cyan">
+                        <i className="fas fa-sign-out-alt"></i> Cerrar Sesion
                     </Link>
                 </li>
             </ul>

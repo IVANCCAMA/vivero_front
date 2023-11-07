@@ -1,11 +1,6 @@
-import './Header.css';
-
-function Footer() {
-    return (
-        <footer className="footer">
-          <p>Vivero Corazon de Bolivia  © 2023 Cochabamba - Bolivia </p>
-        </footer>
-      );
-    }
-
+function Footer (){
+    return(
+    <footer className='footer'>Vivero Corazon de Bolivia & Todos los derechos reservados 2023</footer>
+    )
+}
 export default Footer;

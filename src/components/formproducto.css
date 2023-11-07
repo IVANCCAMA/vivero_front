@@ -1,26 +1,34 @@
 /* Estilos para centrar el formulario en el centro de la página */
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.h3-registrar{
+.h3-registrar {
   text-align: center;
 }
-  
-  /* Estilos para el formulario */
-  .form-content {
-    max-width: 550px; /* Ancho máximo del formulario */
+
+/* Estilos para el formulario */
+.form-content {
+  max-width: 550px;
     width: 100%;
     padding: 30px;
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
+}
 
-.btn-form{
-  text-align: center; 
+.btn-form {
+  text-align: center;
+}
+
+/* Estilos para hacer que el formulario sea responsivo en tablet y celular */
+@media (max-width: 768px) {
+  .form-content {
+      width: 95%; /* Reducir aún más el ancho en pantallas más pequeñas */
+      padding: 10px; /* Reducir el espacio interior */
+  }
 }
