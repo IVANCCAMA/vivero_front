@@ -18,10 +18,10 @@ const FormProducto = () => {
 
   const initialValues = {
     id_categoria: undefined,
-    nombre_producto: "",
+    nombre_producto: "",/* 
     precio_inicial_producto: undefined,
     margen_producto: undefined,
-    precio_total_producto: undefined, // Inicialmente en blanco
+    precio_total_producto: undefined, // Inicialmente en blanco */
     tamanio_producto: undefined,
     imagen_producto: undefined,
     descripcion_producto: undefined,
@@ -101,7 +101,7 @@ const FormProducto = () => {
       <div className="form-content">
         <Formik initialValues={initialValues}
           onSubmit={handleSubmit}
-          validationSchema={validationSchema}
+          /* validationSchema={validationSchema} */
         >
           {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
             <Form noValidate onSubmit={handleSubmit}>
@@ -157,6 +157,7 @@ const FormProducto = () => {
                       className={`form-control ${touched.precio_inicial_producto && errors.precio_inicial_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
                       onChange={(e) => setPrecioInicial(parseFloat(e.target.value))} // Actualiza el estado de Margen
+                      value={precioInicial}
                     />
                     <ErrorMessage name="precio_inicial_producto" component="div" className="invalid-feedback" />
                   </Form.Group>
@@ -173,6 +174,7 @@ const FormProducto = () => {
                       className={`form-control ${touched.margen_producto && errors.margen_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
                       onChange={(e) => setMargen(parseFloat(e.target.value))} // Actualiza el estado de Margen
+                      value={margen}
                     />
                     <ErrorMessage name="margen_producto" component="div" className="invalid-feedback" />
                   </Form.Group>
@@ -185,7 +187,7 @@ const FormProducto = () => {
                       type="number"
                       name="precio_total_producto"
                       placeholder="Precio total"
-                      className={`form-control ${touched.precio_total_producto && errors.precio_total_producto ? 'is-invalid' : ''}`}
+                      className={`form-control `}
                       style={{ backgroundColor: '#A4BE7B' }}
                       value={precioTotal}
                     />
