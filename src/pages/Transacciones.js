@@ -4,9 +4,7 @@ function Transacciones() {
     return (
     <div className="division">
         <p>Transacciones</p>
-        <Button href="/transacciones/formTransacciones">Entradas-Salidas</Button>{" "}
-        <Button href="/transacciones/formTransacciones">Entradas</Button>{" "}
-        <Button href="/transacciones/formTransacciones">Salidas</Button>{" "}
+        <Button href="/transacciones/formTransacciones">Transaccion de producto</Button>{" "}
         <div>
 
         </div>
