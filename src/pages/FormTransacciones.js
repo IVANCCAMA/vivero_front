@@ -28,6 +28,7 @@
     const handleCodigoProductoChange = (event) => {
         const codigoProducto = event.target.value;
         // Busca el producto correspondiente al código ingresado
+        console.log(codigoProducto);
         const productoEncontrado = productos.find(
         (producto) => producto.cod_producto === codigoProducto
         );
@@ -111,7 +112,7 @@
                         />
                     </Form.Group>
                     </Col>
-                   
+
                         <Col md="6">
                         <Form.Group as={Col} controlId="validationFormik03">
                             <Form.Label>Nombre de producto</Form.Label>

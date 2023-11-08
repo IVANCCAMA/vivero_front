@@ -12,9 +12,31 @@ import './formproducto.css'
 const FormProducto = () => {
   const [categorias, setCategorias] = useState([]);
   const navegar = useNavigate();
+  const [precioInicial, setPrecioInicial] = useState(0);
+  const [margen, setMargen] = useState(0);
+  const [precioTotal, setPrecioTotal] = useState(''); // Estado para Precio Total
+
+  const initialValues = {
+    id_categoria: undefined,
+    nombre_producto: "",
+    precio_inicial_producto: undefined,
+    margen_producto: undefined,
+    precio_total_producto: undefined, // Inicialmente en blanco
+    tamanio_producto: undefined,
+    imagen_producto: undefined,
+    descripcion_producto: undefined,
+    stok_actual_producto: undefined,
+    stok_min_producto: undefined,
+  };
 
   useEffect(() => {
     // Hacer una solicitud GET para obtener la lista de categorías
+    if (!isNaN(precioInicial) && !isNaN(margen)) {
+      setPrecioTotal(precioInicial + (precioInicial*margen/100));
+    } else {
+      setPrecioTotal(""); // Si el valor no es un número válido, establece una cadena vacía
+    }
+
     axios.get('http://localhost:4000/api/categorias')
       .then(response => {
         setCategorias(response.data); // Almacena las categorías en el estado
@@ -22,7 +44,7 @@ const FormProducto = () => {
       .catch(error => {
         console.error("Error al cargar las categorías:", error);
       });
-  }, []);
+  }, [margen, precioInicial, precioTotal]);
 
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -77,22 +99,11 @@ const FormProducto = () => {
   return (
     <div className="form-container">
       <div className="form-content">
-        <Formik initialValues={{
-            id_categoria: undefined,
-            nombre_producto:undefined,
-            precio_inicial_producto: undefined,
-            margen_producto:undefined,
-            precio_total_producto: undefined,
-            tamanio_producto:undefined,
-            imagen_producto:undefined,
-            descripcion_producto:undefined,
-            stok_actual_producto:undefined,
-            stok_min_producto:undefined,
-          }}
+        <Formik initialValues={initialValues}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          {({ handleSubmit, handleChange, values, touched, errors }) => (
+          {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <h3 className='h3-registrar'>Registrar producto</h3>
               <Row className="mb-3">
@@ -145,6 +156,7 @@ const FormProducto = () => {
                       placeholder="Precio inicial"
                       className={`form-control ${touched.precio_inicial_producto && errors.precio_inicial_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
+                      onChange={(e) => setPrecioInicial(parseFloat(e.target.value))} // Actualiza el estado de Margen
                     />
                     <ErrorMessage name="precio_inicial_producto" component="div" className="invalid-feedback" />
                   </Form.Group>
@@ -152,7 +164,7 @@ const FormProducto = () => {
 
                 <Col md="4">
                   <Form.Group controlId="validationFormik04">
-                    <Form.Label>Margen*</Form.Label>
+                    <Form.Label>Margen %*</Form.Label>
                     
                     <Field
                       type="number"
@@ -160,6 +172,7 @@ const FormProducto = () => {
                       placeholder="Precio inicial"
                       className={`form-control ${touched.margen_producto && errors.margen_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
+                      onChange={(e) => setMargen(parseFloat(e.target.value))} // Actualiza el estado de Margen
                     />
                     <ErrorMessage name="margen_producto" component="div" className="invalid-feedback" />
                   </Form.Group>
@@ -174,6 +187,7 @@ const FormProducto = () => {
                       placeholder="Precio total"
                       className={`form-control ${touched.precio_total_producto && errors.precio_total_producto ? 'is-invalid' : ''}`}
                       style={{ backgroundColor: '#A4BE7B' }}
+                      value={precioTotal}
                     />
                     <ErrorMessage name="precio_total_producto" component="div" className="invalid-feedback" />
                   </Form.Group>
