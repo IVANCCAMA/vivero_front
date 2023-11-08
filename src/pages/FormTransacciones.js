@@ -16,8 +16,7 @@
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:4000/api/productos")
+        axios.get("http://localhost:4000/api/productos")
         .then((response) => {
             setProductos(response.data);
         })
@@ -112,8 +111,7 @@
                         />
                     </Form.Group>
                     </Col>
-                    {selectedProduct.nombre_producto && (
-                    <>
+                   
                         <Col md="6">
                         <Form.Group as={Col} controlId="validationFormik03">
                             <Form.Label>Nombre de producto</Form.Label>
@@ -150,8 +148,7 @@
                             />
                         </Form.Group>
                         </Col>
-                    </>
-                    )}
+                    
                 </Row>
 
                 <Row className="mb-5">
