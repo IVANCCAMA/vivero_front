@@ -81,6 +81,7 @@
                 const columns = ['Campo', 'Valor'];
                 const data = [
                     ['Id', producto.id_producto],
+                    ['Codigo', producto.cod_producto],
                     ['Nombre', producto.nombre_producto],
                     ['Categoría', producto.nombre_categoria],
                     ['Precio inicial', producto.precio_inicial_producto],
@@ -138,46 +139,50 @@
                     <td>{producto.id_producto}</td>
                 </tr>
                 <tr className='fila'>
+                    <td><strong>Codigo:</strong></td>
+                    <td>{producto.cod_producto}</td>
+                </tr>
+                <tr >
                     <td><strong>Nombre:</strong></td>
                     <td>{producto.nombre_producto}</td>
                 </tr>
-                <tr>
+                <tr className='fila'>
                     <td><strong>Categoría:</strong></td>
                     <td>{producto.nombre_categoria}</td>
                 </tr>
-                <tr className='fila'>
+                <tr >
                     <td><strong>Precio inicial:</strong></td>
                     <td>{producto.precio_inicial_producto}</td>
                 </tr>
-                <tr>
+                <tr className='fila'>
                     <td><strong>Margen:</strong></td>
                     <td>{producto.margen_producto}</td>
                 </tr>
-                <tr className='fila'>
+                <tr>
                     <td><strong>Precio total:</strong></td>
                     <td>{producto.precio_total_producto}</td>
                 </tr>
-                <tr>
+                <tr className='fila'>
                     <td><strong>Tamaño:</strong></td>
                     <td>{producto.tamanio_producto}</td>
                 </tr>
-                <tr className='fila'>
+                <tr>
                     <td><strong>Descripción:</strong></td>
                     <td>{producto.descripcion_producto}</td>
                 </tr>
-                <tr>
+                <tr className='fila'>
                     <td><strong>Stock actual:</strong></td>
                     <td>{producto.stok_actual_producto}</td>
                 </tr>
-                <tr className='fila'>
+                <tr>
                     <td><strong>Stock mínimo:</strong></td>
                     <td>{producto.stok_min_producto}</td>
                 </tr>
-                <tr>
+                <tr className='fila'>
                     <td><strong>Fecha creacion:</strong></td>
                     <td>{producto.fecha_creacion}</td>
                 </tr>
-                <tr className='fila'>
+                <tr>
                     <td><strong>Fecha modificacion:</strong></td>
                     <td>{producto.fecha_modificacion}</td>
                 </tr>

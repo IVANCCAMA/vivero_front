@@ -92,8 +92,9 @@ const generarPDFListaProductos = () => {
       
 
       // Agregar detalles del producto usando jspdf-autotable
-      const columns = ['Nombre','Categoria','Stock actual', 'Stock minimo','Precio total','Tamaño','Fecha creacion','Fecha modificacion'];
+      const columns = ['Codigo','Nombre','Categoria','Stock actual', 'Stock minimo','Precio total','Tamaño','Fecha creacion','Fecha modificacion'];
       const data = productos.map((product) => [
+          product.cod_producto,
           product.nombre_producto,
           product.id_categoria,
           product.stok_actual_producto,
@@ -172,6 +173,7 @@ const generarPDFListaProductos = () => {
         <table className="listaP">
           <thead>
             <tr>
+              <th>Codigo</th>
               <th>Nombre</th>
               <th>Categoría</th>
               <th>Stock actual</th>
@@ -186,6 +188,7 @@ const generarPDFListaProductos = () => {
           <tbody>
             {productos.map((producto) => (
               <tr key={producto.id_producto}>
+                <td>{producto.cod_producto}</td>
                 <td>{producto.nombre_producto}</td>
                 <td>{producto.nombre_categoria}</td>
                 <td>{producto.stok_actual_producto}</td>
