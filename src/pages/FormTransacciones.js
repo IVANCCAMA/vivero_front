@@ -16,8 +16,7 @@
     });
 
     useEffect(() => {
-        axios
-        .get("http://localhost:4000/api/productos")
+        axios.get("http://localhost:4000/api/productos")
         .then((response) => {
             setProductos(response.data);
         })
@@ -29,6 +28,7 @@
     const handleCodigoProductoChange = (event) => {
         const codigoProducto = event.target.value;
         // Busca el producto correspondiente al código ingresado
+        console.log(codigoProducto);
         const productoEncontrado = productos.find(
         (producto) => producto.cod_producto === codigoProducto
         );
@@ -112,8 +112,7 @@
                         />
                     </Form.Group>
                     </Col>
-                    {selectedProduct.nombre_producto && (
-                    <>
+
                         <Col md="6">
                         <Form.Group as={Col} controlId="validationFormik03">
                             <Form.Label>Nombre de producto</Form.Label>
@@ -150,8 +149,7 @@
                             />
                         </Form.Group>
                         </Col>
-                    </>
-                    )}
+                    
                 </Row>
 
                 <Row className="mb-5">
