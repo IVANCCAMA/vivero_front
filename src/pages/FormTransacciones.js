@@ -28,7 +28,7 @@
     const handleCodigoProductoChange = (event) => {
         const codigoProducto = event.target.value;
         // Busca el producto correspondiente al código ingresado
-        console.log(codigoProducto);
+        //console.log(codigoProducto);
         const productoEncontrado = productos.find(
         (producto) => producto.cod_producto === codigoProducto
         );
