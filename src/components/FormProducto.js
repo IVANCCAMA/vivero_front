@@ -18,10 +18,10 @@ const FormProducto = () => {
 
   const initialValues = {
     id_categoria: undefined,
-    nombre_producto: "",/* 
-    precio_inicial_producto: undefined,
-    margen_producto: undefined,
-    precio_total_producto: undefined, // Inicialmente en blanco */
+    nombre_producto: "",
+    precio_inicial_producto: precioInicial,
+    margen_producto: margen,
+    precio_total_producto: precioTotal, // Inicialmente en blanco
     tamanio_producto: undefined,
     imagen_producto: undefined,
     descripcion_producto: undefined,
@@ -50,6 +50,10 @@ const FormProducto = () => {
     setSubmitting(true);
 
     const producto = values;
+    producto.precio_inicial_producto = precioInicial;
+    producto.margen_producto = margen;
+    producto.precio_total_producto = precioTotal;
+    
     console.log("Producto objeto>>>> ", producto);
 
     // Verificamos que los campos obligatorios no estén vacíos
