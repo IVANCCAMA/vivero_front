@@ -35,9 +35,9 @@ function TransaccionLista (){
             {transacciones.map((transaccion) => (
                 <tr key={transaccion.id_transaccion}>
                 <td>{transaccion.id_transaccion}</td>
-                <td>{transaccion.id_usuario}</td>
-                <td>{transaccion.id_producto}</td>
-                <td>{transaccion.id_tipo_transaccion}</td>
+                <td>{transaccion.nombre_usuario}</td>
+                <td>{transaccion.nombre_producto}</td>
+                <td>{transaccion.tipo_transaccion}</td>
                 <td>{transaccion.cantidad_ingreso}</td>
                 <td>{transaccion.cantidad_salida}</td>
                 <td>{transaccion.fecha_transaccion}</td>

@@ -6,10 +6,12 @@
     import Row from "react-bootstrap/Row";
     import * as yup from "yup";
     import { Formik, Field, ErrorMessage } from "formik";
+    import { useNavigate } from "react-router-dom";
 
     const FormTransacciones = () => {
     const [productos, setProductos] = useState([]);
     const [transacciones, setTransacciones] = useState([]);
+    const navegar = useNavigate();
     const [selectedProduct, setSelectedProduct] = useState({
         nombre_producto: "",
         tamanio_producto: "",
@@ -60,10 +62,54 @@
         }
     };
 
+
+
+    const handleSubmit = async (values, { setSubmitting }) => {
+        setSubmitting(true);
+        
+        const transaccion = values;
+        
+        console.log("Transaccion objeto>>>> ", transaccion); // Aquí se muestra el objeto de transacción
+        
+        if (
+            transaccion.id_tipo_transaccion || 
+            transaccion.id_producto || 
+            transaccion.cod_producto || 
+            transaccion.id_usuario || 
+            transaccion.cantidad_salida || 
+            transaccion.cantidad_ingreso || 
+            transaccion.detalle_transaccion
+        ) {
+            try {
+                const response = await axios.post('http://localhost:4000/api/transaccion', transaccion);
+                
+                console.log("Respuesta del servidor:", response); // Aquí se muestra la respuesta del servidor
+                
+                if (response.status === 201) {
+                    console.log("Transaccion realizada con éxito");
+                    navegar('/transacciones');
+                } else {
+                    console.error("Error al crear la transaccion. Respuesta inesperada:", response);
+                }
+                setSubmitting(false);
+            } catch (error) {
+                console.error("Error al enviar los datos:", error); // Aquí se muestra si hubo un error al enviar la transacción
+            }
+        } else {
+            alert("Llenes los campos");
+            console.log('llene todo');
+            setSubmitting(false);
+        }
+    };
+
+
+
+
     const handleCancelClick = () => {
         // Navega hacia atrás en la historia del navegador
         window.history.back();
     };
+
 
     const initialValues = {
         id_tipo_transaccion: "",
@@ -71,6 +117,7 @@
         cod_producto: "",
         id_usuario: "",
         cantidad_salida: "",
+        cantidad_ingreso: "",
         detalle_transaccion: "",
     };
 
@@ -79,6 +126,7 @@
         id_producto: yup.string().required("Campo obligatorio"),
         cod_producto: yup.string().required("Campo obligatorio"),
         id_usuario: yup.string().required("Campo obligatorio"),
+        cantidad_ingreso: yup.string().required("Campo obligatorio"),
         cantidad_salida: yup.string().required("Campo obligatorio"),
         detalle_transaccion: yup.string().required("Campo obligatorio"),
     });
@@ -89,9 +137,7 @@
             <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-                console.log(values);
-            }}
+            onSubmit={handleSubmit}
             >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
                 <Form noValidate onSubmit={handleSubmit}>
@@ -211,7 +257,7 @@
                         name="cantidad_salida"
                         component="div"
                         className="invalid-feedback"
-                        />
+                        />                                                      
                     </Form.Group>
                     </Col>
                 </Row>
