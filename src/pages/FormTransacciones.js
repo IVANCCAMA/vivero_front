@@ -9,6 +9,7 @@
 
     const FormTransacciones = () => {
     const [productos, setProductos] = useState([]);
+    const [transacciones, setTransacciones] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState({
         nombre_producto: "",
         tamanio_producto: "",
@@ -16,6 +17,15 @@
     });
 
     useEffect(() => {
+
+        axios.get('http://localhost:4000/api/tipotransaccion')
+        .then(response => {
+            setTransacciones(response.data); // Almacena las categorías en el estado
+        })
+        .catch(error => {
+            console.error("Error al cargar las transacciones:", error);
+        });
+
         axios.get("http://localhost:4000/api/productos")
         .then((response) => {
             setProductos(response.data);
@@ -168,9 +178,12 @@
                             : ""
                         }`}
                         >
-                        <option value="">Seleccionar</option>
-                        <option value="Entrada">Entrada</option>
-                        <option value="Salida">Salida</option>
+                        <option  value="">Seleccionar</option>
+                            {transacciones.map(transaccion => (
+                                <option key={transaccion.id_tipo_transaccion} value={transaccion.id_tipo_transaccion}>
+                                {transaccion.tipo_transaccion}
+                                </option>
+                            ))}
                         </Form.Control>
                         <ErrorMessage
                         name="id_tipo_transaccion"

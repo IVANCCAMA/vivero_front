@@ -1,13 +1,15 @@
 import Button from 'react-bootstrap/Button';
+import './transacciones.css'
+import TransaccionLista from './TransaccionLista';
 
 function Transacciones() {
     return (
-    <div className="division">
+    <div className="transacione">
         <p>Transacciones</p>
-        <Button href="/transacciones/formTransacciones">Transaccion de producto</Button>{" "}
-        <div>
-
+        <div className="transaciones">
+        <Button className='btn-transacciones' href="/transacciones/formTransacciones">Transaccion de producto</Button>{" "}
         </div>
+        <TransaccionLista/>
     </div>
     );
 }
