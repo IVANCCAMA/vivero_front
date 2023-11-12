@@ -65,7 +65,11 @@ const Home = () => {
 
     
     return (
+        <div className='Inventario'>
+            <p>Paneles</p>
+        
     <div className="division">
+
         
         <Link to="/inventario/producto" className='panel-Producto'>
                 <div className='icon-panel'>
@@ -124,6 +128,7 @@ const Home = () => {
         </div>
             
         </div>
+    </div>
     </div>
     );
 }

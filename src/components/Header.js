@@ -4,7 +4,7 @@ function Header(){
         <header className='header'>
     <div>
     <img className='logo' src={logo} alt="Logo" />
-        <h1 className='texto'>SISTEMA GESTION DE INVENTARIO</h1>
+        <h4 className='texto'>SISTEMA GESTION DE INVENTARIO</h4>
     </div>
     </header>
     )

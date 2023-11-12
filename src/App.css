@@ -46,7 +46,7 @@ body {
 
 .grid-container>* {
   box-shadow: -1px 1px 6px 0px rgba(0, 0, 0, 0.75);
-  padding: 10px;
+  padding: 7px;
   box-sizing: border-box;
 }
 
@@ -56,7 +56,7 @@ body {
   height: 100vh;
   grid-template: 
       "header" 65px 
-      "navbar" 100px
+      "navbar" 80px
       "main" auto
       "footer" 50px;
 }
@@ -68,7 +68,7 @@ body {
       grid-template-rows:100px 50px auto 100px;
       grid-template: 
           "header header" 65px 
-          "navbar navbar" 100px
+          "navbar navbar" 80px
           "main main" auto
           "footer footer" 50px /
           2500px   auto;
