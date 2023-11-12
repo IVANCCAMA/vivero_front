@@ -164,7 +164,7 @@ const generarPDFListaProductos = () => {
       <div className="listaProducto">
       {productoNoEncontrado ? (
         <div className="producto-no-encontrado">
-        <div className="texto">
+        <div className="texto-Producto">
           No se ha encontrado el producto para tu búsqueda, intenta con otro producto o agregar producto para tu inventario
         </div>
         <div className="emoji-sad">😞</div>

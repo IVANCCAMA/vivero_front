@@ -103,7 +103,8 @@ const FormProducto = () => {
   return (
     <div className="form-container">
       <div className="form-content">
-        <Formik initialValues={initialValues}
+        <Formik 
+        initialValues={initialValues}
           onSubmit={handleSubmit}
           /* validationSchema={validationSchema} */
         >

@@ -78,7 +78,7 @@ const Categoria = () => {
             Imprimir Lista
           </button>
           <Link to="/inventario/categoria/formcategoria">
-            <button className="botonC">Crear Categoría</button>
+            <button className="botonCategoria">Crear Categoría</button>
           </Link>
         </div>
       </div>

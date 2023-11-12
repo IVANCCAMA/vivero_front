@@ -46,8 +46,10 @@ const FormCategoria = () => {
             <label htmlFor="descripcion_categoria" className="labelC">Descripción (opcional)</label>
             <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC" />
             
+            <div className="botones-Categoria">
             <button type="submit" className="bontosave" onClick={handleCancelClick}>Guardar</button>
             <button type="button" className="botoncancel" onClick={handleCancelClick}>Cancelar</button>
+            </div>
           </Form>
         </Formik>
       </div>

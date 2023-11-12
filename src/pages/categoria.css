@@ -1,7 +1,7 @@
 .crearcat {
 
 text-align: end;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 
@@ -13,11 +13,13 @@ text-align: end;
 .botonC {
   background-color: #5F8D4E;
   color: #fff;
-  padding: 10px 20px;
+  padding: 4px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  margin-right: 30px;
+  margin-left: 20px;
 }
 
 /* Estilo para el botón "Crear categoria" al pasar el mouse por encima */
@@ -29,13 +31,13 @@ text-align: end;
   padding: 14px;
 }
 .botonImprimirLista {
-  background-color: #4f350f; /* Color de fondo azul */
-  color: #fff; /* Color del texto blanco */
-  padding: 10px 20px; /* Relleno interno del botón */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Borde redondeado */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  font-weight: bold; /* Texto en negrita */
+  background-color: #4f350f; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px;
+  cursor: pointer; 
+  font-weight: bold; 
 }
 
 .botonImprimirLista:hover {
@@ -43,4 +45,13 @@ text-align: end;
 }
 .TextoCategoria{
   text-align: start;
+}
+.botonCategoria{
+  background-color: #5F8D4E; 
+  color: #fff; 
+  padding: 10px 20px;
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-weight: bold; 
 }

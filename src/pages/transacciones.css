@@ -1,0 +1,17 @@
+
+.transaciones{
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+}
+
+
+.btn-transacciones{
+    background-color: #5F8D4E;
+    
+
+}
+
+.btn-transacciones:hover {
+    background-color: #bbcca1;                    
+}

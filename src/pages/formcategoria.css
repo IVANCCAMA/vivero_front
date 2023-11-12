@@ -3,25 +3,25 @@
   padding: 18px;
   border: 2px solid #ccc;
   border-radius: 30px;
-  margin: 150px 350px;
+  margin: 130px 350px;
   width: 35%;
-  height: 10%;
+  height: 10%;  
 }
 
 .bontosave{
-    background-color: #60aa48; /* Estilo para el botón verde */
-    color: #fff; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interior del botón */
+    background-color: #60aa48;
+    color: #fff;
+    padding: 10px 20px; 
     border: none;
     border-radius: 10px;
-    margin-right: 20px; /* Espacio entre botones */
+    margin-right: 20px; 
     cursor: pointer;
     font-size: 15px;
 }
 .botoncancel{
-    background-color: red; /* Estilo para el botón rojo */
-    color: #fff; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interior del botón */
+    background-color: red; 
+    color: #fff;
+    padding: 10px 20px; 
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -47,4 +47,9 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #A4BE7B;
+}
+
+.botones-Categoria{
+  justify-content: center;
+  display: flex;
 }
