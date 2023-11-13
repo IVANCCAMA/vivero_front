@@ -4,8 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxes, faListAlt, faUsers, faExchangeAlt, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './home.css';
+import { useAuth } from '../auth/AuthContext';
+
 
 const Home = () => {
+    const { authState } = useAuth();
     const [productosCantidad, setProductosCantidad] = useState(0);
     const [CategoriasCantidad, setCategoriasCantidad] = useState(0);
     const [UsuariosCantidad, setUsuariosCantidad] = useState(0);
@@ -65,71 +68,68 @@ const Home = () => {
 
     
     return (
-        <div className='Inventario'>
-            <p>Paneles</p>
-        
-    <div className="division">
-
-        
-        <Link to="/inventario/producto" className='panel-Producto'>
-                <div className='icon-panel'>
-                    <FontAwesomeIcon icon={faBoxes} size="3x" />
+        <div>
+            {authState.isAuthenticated ? (
+                <div className='Inventario'>
+                    <p>Paneles</p>
+                    <div className="division">
+                        <Link to="/inventario/producto" className='panel-Producto'>
+                            <div className='icon-panel'>
+                                <FontAwesomeIcon icon={faBoxes} size="3x" />
+                            </div>
+                            <div className='panel-letras'>
+                                <h5>Productos</h5>
+                                <p>{productosCantidad}</p>
+                            </div>
+                        </Link>
+                        <Link to="/inventario/categoria" className='panel-Categoria'>
+                            <div className='icon-panel'>
+                                <FontAwesomeIcon icon={faListAlt} size="3x" />
+                            </div>
+                            <div className='panel-letras'>
+                                <h5>Categorias</h5>
+                                <p>{CategoriasCantidad}</p>
+                            </div>
+                        </Link>
+                        <Link to="/usuarios" className='panel-Usuario'>
+                            <div className='icon-panel'>
+                                <FontAwesomeIcon icon={faUsers} size="3x" />
+                            </div>
+                            <div className='panel-letras'>
+                                <h5>Usuarios</h5>
+                                <p>{UsuariosCantidad}</p>
+                            </div>
+                        </Link>
+                        <Link to="/transacciones" className='panel-Transaccion'>
+                            <div className='icon-panel'>
+                                <FontAwesomeIcon icon={faExchangeAlt} size="3x" />
+                            </div>
+                            <div className='panel-letras'>
+                                <h5>Transacciones</h5>
+                                <p>{TransaccionesCantidad}</p>
+                            </div>     
+                        </Link>
+                        <Link to="/reportes" className='panel-Reporte'>
+                            <div className='icon-panel'>
+                                <FontAwesomeIcon icon={faChartBar} size="3x" />
+                            </div>
+                            <div className='panel-letras'>
+                                <h5>Reportes</h5>
+                                <p>18</p>
+                            </div>
+                        </Link>
+                        <div className='panel-F'>
+                            <div className='panel-letras'>``
+                                <h5>.</h5>
+                                <p>18</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className='panel-letras'>
-                    <h5>Productos</h5>
-                    <p>{productosCantidad}</p>
-                </div>
-            </Link>
-        
-        <Link to="/inventario/categoria" className='panel-Categoria'>
-            <div className='icon-panel'>
-            <FontAwesomeIcon icon={faListAlt} size="3x" />
-            </div>
-                <div className='panel-letras'>
-                <h5>Categorias</h5>
-                    <p>{CategoriasCantidad}</p>
-                </div>
-        </Link>
-
-        <Link to="/usuarios" className='panel-Usuario'>
-            <div className='icon-panel'>
-            <FontAwesomeIcon icon={faUsers} size="3x" />
-            </div>
-                <div className='panel-letras'>
-                <h5>Usuarios</h5>
-                    <p>{UsuariosCantidad}</p>
-                </div>
-        </Link>
-
-        <Link to="/transacciones" className='panel-Transaccion'>
-            <div className='icon-panel'>
-            <FontAwesomeIcon icon={faExchangeAlt} size="3x" />
-            </div>
-                <div className='panel-letras'>
-                <h5>Transacciones</h5>
-                    <p>{TransaccionesCantidad}</p>
-                </div>     
-        </Link>
-
-        <Link to="/reportes" className='panel-Reporte'>
-            <div className='icon-panel'>
-            <FontAwesomeIcon icon={faChartBar} size="3x" />
-            </div>
-                <div className='panel-letras'>
-                <h5>Reportes</h5>
-                    <p>18</p>
-                </div>
-        </Link>
-
-        <div className='panel-F'>
-        <div className='panel-letras'>``
-        <h5>.</h5>
-            <p>18</p>
+            ) : (
+                <p>Inicia sesión para acceder a esta página.</p>
+            )}
         </div>
-            
-        </div>
-    </div>
-    </div>
     );
 }
 export default Home;
