@@ -17,6 +17,19 @@
         tamanio_producto: "",
         nombre_categoria: "",
     });
+    const [id_producto_selecionado, setIdProducto] = useState('');
+    const [producto, setProducto] = useState('')
+
+    const initialValues = {
+        id_tipo_transaccion: "",
+        id_producto: "",
+        cod_producto: "",
+        cantidad_ingreso_salida: "",
+        id_usuario: "",
+        cantidad_salida: "",
+        cantidad_ingreso: "",
+        detalle_transaccion: "",
+    };
 
     useEffect(() => {
 
@@ -47,6 +60,9 @@
 
         if (productoEncontrado) {
         // Si se encuentra un producto, asigna sus valores a selectedProduct
+        setProducto(productoEncontrado);
+        setIdProducto(productoEncontrado.id_producto);
+        
         setSelectedProduct({
             nombre_producto: productoEncontrado.nombre_producto,
             tamanio_producto: productoEncontrado.tamanio_producto,
@@ -63,12 +79,33 @@
     };
 
 
-
     const handleSubmit = async (values, { setSubmitting }) => {
         setSubmitting(true);
         
         const transaccion = values;
-        
+        /* Posible bug o error al enviar valores en cadenas */
+        // Entrada
+        if (transaccion.id_tipo_transaccion === "1") {
+            transaccion.cantidad_ingreso = transaccion.cantidad_ingreso_salida;
+            transaccion.cantidad_ingreso = parseInt(transaccion.cantidad_ingreso);
+            transaccion.cantidad_salida = 0;
+        } 
+        // Salida
+        else if (transaccion.id_tipo_transaccion === "2") {
+            transaccion.cantidad_salida = transaccion.cantidad_ingreso_salida;
+            transaccion.cantidad_salida = parseInt(transaccion.cantidad_salida);
+            transaccion.cantidad_ingreso = 0;
+        }
+        else {
+            transaccion.cantidad_salida = 0;
+            transaccion.cantidad_ingreso = 0;
+            transaccion.cantidad_ingreso_salida = 0;
+        }
+        // Poner ID del usuario logeado
+        // transaccion.id_usuario = userLoged.id_usuario;
+        transaccion.id_usuario = 5;
+        transaccion.id_producto = id_producto_selecionado; 
+
         console.log("Transaccion objeto>>>> ", transaccion); // Aquí se muestra el objeto de transacción
         
         if (
@@ -76,25 +113,32 @@
             transaccion.id_producto || 
             transaccion.cod_producto || 
             transaccion.id_usuario || 
-            transaccion.cantidad_salida || 
+            transaccion.cantidad_ingreso_salida || 
             transaccion.cantidad_ingreso || 
             transaccion.detalle_transaccion
         ) {
-            try {
-                const response = await axios.post('http://localhost:4000/api/transaccion', transaccion);
-                
-                console.log("Respuesta del servidor:", response); // Aquí se muestra la respuesta del servidor
-                
-                if (response.status === 201) {
-                    console.log("Transaccion realizada con éxito");
-                    navegar('/transacciones');
-                } else {
-                    console.error("Error al crear la transaccion. Respuesta inesperada:", response);
+             /* Control limite de salida */
+            if ( transaccion.cantidad_salida > producto.stok_actual_producto) {
+                console.log(producto.stok_actual_producto);
+                alert('Cantidad insuficiente en inventario');
+            } else {
+                try {
+                    const response = await axios.post('http://localhost:4000/api/transaccion', transaccion);
+                    
+                    console.log("Respuesta del servidor:", response); // Aquí se muestra la respuesta del servidor
+                    
+                    if (response.status === 201) {
+                        console.log("Transaccion realizada con éxito");
+                        navegar('/transacciones');
+                    } else {
+                        console.error("Error al crear la transaccion. Respuesta inesperada:", response);
+                    }
+                    setSubmitting(false);
+                } catch (error) {
+                    console.error("Error al enviar los datos:", error); // Aquí se muestra si hubo un error al enviar la transacción
                 }
-                setSubmitting(false);
-            } catch (error) {
-                console.error("Error al enviar los datos:", error); // Aquí se muestra si hubo un error al enviar la transacción
             }
+            
         } else {
             alert("Llenes los campos");
             console.log('llene todo');
@@ -110,24 +154,13 @@
         window.history.back();
     };
 
-
-    const initialValues = {
-        id_tipo_transaccion: "",
-        id_producto: "",
-        cod_producto: "",
-        id_usuario: "",
-        cantidad_salida: "",
-        cantidad_ingreso: "",
-        detalle_transaccion: "",
-    };
-
     const validationSchema = yup.object().shape({
         id_tipo_transaccion: yup.string().required("Campo obligatorio"),
         id_producto: yup.string().required("Campo obligatorio"),
         cod_producto: yup.string().required("Campo obligatorio"),
         id_usuario: yup.string().required("Campo obligatorio"),
         cantidad_ingreso: yup.string().required("Campo obligatorio"),
-        cantidad_salida: yup.string().required("Campo obligatorio"),
+        cantidad_ingreso_salida: yup.string().required("Campo obligatorio"),
         detalle_transaccion: yup.string().required("Campo obligatorio"),
     });
 
@@ -136,7 +169,7 @@
         <div className="form-content">
             <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+           /*  validationSchema={validationSchema} */
             onSubmit={handleSubmit}
             >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -244,17 +277,17 @@
                         <Form.Label>Cantidad a ingresar o retirar*</Form.Label>
                         <Field
                         type="text"
-                        name="cantidad_salida"
+                        name="cantidad_ingreso_salida"
                         placeholder="Ingrese la cantidad a ingresar o retirar"
                         className={`form-control ${
-                            touched.cantidad_salida && errors.cantidad_salida
+                            touched.cantidad_ingreso_salida && errors.cantidad_ingreso_salida
                             ? "is-invalid"
                             : ""
                         }`}
                         style={{ backgroundColor: "#A4BE7B" }}
                         />
                         <ErrorMessage
-                        name="cantidad_salida"
+                        name="cantidad_ingreso_salida"
                         component="div"
                         className="invalid-feedback"
                         />                                                      
