@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import imgLogin from "../img/imgLogin.png";
 import axios from "axios";
+import { useAuth } from '../auth/AuthContext';
+
 
 function Login() {
+  const { authState, dispatch } = useAuth();
   const [contrasenia_usuario, setContrasenia_usuario] = useState("");
   const [correo_usuario, setCorreo_usuario] = useState(""); // Corregido el nombre aquí
   const [passwordError, setpasswordError] = useState("");
@@ -39,8 +42,8 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (correo_usuario !== "" && contrasenia_usuario !== "") {
-      console.log("Correo recibido:", correo_usuario);
-      console.log("Contraseña recibida:", contrasenia_usuario);
+      /* console.log("Correo recibido:", correo_usuario);
+      console.log("Contraseña recibida:", contrasenia_usuario); */
   
       try {
         // Realiza una solicitud POST para autenticar al usuario
@@ -50,6 +53,8 @@ function Login() {
         });
   
         if (validacion) {
+          const user = { username:  validacion.nombre_usuario};
+          dispatch({ type: 'LOGIN', payload: user });
           navigate("/home");
         } else {
           alert("Usuario no encontrado");
@@ -62,6 +67,10 @@ function Login() {
     }
   };
   
+  const handleLogout = () => {
+    // Lógica de cierre de sesión...
+    dispatch({ type: 'LOGOUT' });
+  };
 
   const loginSubmit = (e) => {
     e.preventDefault();
