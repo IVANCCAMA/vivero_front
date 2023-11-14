@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
-  align-items: center; /* Añadido para centrar verticalmente */
+  align-items: center; 
 }
 .valor {
   display: flex;
@@ -18,28 +18,28 @@
   width: 10px;
   height: 10px;
   background-color: red;
-  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-right: 5px; 
   margin-top: 7px;
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+  align-items: center; 
 }
 .L-Reporte .cuadradito-naranja {
   width: 10px;
   height: 10px;
   background-color: #FE8F02;
-  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-right: 5px; 
   margin-top: 7px;
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+  align-items: center; 
 }
 .L-Reporte .cuadradito-azul {
   width: 10px;
   height: 10px;
   background-color: #25B651;
-  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-right: 5px;
   margin-top: 7px;
   display: flex;
-  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+  align-items: center; 
 }
 
 
