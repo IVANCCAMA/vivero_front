@@ -1,0 +1,31 @@
+.div-reporte{
+    background-color: blue;
+}
+.graficas1 {
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  
+  /* Estilos específicos para cada gráfico dentro de la clase graficas1 */
+  .graficas1 .grafica-barra {
+    width: 45%; /* Ajusta el ancho según tus necesidades */
+  }
+  
+  .graficas1 .grafica-torta {
+    width: 45%; /* Ajusta el ancho según tus necesidades */
+  }
+
+  .graficas2 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  /* Estilos específicos para cada gráfico dentro de la clase graficas2 */
+  .graficas2 .grafica-linea2,
+  .graficas2 .grafica-linea1,
+  .graficas2 .grafica-Indicador {
+    width: 30%; /* Ajusta el ancho según tus necesidades */
+    margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
+  }
