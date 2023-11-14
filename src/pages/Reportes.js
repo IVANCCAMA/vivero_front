@@ -66,97 +66,120 @@ const reporteGraficas = [
     //INDICADOR DE STOCK
         const RADIAN = Math.PI / 180;
             const indicadorStock = [
-                { name: 'A', value: 45, color: '#97CDFC' },
-                { name: 'B', value: 45, color: '#00ff00' },
-                { name: 'C', value: 45, color: '#0000ff' },
-                { name: 'A', value: 45, color: '#ff0000' },
+                { name: 'Bajo', value: 45, color: '#25B651' },
+                { name: 'Intermedio', value: 45, color: '#FFF200' },
+                { name: 'Alto', value: 45, color: '#FE8F02' },
+                { name: 'Muy Alto', value: 45, color: '#FE0000' },
             ];
-            const cx = 150;
-            const cy = 200;
-            const iR = 50;
+            const cx = 200;
+            const cy = 130;
+            const iR = 70;
             const oR = 100;
             const value = 50;
             const needle = (value, indicadorStock, cx, cy, iR, oR, color) => {
                 let total = 0;
                 indicadorStock.forEach((v) => {
-                  total += v.value;
+                    total += v.value;
                 });
-                const elements = [];
-              
-                indicadorStock.forEach((entry, index) => {
-                  const ang = 180.0 * (1 - value / total);
-                  const midAngle = (ang / 2) * Math.PI / 180;
-              
-                  const labelRadius = iR + (oR - iR) * 0.5; // Adjust this radius for label positioning
-                  const x = cx + labelRadius * Math.cos(-midAngle);
-                  const y = cy + labelRadius * Math.sin(-midAngle);
-              
-                  // Agregar el texto en cada segmento
-                  elements.push(
-                    <text
-                      x={x}
-                      y={y}
-                      textAnchor={x > cx ? 'start' : 'end'}
-                      dominantBaseline="central"
-                      fill="white"
-                    >
-                      {entry.name}
-                    </text>
-                  );
-              
-                  // Segmento del indicador
-                  const angSlice = (entry.value / total) * ang;
-                  const length = (iR + 2 * oR) / 3;
-                  const sin = Math.sin(-RADIAN * angSlice);
-                  const cos = Math.cos(-RADIAN * angSlice);
-                  const r = 5;
-                  const x0 = cx + 5;
-                  const y0 = cy + 5;
-                  const xba = x0 + r * sin;
-                  const yba = y0 - r * cos;
-                  const xbb = x0 - r * sin;
-                  const ybb = y0 + r * cos;
-                  const xp = x0 + length * cos;
-                  const yp = y0 + length * sin;
-              
-                  // Circulo en el indicador
-                  elements.push(
-                    <circle cx={x0} cy={y0} r={r} fill={color} stroke="none" />
-                  );
-              
-                  // Trayectoria del indicador
-                  elements.push(
-                    <path d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} stroke="none" fill={color} />
-                  );
-                });
-              
-                return elements;
-              };        
+            
+                let level = '';
+                if (value <= 25) {
+                    level = 'Bajo';
+                } else if (value <= 100) {
+                    level = 'Intermedio';
+                } else if (value <= 205) {
+                    level = 'Alto';
+                } else {
+                    level = 'Muy Alto';
+                }
+            
+                const ang = 180.0 * (1 - value / total);
+                const length = (iR + 2 * oR) / 3;
+                const sin = Math.sin(-RADIAN * ang);
+                const cos = Math.cos(-RADIAN * ang);
+                const r = 5;
+                const x0 = cx + 5;
+                const y0 = cy + 5;
+                const xba = x0 + r * sin;
+                const yba = y0 - r * cos;
+                const xbb = x0 - r * sin;
+                const ybb = y0 + r * cos;
+                const xp = x0 + length * cos;
+                const yp = y0 + length * sin;
+            
+                return [
+                    <circle cx={x0} cy={y0} r={r} fill={color} stroke="none" />,
+                    <path d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`} stroke="#none" fill={color} />,
+                    <text x={x0} y={y0} textAnchor="middle" fontSize="12" fill="#000">{level}</text>
+                ];
+            };
+        
 // GRAFICA EN LINEA SOLO UNO, UNIDADES DE STOCK
         const uStock = [
-                { name: 'Enero', uv: 0, pv: 0, amt: 0},
-                { name: 'Febrero', uv: 3000, pv: 1398,amt: 2210},
-                { name: 'Marzo', uv: 2000, pv: 9800, amt: 2290},
-                { name: 'Abril', uv: 2780, pv: 3908, amt: 2000},
-                {name: 'Mayo',uv: 1890, pv: 4800, amt: 2181},
-                { name: 'Junio', uv: 2390, pv: 3800, amt: 500},
-                { name: 'Julio', uv: 3490, pv: 4300, amt: 2100},
-                { name: 'Agosto', uv: 3490, pv: 4300, amt: 2100},
-                { name: 'Septiembre', uv: 0, pv: 0, amt: 2100},
-                { name: 'Octubre', uv: 3490, pv: 4300, amt: 2100},
-                { name: 'Noviembre', uv: 3490, pv: 4300, amt: 2100},
-                { name: 'Diciembre', uv: 0, pv: 0, amt: 2100},
+                { name: 'Enero', uv: 0, Stock: 0, amt: 0},
+                { name: 'Febrero', uv: 3000, Stock: 1398,amt: 2210},
+                { name: 'Marzo', uv: 2000, Stock: 9800, amt: 2290},
+                { name: 'Abril', uv: 2780, Stock: 3908, amt: 2000},
+                {name: 'Mayo',uv: 1890, Stock: 4800, amt: 2181},
+                { name: 'Junio', uv: 2390, Stock: 3800, amt: 500},
+                { name: 'Julio', uv: 3490, Stock: 4300, amt: 2100},
+                { name: 'Agosto', uv: 3490, Stock: 4300, amt: 2100},
+                { name: 'Septiembre', uv: 0, Stock: 0, amt: 2100},
+                { name: 'Octubre', uv: 3490, Stock: 4300, amt: 2100},
+                { name: 'Noviembre', uv: 3490, Stock: 4300, amt: 2100},
+                { name: 'Diciembre', uv: 0, Stock: 0, amt: 2100},
             ];
 return (
     <div className='main-container'>
         <div className='main-title'>
         <h4>Reportes Interactivos</h4>
         </div>
-        <div className='div-reporte'>
-            <p>hola</p>
-            <p>hola</p>
-            <p>hola</p>
-        </div>
+        <div className="div-reporte">
+        <div className="L-Reporte">
+                <div className="valor">
+                <p>Bs</p>
+                <p>1200</p>
+            </div>
+            <p style={{ fontWeight: 'bold' }}>Valor en stock</p>
+            </div>
+            <div className="L-Reporte">
+            <div className="valor">
+                <p>Bs</p>
+                <p >100</p>
+            </div>
+                <p style={{ fontWeight: 'bold' }}>Valor en capital</p>
+            </div>
+            <div className="L-Reporte">
+                <div className="valor">
+                <p>Bs</p>
+                <p >200</p>
+                </div>
+                <p style={{ fontWeight: 'bold' }}>Valor en ganancia</p>
+            </div>
+            <div className="L-Reporte">
+            
+                <p>1</p>
+                <div className="valor">
+                <div className="cuadradito-naranja"></div>
+                <p style={{ fontWeight: 'bold' }}>Stock bajo</p>
+                </div>
+            </div>
+            <div className="L-Reporte">
+                <p >12</p>
+                <div className="valor">
+                <div className="cuadradito-rojo"></div>
+                <p style={{ fontWeight: 'bold' }}>Sin stock</p>
+                </div>
+            </div>
+            <div className="L-Reporte">
+                <p>1200</p>
+                <div className="valor">
+                <div className="cuadradito-azul"></div>
+                <p style={{ fontWeight: 'bold' }}>Stock Actual</p>
+                </div>
+            </div>
+            </div>
+
             <div className='charts'>
                 <div className='graficas1'>
                     {/* GRAFICA EN BARRA DE LOS 5 PRODUCTOS DE  ENTRADAS Y SALIDAS */}
@@ -179,7 +202,7 @@ return (
                 {/* GRAFICA EN TORTA DEL NIVEL DE INVENTARIO */}
                 <div className='grafica-torta'>
                     <p className='Letra-Reporte'>Nidel de inventario</p>
-                <ResponsiveContainer width="100%" height={165}>
+                <ResponsiveContainer width="100%" height={160}>
                     <PieChart>
                     <Pie
                         data={nInventario}
@@ -226,11 +249,11 @@ return (
                 </LineChart>
                 </ResponsiveContainer>
                 </div>
-                                    <div className='grafica-Indicador'>
+                <div className='grafica-Indicador'>
                     <p>Indicador de productos sin stock</p>
                     {/* INDICADOR DE STOCK */}
-                    <PieChart width={400} height={200} className='indicador'>
-                        <Pie
+                <PieChart width={400} height={200} className='indicador'>
+                    <Pie
                         dataKey="value"
                         startAngle={180}
                         endAngle={0}
@@ -241,18 +264,18 @@ return (
                         outerRadius={oR}
                         fill="#8884d8"
                         stroke="none"
-                        >
+                    >
                         {indicadorStock.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
-                        </Pie>
-                        {needle(value, indicadorStock, cx, cy, iR, oR, '#d0d000')}
-                    </PieChart>
-                    </div>
+                    </Pie>
+                    {needle(value, indicadorStock, cx, cy, iR, oR, '#d0d000')}
+                </PieChart>
+                </div>
                 <div className='grafica-linea1'>
                     {/* GRAFICA EN LINEA SOLO UNO */}
                     <p>Total de stock mensual</p>
-                <ResponsiveContainer width="100%" height={200}>
+                <ResponsiveContainer width="100%" height={180}>
                     <AreaChart
                         width={500}
                         height={200}
@@ -269,7 +292,7 @@ return (
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    <Area type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
+                    <Area type="monotone" dataKey="Stock" stroke="#82ca9d" fill="#82ca9d" />
                 </AreaChart>
                 </ResponsiveContainer>
                 </div>

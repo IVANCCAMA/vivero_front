@@ -1,6 +1,51 @@
-.div-reporte{
-    background-color: blue;
+.div-reporte {
+  background-color: #A4BE7B;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center; /* Añadido para centrar verticalmente */
 }
+.valor {
+  display: flex;
+  justify-content: center;
+}
+
+
+.L-Reporte p:first-child {
+  margin-right: 5px; 
+}
+.L-Reporte .cuadradito-rojo {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-top: 7px;
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+}
+.L-Reporte .cuadradito-naranja {
+  width: 10px;
+  height: 10px;
+  background-color: #FE8F02;
+  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-top: 7px;
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+}
+.L-Reporte .cuadradito-azul {
+  width: 10px;
+  height: 10px;
+  background-color: #25B651;
+  margin-right: 5px; /* Ajusta el margen derecho según tus necesidades */
+  margin-top: 7px;
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido del cuadradito-rojo */
+}
+
+
+
+
+
 .graficas1 {
     display: flex;
     justify-content: space-around;
@@ -15,6 +60,8 @@
   }
   .Letra-Reporte{
     font-weight: bold;
+    text-align: center
+    
   }
   
   .grafica-torta {
@@ -24,12 +71,12 @@
   .graficas2 {
     display: flex;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-top: 10px;
   }
   
   /* Estilos específicos para cada gráfico dentro de la clase graficas2 */
   .graficas2 .grafica-linea2,
-  .graficas2 .grafica-linea1,
+  .graficas2 .grafica-linea1, 
   .graficas2 .grafica-Indicador {
     width: 30%; /* Ajusta el ancho según tus necesidades */
   }
@@ -65,16 +112,14 @@
   .grafica-Indicador,
   .grafica-linea1 {
     width: 30%; /* Ajusta el ancho según tus preferencias */
-    margin: 10px; /* Ajusta el margen según tus preferencias */
   }
-  
+  .grafica-Indicador {
+    width: 30%; /* Ajusta el ancho según tus preferencias */
+    margin-bottom: 0; /* Agregado para eliminar el margen inferior */
+  }
   .grafica-linea2 p,
   .grafica-Indicador p,
   .grafica-linea1 p {
     text-align: center;
     font-weight: bold;
-  }
-
-  .indicador{
-    margin-top: -55px;
   }
