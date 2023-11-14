@@ -51,9 +51,11 @@ function Login() {
           correo_usuario: correo_usuario,
           contrasenia_usuario: contrasenia_usuario,
         });
+
+        console.log("USUARIO LOGEADO>>", validacion.data.user);
   
         if (validacion) {
-          const user = { username:  validacion.nombre_usuario};
+          const user = validacion.data.user
           dispatch({ type: 'LOGIN', payload: user });
           navigate("/home");
         } else {
@@ -65,11 +67,6 @@ function Login() {
         alert("Nombre de usuario o contraseña invalida.");
       }
     }
-  };
-  
-  const handleLogout = () => {
-    // Lógica de cierre de sesión...
-    dispatch({ type: 'LOGOUT' });
   };
 
   const loginSubmit = (e) => {
