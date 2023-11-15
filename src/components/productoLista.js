@@ -155,7 +155,7 @@ const generarPDFListaProductos = () => {
         <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Imprimir</button>
         <Link to="/inventario/producto/formProducto">
             <button className="botonA">Agregar producto</button>
-          </Link>
+        </Link>
         </div>
       </div>
       

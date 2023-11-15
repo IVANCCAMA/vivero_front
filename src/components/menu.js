@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './menu.css';
-
+import { useAuth } from '../auth/AuthContext';
 
 function Menu() {
     const location = useLocation();
     const rutasParaOcultarMenu = ["/inventario/producto/formProducto"];
     const ocultarMenu = rutasParaOcultarMenu.includes(location.pathname);
+    const { authState, dispatch } = useAuth();
+    
+
+    const handleLogout = () => {
+        dispatch({ type: 'LOGOUT' });
+    };
 
     return (
         <div className="Menu">
@@ -41,7 +47,7 @@ function Menu() {
                     </Link>
                 </li>
                 <li className='cerrarSesion'>
-                    <Link to="/" className="menu-link bg-cyan">
+                    <Link to="/" className="menu-link bg-cyan" onClick={handleLogout}>
                         <i className="fas fa-sign-out-alt"></i> Cerrar Sesion
                     </Link>
                 </li>

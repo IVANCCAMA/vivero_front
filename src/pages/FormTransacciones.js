@@ -1,14 +1,18 @@
-    import React, { useState, useEffect } from "react";
-    import axios from "axios";
-    import Button from "react-bootstrap/Button";
-    import Col from "react-bootstrap/Col";
-    import Form from "react-bootstrap/Form";
-    import Row from "react-bootstrap/Row";
-    import * as yup from "yup";
-    import { Formik, Field, ErrorMessage } from "formik";
-    import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import * as yup from "yup";
+import { Formik, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
 
-    const FormTransacciones = () => {
+const FormTransacciones = () => {
+    const {authState} = useAuth();
+    const { user } = authState;
+
     const [productos, setProductos] = useState([]);
     const [transacciones, setTransacciones] = useState([]);
     const navegar = useNavigate();
@@ -101,12 +105,11 @@
             transaccion.cantidad_ingreso = 0;
             transaccion.cantidad_ingreso_salida = 0;
         }
-        // Poner ID del usuario logeado
-        // transaccion.id_usuario = userLoged.id_usuario;
-        transaccion.id_usuario = 5;
+        // Recuperacion de id del user 
+        transaccion.id_usuario = user.id_usuario;
         transaccion.id_producto = id_producto_selecionado; 
 
-        console.log("Transaccion objeto>>>> ", transaccion); // Aquí se muestra el objeto de transacción
+        //console.log("Transaccion objeto>>>> ", transaccion); // Aquí se muestra el objeto de transacción
         
         if (
             transaccion.id_tipo_transaccion || 
@@ -117,7 +120,7 @@
             transaccion.cantidad_ingreso || 
             transaccion.detalle_transaccion
         ) {
-             /* Control limite de salida */
+                /* Control limite de salida */
             if ( transaccion.cantidad_salida > producto.stok_actual_producto) {
                 console.log(producto.stok_actual_producto);
                 alert('Cantidad insuficiente en inventario');
@@ -146,9 +149,6 @@
         }
     };
 
-
-
-
     const handleCancelClick = () => {
         // Navega hacia atrás en la historia del navegador
         window.history.back();
@@ -169,7 +169,7 @@
         <div className="form-content">
             <Formik
             initialValues={initialValues}
-           /*  validationSchema={validationSchema} */
+            /*  validationSchema={validationSchema} */
             onSubmit={handleSubmit}
             >
             {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -333,4 +333,4 @@
     );
     };
 
-    export default FormTransacciones;
+export default FormTransacciones;
