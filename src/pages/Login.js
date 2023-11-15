@@ -7,7 +7,7 @@ import { useAuth } from '../auth/AuthContext';
 
 
 function Login() {
-  const { authState, dispatch } = useAuth();
+  const { dispatch } = useAuth();
   const [contrasenia_usuario, setContrasenia_usuario] = useState("");
   const [correo_usuario, setCorreo_usuario] = useState(""); // Corregido el nombre aquí
   const [passwordError, setpasswordError] = useState("");
@@ -57,7 +57,7 @@ function Login() {
         if (validacion) {
           const user = validacion.data.user
           dispatch({ type: 'LOGIN', payload: user });
-          navigate("/home");
+          navigate("/");
         } else {
           alert("Usuario no encontrado");
         }
