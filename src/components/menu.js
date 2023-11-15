@@ -7,7 +7,7 @@ function Menu() {
     const location = useLocation();
     const rutasParaOcultarMenu = ["/inventario/producto/formProducto"];
     const ocultarMenu = rutasParaOcultarMenu.includes(location.pathname);
-    const { authState, dispatch } = useAuth();
+    const { dispatch } = useAuth();
     
 
     const handleLogout = () => {
@@ -22,7 +22,7 @@ function Menu() {
             )}
             <ul className="menu-list">
                 <li  className='menu-listM'>
-                    <Link to="/home" className="menu-link">
+                    <Link to="/" className="menu-link">
                         <i className="fa-solid fa-house"></i> Inicio
                     </Link>
                 </li>
