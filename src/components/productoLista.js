@@ -152,7 +152,7 @@ const generarPDFListaProductos = () => {
         {/* <button onClick={() => sortedBy('nombre_producto')}>Ordenar por Nombre</button>
        */} 
         <div className="botones-A-I">
-        <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Imprimir</button>
+        <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Descargar PDF</button>
         <Link to="/inventario/producto/formProducto">
             <button className="botonA">Agregar producto</button>
         </Link>

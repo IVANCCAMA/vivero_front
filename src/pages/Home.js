@@ -115,13 +115,11 @@ const Home = () => {
                             </div>
                             <div className='panel-letras'>
                                 <h5>Reportes</h5>
-                                <p>18</p>
+                                <p>9</p>
                             </div>
                         </Link>
                         <div className='panel-F'>
-                            <div className='panel-letras'>``
-                                <h5>.</h5>
-                                <p>18</p>
+                            <div className='panel-letras'>
                             </div>
                         </div>
                     </div>

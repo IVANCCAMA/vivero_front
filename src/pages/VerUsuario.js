@@ -141,7 +141,7 @@ const VerUsuario = () => {
         </tbody>
     </table>
 
-                    <button className='botonPdf' onClick={generarPDF}>Imprimir</button>
+                    <button className='botonPdf' onClick={generarPDF}>Descargar PDF</button>
                 </div>
             ) : (
                 <p>Cargando...</p>

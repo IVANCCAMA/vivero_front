@@ -3,7 +3,7 @@ import axios from "axios";
 import FormCategoria from "../pages/Formcategoria";
 import { Link } from "react-router-dom";
 import "./CategoriaLista.css";
-
+import { Icon } from '@iconify/react';
 
 const CategoriaLista = () => {
   const [categorias, setCategorias] = useState([]);
@@ -63,12 +63,15 @@ const CategoriaLista = () => {
               <td className="descripcionCC">{categoria.descripcion_categoria}</td>
               <td className="botonCRUD">
               <Link to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`} key={categoria.id_categoria}>
-                  <button className="editar" onClick={() => handleEditar(categoria)}>
+                  <button
+                  className="editar" onClick={() => handleEditar(categoria)}>
+                  <Icon className="icon" icon="mdi:edit" color="white" width="20" height="20" />
                     Editar
                   </button>
                 </Link>
                 <button className="Botonborrar" onClick={() => handleDelete(categoria.id_categoria)}>
-                  Borrar
+                <Icon className="icon" icon="material-symbols:delete" color="white" width="20" height="20"/>
+                  Eliminar
                 </button>
                 
               </td>
