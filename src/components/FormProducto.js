@@ -20,16 +20,16 @@ const FormProducto = () => {
   const [precioTotal, setPrecioTotal] = useState(''); // Estado para Precio Total
 
   const initialValues = {
-    id_categoria: undefined,
+    id_categoria: "",
     nombre_producto: "",
     precio_inicial_producto: precioInicial,
     margen_producto: margen,
     precio_total_producto: precioTotal, // Inicialmente en blanco
-    tamanio_producto: undefined,
+    tamanio_producto: "",
     imagen_producto: "",
-    descripcion_producto: undefined,
-    stok_actual_producto: undefined,
-    stok_min_producto: undefined,
+    descripcion_producto: "",
+    stok_actual_producto: "",
+    stok_min_producto: "",
   };
 
   useEffect(() => {
@@ -50,6 +50,7 @@ const FormProducto = () => {
   }, [margen, precioInicial, precioTotal]);
 
   const handleSubmit = async (values, { setSubmitting }) => {
+    console.log("xDxdxdxdxx");
     setSubmitting(true);
 
     const producto = values;
@@ -301,7 +302,7 @@ const FormProducto = () => {
               </Row>
 
               <div className="btn-form">
-                <Button>
+                <Button type="submit" variant="primary">
                   Guardar
                   <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                 </Button>{" "}
