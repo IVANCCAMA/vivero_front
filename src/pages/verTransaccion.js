@@ -37,7 +37,7 @@ const VerTransaccion = () => {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
             doc.setTextColor(0, 0, 0);
-            doc.text('Usuario', 95, 20);
+            doc.text('Transaccion', 95, 20);
     
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(12);
@@ -75,7 +75,7 @@ const VerTransaccion = () => {
                 }
             });
 
-            doc.save(`VerUsuario_${transaccion.id_usuario}.pdf`);
+            doc.save(`Transaccion ${transaccion.id_transaccion}.pdf`);
         }
     };
     return (

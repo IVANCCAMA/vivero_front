@@ -42,7 +42,24 @@ function UsuarioLista (){
             setUsuarioAEditar(usuario);
             setFormularioAbierto(true);
             };
+            
+            const [interruptoresEncendidos, setInterruptoresEncendidos] = useState({});
 
+                useEffect(() => {
+                // Inicializa todos los interruptores en el estado encendido (true) al cargar la página
+                const initialInterruptores = {};
+                usuarios.forEach((usuario) => {
+                    initialInterruptores[usuario.id_usuario] = true;
+                });
+                setInterruptoresEncendidos(initialInterruptores);
+                }, [usuarios]);
+            
+                const toggleInterruptor = (id_usuario) => {
+                setInterruptoresEncendidos((prevInterruptores) => ({
+                    ...prevInterruptores,
+                    [id_usuario]: !prevInterruptores[id_usuario],
+                }));
+                };
         
 
 return(
@@ -92,11 +109,11 @@ return(
                 <Form>
                 <Form.Check
                     type="switch"
-                    id="custom-switch"
-                    /* checked={checked}
-                    onChange={onChange} */
-                    className="custom-switch" // Agrega una clase personalizada
-                />
+                    id={`custom-switch-${usuario.id_usuario}`}
+                    checked={interruptoresEncendidos[usuario.id_usuario]}
+                    onChange={() => toggleInterruptor(usuario.id_usuario)}
+                    className="custom-switch"
+                    />
                 </Form>
                 </button>
                 
