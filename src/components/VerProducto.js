@@ -26,7 +26,7 @@
 
         const generarPDF = () => {
             if (producto) {
-                const doc = new jsPDF();
+            const doc = new jsPDF();
         
                 const imageURL = penImage;
 
@@ -37,78 +37,83 @@
                 doc.setFont('helvetica', 'bold');
                 doc.setFontSize(16);
                 doc.setTextColor(0, 0, 0);
-                doc.text('Producto', 95, 20);
+                doc.text('Producto', 95, 40);
         
                 doc.setFont('helvetica', 'normal');
                 doc.setFontSize(12);
-                doc.text('Detalles de producto', 13, 115);
         
                 // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
-                doc.setFontSize(10);
-                doc.text('Vivero Corazon de Bolivia', 25, 10); 
-        
-                if (producto.imagen_producto) {
-                    const imgData = `data:image/jpeg;base64,${producto.imagen_producto}`;
-        
-                    // Asegúrate de que las coordenadas sean válidas
-                    const imgX = 2;
-                    const imgY = 100;
-        
-                    // Ajusta el tamaño de la imagen según tus necesidades
-                    const imgWidth = 80;
-                    const imgHeight = 80;
-        
-                    doc.addImage(imgData, 'JPEG', imgX, imgY, imgWidth, imgHeight);
-                } else {
-                    // URL de una imagen de marcador de posición de Lorem Picsum
-                    const placeholderImageURL = 'https://picsum.photos/200/200';
-        
-                    // Asegúrate de que las coordenadas sean válidas
-                    const imgX = 70;
-                    const imgY = 30;
-        
-                    // Ajusta el tamaño de la imagen según tus necesidades
-                    const imgWidth = 80;
-                    const imgHeight = 80;
-        
-                    doc.addImage(placeholderImageURL, 'JPEG', imgX, imgY, imgWidth, imgHeight);
-                }
-                
-                const startY = 120;
-                /* const lineHeight = 10; */
+    doc.setFontSize(10);
+    doc.text('Vivero Corazon de Bolivia', 25, 10);
+    doc.text('NIT 5243380015', 25, 15);
 
-                // Agregar detalles del producto usando jspdf-autotable
-                const columns = ['Campo', 'Valor'];
-                const data = [
-                    ['Id', producto.id_producto],
-                    ['Codigo', producto.cod_producto],
-                    ['Nombre', producto.nombre_producto],
-                    ['Categoría', producto.nombre_categoria],
-                    ['Precio inicial', producto.precio_inicial_producto],
-                    ['Margen', producto.margen_producto],
-                    ['Precio total', producto.precio_total_producto],
-                    ['Tamaño', producto.tamanio_producto],
-                    ['Descripción', producto.descripcion_producto],
-                    /* ['Stock actual', producto.stock_actual_producto], */
-                    ['Stock actual', producto.stok_actual_producto],
-                    ['Stock mínimo', producto.stok_min_producto],
-                    ['Fecha creacion', producto.fecha_creacion],
-                    ['Fecha modificacion',producto.fecha_modificacion] 
-                ];
+    doc.text('PASCUAL CHAMBI DOMINGO', 130, 10);
+    doc.text('CALLE INNOMINADA NRO.', 130, 15);
+    doc.text('SN ZONA/BARRIO:', 130, 20);
+    doc.text('TUSCAPUGIO ALTO COCHABAMBA', 130, 25);
 
-                doc.autoTable(columns, data, {
-                    startY: startY,
-                    headStyles: {
-                        fillColor: [40, 84, 48] // Color verde fuerte en formato RGB
-                    },
-                    bodyStyles: {
-                    fillColor: [229, 217, 182] // Color verde fuerte en formato RGB 
-                    }
-                });
-
-                doc.save(`VerProducto_${producto.id_producto}.pdf`);
-            }
+    if (producto.imagen_producto) {
+        const img = new Image();
+  
+        img.onload = function () {
+          const imgX = 2;
+          const imgY = 100;
+          const imgWidth = 80;
+          const imgHeight = 80;
+  
+          doc.addImage(img, imgX, imgY, imgWidth, imgHeight);
+  
+          continuarGeneracionPDF(doc);
         };
+  
+        // Usar el objeto Image directamente
+        img.src = producto.imagen_producto;
+      } else {
+      // URL de una imagen de marcador de posición de Lorem Picsum
+      const placeholderImageURL = 'No cuenta con imagen';
+      const imgX = 70;
+      const imgY = 30;
+      const imgWidth = 80;
+      const imgHeight = 80;
+      doc.addImage(placeholderImageURL, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+      continuarGeneracionPDF(doc);
+    }
+  }
+};
+
+const continuarGeneracionPDF = (doc) => {
+  doc.text('Detalle de producto:', 15, 118);
+  const startY = 120;
+
+  const columns = ['Campo', 'Valor'];
+  const data = [
+    ['Id', producto.id_producto],
+    ['Codigo', producto.cod_producto],
+    ['Nombre', producto.nombre_producto],
+    ['Categoría', producto.nombre_categoria],
+    ['Precio inicial', producto.precio_inicial_producto],
+    ['Margen', producto.margen_producto],
+    ['Precio total', producto.precio_total_producto],
+    ['Tamaño', producto.tamanio_producto],
+    ['Descripción', producto.descripcion_producto],
+    ['Stock actual', producto.stok_actual_producto],
+    ['Stock mínimo', producto.stok_min_producto],
+    ['Fecha creación', producto.fecha_creacion],
+    ['Fecha modificación', producto.fecha_modificacion],
+  ];
+
+  doc.autoTable(columns, data, {
+    startY: startY,
+    headStyles: {
+      fillColor: [40, 84, 48], // Color verde fuerte en formato RGB
+    },
+    bodyStyles: {
+      fillColor: [229, 217, 182], // Color verde fuerte en formato RGB
+    },
+  });
+
+  doc.save(`VerProducto_${producto.id_producto}.pdf`);
+};
 
         return (
                 <div>

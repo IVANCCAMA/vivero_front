@@ -80,14 +80,20 @@ const generarPDFListaProductos = () => {
 
             // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
             doc.setFontSize(10);
-            doc.text('Vivero Corazon de Bolivia', 25, 10); 
+            doc.text('Vivero Corazon de Bolivia', 25, 10);
+            doc.text('NIT 5243380015', 25, 15); 
+
+            doc.text('PASCUAL CHAMBI DOMINGO', 130, 10);
+            doc.text('CALLE INNOMINADA NRO.', 130, 15); 
+            doc.text('SN ZONA/BARRIO:', 130, 20); 
+            doc.text('TUSCAPUGIO ALTO COCHABAMBA', 130, 25);
       
       // Definir formato del documento
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(16);
       doc.setTextColor(0, 0, 0);
-      doc.text('Lista de productos', 80, 20);
-      const startY = 30;
+      doc.text('Lista de productos', 80, 40);
+      const startY = 50;
       
 
       // Agregar detalles del producto usando jspdf-autotable

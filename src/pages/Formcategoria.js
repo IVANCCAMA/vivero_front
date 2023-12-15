@@ -1,13 +1,20 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../App.css';
 import './formcategoria.css';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
+
 const FormCategoria = () => {
   const handleSubmit = async (values) => {
     try {
       const { nombre_categoria, descripcion_categoria } = values;
+
+      // Validar que el nombre de la categoría esté presente
+      if (!nombre_categoria) {
+        alert("El nombre de categoría es obligatorio");
+        return;
+      }
 
       // Realiza una solicitud POST para crear la categoría
       const response = await axios.post('http://localhost:4000/api/categorias', {
@@ -36,24 +43,30 @@ const FormCategoria = () => {
   };
 
   return (
-    <div >
+    <div>
       <div className="division2">
         <Formik initialValues={{ nombre_categoria: "", descripcion_categoria: "" }} onSubmit={handleSubmit}>
           <Form>
             <h2 className="txt-form">Crear categoría</h2>
-            <label htmlFor="nombre_categoria" className="labelC">Nombre de categoría*</label>
-            <Field id="nombre_categoria" name="nombre_categoria" className="inputC" type="text" placeholder="Ingrese nombre de categoria" />
-            <label htmlFor="descripcion_categoria" className="labelC">Descripción(opcional)</label>
-            <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC" placeholder="Ingrese descripcion" />
+            <div className="form-group">
+              <label htmlFor="nombre_categoria" className="labelC">Nombre de categoría*</label>
+              <Field id="nombre_categoria" name="nombre_categoria" className="inputC form-control" type="text" placeholder="Ingrese nombre de categoria" />
+              <ErrorMessage name="nombre_categoria" component="div" className="error-message" />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="descripcion_categoria" className="labelC">Descripción (opcional)</label>
+              <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC form-control" placeholder="Ingrese descripcion" />
+            </div>
             
             <div className="botones-Categoria">
-            <button type="submit" className="bontosave" onClick={handleCancelClick}>
-              Guardar
-              <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
-            </button>
-            <button type="button" className="botoncancel" onClick={handleCancelClick}>
-              Cancelar
-              <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
+              <button type="submit" className="bontosave btn btn-primary" onClick={handleCancelClick}>
+                Guardar
+                <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
+              </button>
+              <button type="button" className="botoncancel btn btn-secondary" onClick={handleCancelClick}>
+                Cancelar
+                <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
               </button>
             </div>
           </Form>

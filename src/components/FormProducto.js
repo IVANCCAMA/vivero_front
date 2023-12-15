@@ -301,7 +301,7 @@ const FormProducto = () => {
               </Row>
 
               <div className="btn-form">
-                <Button>
+                <Button type="submit" variant="primary">
                   Guardar
                   <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                 </Button>{" "}
