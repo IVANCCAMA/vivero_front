@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Icon } from '@iconify/react';
+import './transaccion.css'
 
 function TransaccionLista (){
     const [transacciones, setTransacciones] = useState([]);
@@ -20,7 +21,7 @@ function TransaccionLista (){
     return(
         <div>
             <table className="listaP">
-            <thead>
+            <thead className="txt-transaccion">
                 <tr>
                 <th>ID</th>
                 <th>Ralizado por</th>
@@ -32,7 +33,7 @@ function TransaccionLista (){
                 <th>Acciones</th> 
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="txt-transaccion">
             {transacciones.map((transaccion) => (
                 <tr key={transaccion.id_transaccion}>
                 <td>{transaccion.id_transaccion}</td>

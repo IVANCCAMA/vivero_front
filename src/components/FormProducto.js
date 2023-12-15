@@ -283,7 +283,7 @@ const FormProducto = () => {
                   Guardar
                   <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                 </Button>{" "}
-                <Button variant="danger" onClick={handleCancelClick}>
+                <Button className="btn-cancelar" onClick={handleCancelClick}>
                   Cancelar
                   <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
                 </Button> 

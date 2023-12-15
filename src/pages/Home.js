@@ -71,7 +71,7 @@ const Home = () => {
         <div>
             {authState.isAuthenticated ? (
                 <div className='Inventario'>
-                    <p>Paneles</p>
+                    <h5>Paneles</h5>
                     <div className="division">
                         <Link to="/inventario/producto" className='panel-Producto'>
                             <div className='icon-panel'>

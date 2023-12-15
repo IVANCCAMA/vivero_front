@@ -74,7 +74,7 @@ const Categoria = () => {
     
   return (
     <div >
-      <p className='TextoCategoria'>Categoría</p>
+      <h5 className='TextoCategoria'>Categoría</h5>
       <SubMenuInventario />
       <div className="botonesCat">
         <div className="crearcat">

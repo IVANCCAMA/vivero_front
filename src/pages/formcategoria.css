@@ -63,3 +63,11 @@ h2 {
   justify-content: center;
   display: flex;
 }
+
+.txt-form{
+  text-align: center;
+}
+
+.btns-cancel-save{
+  text-align: center;
+}

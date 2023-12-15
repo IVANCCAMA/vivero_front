@@ -132,7 +132,7 @@ const reporteGraficas = [
 return (
     <div className='main-container'>
         <div className='main-title'>
-        <h4>Reportes Interactivos</h4>
+        <h5>Dashboards Interactivos</h5>
         </div>
         <div className="div-reporte">
         <div className="L-Reporte">

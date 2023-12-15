@@ -40,8 +40,7 @@ const FormCategoria = () => {
       <div className="division2">
         <Formik initialValues={{ nombre_categoria: "", descripcion_categoria: "" }} onSubmit={handleSubmit}>
           <Form>
-            <h2>Crear categoría
-              </h2>
+            <h2 className="txt-form">Crear categoría</h2>
             <label htmlFor="nombre_categoria" className="labelC">Nombre de categoría*</label>
             <Field id="nombre_categoria" name="nombre_categoria" className="inputC" type="text" placeholder="Ingrese nombre de categoria" />
             <label htmlFor="descripcion_categoria" className="labelC">Descripción(opcional)</label>

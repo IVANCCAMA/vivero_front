@@ -12,7 +12,7 @@
     border-radius: 15px;
 }
 .btn-transacciones:hover {
-    background-color: #2c5c1b;                    
+    background-color: #2c5c1b !important;                    
 }
 .btn-ver-transaccion{
     padding: 5px 8px;

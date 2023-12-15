@@ -74,7 +74,7 @@ function Usuarios() {
         
     return (
     <div className="">
-        <p>Lista de Usuarios</p>
+        <h5>Usuarios</h5>
         <div className='botonUsuario'>
             <button className='btn-usuarioD' onClick={generarPDFUsuarios}>
                 Descargar PDF

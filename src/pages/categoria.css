@@ -42,9 +42,7 @@ text-align: end;
 .botonImprimirLista:hover {
   background-color: #858589;
 }
-.TextoCategoria{
-  text-align: start;
-}
+
 .botonCategoria{
   background-color: #5F8D4E; 
   color: #fff; 
