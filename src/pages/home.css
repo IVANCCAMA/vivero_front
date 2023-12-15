@@ -13,7 +13,7 @@
     height: 130px;
     display: flex;
     align-items: center;
-    border: 1px solid #7f2222;
+    border: 1px solid #ccc;
     border-radius: 8px;
     padding: 1px;
     background-color: #008789;
@@ -68,18 +68,7 @@
     color: white;
     text-decoration: none;
 }
-.panel-F{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color: #1690F8;
-    color: white;
-    text-decoration: none;
-} 
+
 
 .icon-panel {
     display: flex;

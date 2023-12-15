@@ -46,7 +46,12 @@
   text-align: center;
 }
 
-.Botonborrar:hover,
-.editar:hover {
-  background-color: #5F8D4E;
+.Botonborrar:hover{
+  background-color: #b22e1a;
 }
+.editar:hover {
+  background-color: #0f5095;
+}
+.icon{
+  margin-top: -4px  
+};

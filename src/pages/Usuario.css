@@ -3,8 +3,48 @@
     justify-content:end;
     border: none;
     text-align: end;
-    color: white;
-    padding: 20px;
-    
-    
+    padding: 15px;
 }
+.btn-usuarioC{
+    background-color: #5F8D4E;
+    border: 1px solid #285430;
+    color: white;
+    margin: 5px;
+    padding: 7px;
+    border-radius: 15px;
+    font-style: bold;
+}
+.btn-usuarioC:hover{
+    background-color: #285118;
+}
+.btn-usuarioD{
+    background-color: #b0b0b5;
+    border: 1px solid #285430;
+    color: white;
+    margin: 5px;
+    padding: 6px;
+    border-radius: 15px;
+    font-style: bold;
+}
+.btn-usuarioD:hover{
+    background-color: #59595b
+}
+.txt-usuario{
+    font-size: 14px;
+}
+.switch{
+    border: none;
+}
+
+/* CustomSwitch.css */
+.custom-switch .custom-control-input:checked~.custom-control-label::before {
+    background-color: #28a745; /* Cambia este color según tu preferencia de verde */
+  }
+  
+  .custom-switch .custom-control-input:checked~.custom-control-label::after {
+    background-color: #ffffff; /* Cambia este color según tu preferencia de fondo */
+  }
+  
+  /* Otras reglas de estilo según sea necesario */
+  
+  

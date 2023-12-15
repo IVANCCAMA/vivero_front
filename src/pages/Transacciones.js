@@ -6,14 +6,13 @@ import { Link } from 'react-router-dom';
 function Transacciones() {
     return (
     <div className="transacione">
-        <p>Transacciones</p>
+        <h5>Transacciones</h5>
         <div className="transaciones">
             <Link to="/transacciones/formTransacciones">
                 <Button className='btn-transacciones'>
-                    Transaccion de producto
+                    Realizar transaccion
                 </Button>{" "}
             </Link>
-            
         </div>
         <TransaccionLista/>
     </div>

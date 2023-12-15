@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 import './formproducto.css'
 import { deleteFile, recuperarUrlImagen, subirImagen } from "../firebase/config";
+import { Icon } from '@iconify/react';
 
 
 const FormProducto = () => {
@@ -300,12 +301,14 @@ const FormProducto = () => {
               </Row>
 
               <div className="btn-form">
-                <Button type="submit" variant="primary">
+                <Button>
                   Guardar
+                  <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                 </Button>{" "}
-                <Button variant="danger" onClick={handleCancelClick}>
+                <Button className="btn-cancelar" onClick={handleCancelClick}>
                   Cancelar
-                </Button>
+                  <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
+                </Button> 
               </div>
             </Form>
           )}

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import '../App.css';
 import './formcategoria.css';
 import axios from 'axios';
+import { Icon } from '@iconify/react';
 
 function FormEditarCategoria() {
   const { id_categoria } = useParams();
@@ -66,17 +67,23 @@ function FormEditarCategoria() {
         onSubmit={handleSubmit}
       >
         <Form>
-        <h2>Editar categoría</h2>
+        <h2 className="txt-form">Editar categoría</h2>
           <label className="labelC">Nombre de categoría*</label>
           <Field id="nombre_categoria" name="nombre_categoria" type="text" className="inputC" />
 
           <label className="labelC">Descripción (opcional)</label>
           <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC" />
 
-          <button type="submit" className="bontosave" onClick={handleCancelClick}>Guardar cambios</button>
+          <div className="btns-cancel-save">
+          <button type="submit" className="bontosave" onClick={handleCancelClick}>
+            Guardar
+            <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
+            </button>
           <button type="button" className="botoncancel" onClick={handleCancelClick}>
             Cancelar
+            <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
           </button>
+          </div>
         </Form>
       </Formik>
 

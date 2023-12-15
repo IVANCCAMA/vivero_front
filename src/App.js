@@ -20,6 +20,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FormTransacciones from './pages/FormTransacciones';
+import VerTransaccion from './pages/verTransaccion';
 import { AuthProvider } from './auth/AuthContext';
 import PrivateRoutes from './PrivateRoutes'
 
@@ -54,6 +55,7 @@ function App() {
                         <Route path="/usuarios/editarUsuario/:id_usuario" element={<FormEditarUsuario />} />
                         <Route path="/usuarios/ver/:id_usuario" element={<VerUsuario />} />
                         <Route path='/transacciones/formTransacciones' element={<FormTransacciones/>}/>
+                        <Route path="/transacciones/ver/:id_transaccion" element={<VerTransaccion/>} />
                       </Route>
                       <Route path="/*" element={<NotFound />} />
                     </Routes>

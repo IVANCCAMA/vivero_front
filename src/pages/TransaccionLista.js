@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Icon } from '@iconify/react';
+import './transaccion.css'
+import { Link } from "react-router-dom";
 
 function TransaccionLista (){
     const [transacciones, setTransacciones] = useState([]);
@@ -19,7 +22,7 @@ function TransaccionLista (){
     return(
         <div>
             <table className="listaP">
-            <thead>
+            <thead className="txt-transaccion">
                 <tr>
                 <th>ID</th>
                 <th>Ralizado por</th>
@@ -31,7 +34,7 @@ function TransaccionLista (){
                 <th>Acciones</th> 
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="txt-transaccion">
             {transacciones.map((transaccion) => (
                 <tr key={transaccion.id_transaccion}>
                 <td>{transaccion.id_transaccion}</td>
@@ -41,7 +44,14 @@ function TransaccionLista (){
                 <td>{transaccion.cantidad_ingreso}</td>
                 <td>{transaccion.cantidad_salida}</td>
                 <td>{transaccion.fecha_transaccion}</td>
-                <td><button> ver</button></td> 
+                <td>
+                <Link to={`/transacciones/ver/${transaccion.id_transaccion}`}>
+                <button className="btn-ver-transaccion">
+                <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                    ver
+                </button>
+                </Link>
+                </td> 
                 </tr>
                     ))}
                 </tbody> 

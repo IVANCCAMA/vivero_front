@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Form from 'react-bootstrap/Form';
 /* import FormUsuario from "./FormUsuario"; */
 import { Link } from "react-router-dom";
 import FormUsuario from "./FormUsuario";
-function UsuarioLista() {
+import { Icon } from '@iconify/react';
+import './Usuario.css'
+function UsuarioLista (){
+
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioAEditar, setUsuarioAEditar] = useState(null);
     const [formularioAbierto, setFormularioAbierto] = useState(false);
@@ -64,59 +68,63 @@ function UsuarioLista() {
     return (
         <div>
             <table className="listaP">
-                <thead>
-                    <tr>
-                        <th>Nombre completo</th>
-                        <th>CI</th>
-                        <th>Celular</th>
-                        <th>Correo Electronico</th>
-                        <th>Rol</th>
-                        <th>Fecha de creacion</th>
-                        <th>Fecha de modificacion</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={usuario.id_usuario}>
-                            <td>{usuario.nombre_usuario}</td>
-                            <td>{usuario.ci_usuario}</td>
-                            <td>{usuario.celular_usuario}</td>
-                            <td>{usuario.correo_usuario}</td>
-                            <td>{usuario.tipo_usuario}</td>
-                            <td>{usuario.fecha_registro_usuario}</td>
-                            <td>{usuario.fecha_modificacion}</td>
-                            <td>
-                                <div className="form-check form-switch">
-                                    <input className="form-check-input"
-                                        type="checkbox"
-                                        role="switch"
-                                        id={`switch-${usuario.id_usuario}`}
-                                        checked={usuario.activo_usuario}
-                                        onChange={() => handleToggleActivity(usuario.id_usuario, usuario.activo_usuario)}
-                                    ></input>
-                                    <label className="form-check-label" htmlFor={`switch-${usuario.id_usuario}`}>
-                                        {usuario.activo_usuario ? "Activo" : "Inactivo"}
-                                    </label>
-                                </div>
-                            </td>
-
-                            <td>
-                                <Link to={`/usuarios/ver/${usuario.id_usuario}`}>
-                                    <button className="verP">Ver</button>
-                                </Link>
-                                <Link to={`/usuarios/editarUsuario/${usuario.id_usuario}`}>
-                                    <button className="editarP" onClick={() => handleEditar(usuario)}>
-                                        Editar
-                                    </button>
-                                </Link>
-                                <button className="borrarP" onClick={() => handleDelete(usuario.id_usuario)}>
-                                    Borrar
-                                </button>
-
-                            </td>
-                        </tr>
+            <thead className="txt-usuario">
+                <tr>
+                <th>Nombre completo</th>
+                <th>CI</th>
+                <th>Celular</th>
+                <th>Correo Electronico</th>
+                <th>Rol</th>
+                <th>Fecha de creacion</th>
+                <th>Fecha de modificacion</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody className="txt-usuario">
+            {usuarios.map((usuario) => (
+                <tr key={usuario.id_usuario}>
+                <td>{usuario.nombre_usuario}</td>
+                <td>{usuario.ci_usuario}</td>
+                <td>{usuario.celular_usuario}</td>
+                <td>{usuario.correo_usuario}</td>
+                <td>{usuario.tipo_usuario}</td>
+                <td>{usuario.fecha_registro_usuario}</td> 
+                <td>{usuario.fecha_modificacion}</td>  
+                <td>
+                    <div className="form-check form-switch">
+                        <input className="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id={`switch-${usuario.id_usuario}`}
+                            checked={usuario.activo_usuario}
+                            onChange={() => handleToggleActivity(usuario.id_usuario, usuario.activo_usuario)}
+                        ></input>
+                        <label className="form-check-label" htmlFor={`switch-${usuario.id_usuario}`}>
+                            {usuario.activo_usuario ? "Activo" : "Inactivo"}
+                        </label>
+                    </div>
+                </td>
+                            
+                <td>
+                <Link to={`/usuarios/ver/${usuario.id_usuario}`}>
+                    <button className="verP">
+                    <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                        Ver
+                        </button>
+                </Link>
+                <Link to={`/usuarios/editarUsuario/${usuario.id_usuario}`}>
+                    <button className="editarP" onClick={() => handleEditar(usuario)}>
+                    <Icon className="icon" icon="mdi:edit" color="white" width="18" height="18" />
+                    Editar
+                    </button>
+                </Link> 
+                <button className="borrarP" onClick={() => handleDelete(usuario.id_usuario)}>
+                <Icon className="icon" icon="material-symbols:delete" color="white" width="18" height="18"/>
+                    Eliminar
+                </button> 
+                </td> 
+                </tr>
                     ))}
                 </tbody>
             </table>
