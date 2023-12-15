@@ -73,7 +73,7 @@ function UsuarioLista() {
                         <th>Rol</th>
                         <th>Fecha de creacion</th>
                         <th>Fecha de modificacion</th>
-                        <th>Actividad</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
