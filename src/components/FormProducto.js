@@ -50,7 +50,6 @@ const FormProducto = () => {
   }, [margen, precioInicial, precioTotal]);
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log("xDxdxdxdxx");
     setSubmitting(true);
 
     const producto = values;
