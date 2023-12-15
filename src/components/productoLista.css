@@ -2,8 +2,9 @@
 
 .listaProducto {
   max-width: 100%;
-  padding: 10px;
+  padding: 8px;
   font-size: 14px;
+  
 }
 .botones-A-I {
   width: 100%; /* Ancho completo en dispositivos móviles */
@@ -28,21 +29,23 @@
 .listaP th {
   background-color: #5F8D4E;
   color: #fff;
+  
 }
 
 .botonPdfListaP {
-  padding: 5px 10px;
+  padding: 5px ;
   margin: 20px;
-  background-color: #4f350f;
+  background-color: #b0b0b5;
+  border: 1px solid #285430;
   color: #fff;
-  border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 15px;
   height: 40px;
+  font-weight: bold;
 }
 .verP, .borrarP, .editarP{
-  padding: 5px 10px;
-  margin: 5px;
+  padding: 5px;
+  margin: 3px;
   background-color: #ff9900;
   color: #fff;
   border: none;
@@ -58,11 +61,17 @@
   background-color: #007BFF;
 }
 
-.verP:hover,
-.borrarP:hover,
-.editarP:hover,
+.verP:hover{
+  background-color: #875306;
+}; 
+.borrarP:hover{
+  background-color: #731a0d;
+}
+.editarP:hover{
+  background-color: #13365c;
+}
 .botonPdfListaP:hover {
-  background-color: #5F8D4E;
+  background-color: #858589;
 }
 
 .producto-no-encontrado {
@@ -74,7 +83,7 @@
 }
 
 .texto-Producto {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 10px;
 
 }
@@ -86,3 +95,5 @@
 .botonPdfListaP {
   margin-left: 0; /* Ajustado margen izquierdo para centrar en pantallas más pequeñas */
 }
+
+

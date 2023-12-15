@@ -1,12 +1,12 @@
 import '../App.css';
 import './Usuario.css'
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import UsuarioLista from './UsuarioLista';
 import axios from 'axios';
 import { jsPDF } from 'jspdf';
 import penImage from '../img/logo.png';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 
 function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -76,19 +76,15 @@ function Usuarios() {
     <div className="">
         <p>Lista de Usuarios</p>
         <div className='botonUsuario'>
-            <Button onClick={generarPDFUsuarios}  
-                type=""
-                style={{ backgroundColor: '#4f350f'}}>
-                Imprimir
-            </Button> {' '}
+            <button className='btn-usuarioD' onClick={generarPDFUsuarios}>
+                Descargar PDF
+                <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDFUsuarios}/>
+            </button> {' '}
             <Link to = '/usuarios/crearUsuario'>
-                <Button  
-                    type="submit"
-                    style={{ backgroundColor: '#5F8D4E' }}>
+                <button className='btn-usuarioC'>
                     Agregar usuario
-                </Button>
+                </button>
             </Link>
-            
         </div>
         <UsuarioLista/>
         

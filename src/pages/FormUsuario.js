@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './FormUsuario.css';
+import { Icon } from '@iconify/react';
 
 
 function FormUsuario() {
@@ -259,8 +260,14 @@ function FormUsuario() {
             </Form.Group>
 
           <div className='btn-form'>
-          <Button type="submit" className='btn-usuario'>Guardar Usuario</Button>{" "}
-          <Button variant="danger" onClick={handleCancelClick}> Cancelar</Button> 
+          <Button type="submit" className='btn-usuario'>
+            Guardar
+            <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
+            </Button>{" "}
+          <Button variant="danger" onClick={handleCancelClick}>
+            Cancelar
+            <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
+            </Button> 
           </div>
         </Form>
       )}

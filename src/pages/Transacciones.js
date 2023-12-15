@@ -10,7 +10,7 @@ function Transacciones() {
         <div className="transaciones">
             <Link to="/transacciones/formTransacciones">
                 <Button className='btn-transacciones'>
-                    Transaccion de producto
+                    Realizar transaccion
                 </Button>{" "}
             </Link>
             

@@ -3,11 +3,10 @@ import axios from "axios";
 import './productoLista.css';
 import FormProducto from "./FormProducto";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import 'jspdf-autotable';
 import { jsPDF } from 'jspdf';
 import penImage from '../img/logo.png';
+import { Icon } from '@iconify/react';
 
 function ProductoLista({ searchQuery }) {
   const [productos, setProductos] = useState([]);
@@ -148,11 +147,15 @@ const generarPDFListaProductos = () => {
             /* value={searchQuery} */
             onChange={(event) => filterProducts(event.target.value)}
           />
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
+          <Icon icon="ic:baseline-search" color="black" width="30" height="30" /> 
+          
         {/* <button onClick={() => sortedBy('nombre_producto')}>Ordenar por Nombre</button>
        */} 
         <div className="botones-A-I">
-        <button className='botonPdfListaP' onClick={generarPDFListaProductos}>Descargar PDF</button>
+        <button className='botonPdfListaP' onClick={generarPDFListaProductos}>
+          Descargar PDF
+          <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDFListaProductos}/>
+          </button>
         <Link to="/inventario/producto/formProducto">
             <button className="botonA">Agregar producto</button>
         </Link>
@@ -200,17 +203,21 @@ const generarPDFListaProductos = () => {
                 
                 <td>
                   <Link to={`/inventario/producto/ver/${producto.id_producto}`}>
-                    <button className="verP">Ver</button>
+                    <button className="verP">
+                    <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                      Ver
+                      </button>
                   </Link>
                   <Link to={`/inventario/producto/editarProducto/${producto.id_producto}`}>
                     <button className="editarP" onClick={() => handleEditar(producto)}>
+                    <Icon className="icon" icon="mdi:edit" color="white" width="18" height="18" />
                       Editar
                     </button>
                   </Link>
                   <button className="borrarP" onClick={() => handleDelete(producto.id_producto)}>
-                    Borrar
+                  <Icon className="icon" icon="material-symbols:delete" color="white" width="18" height="18"/>
+                    Eliminar
                   </button>
-                  
                 </td>
               </tr>
             ))}
@@ -223,7 +230,7 @@ const generarPDFListaProductos = () => {
       )}
     </div>
     </div>
-   </div>
+  </div>
   );
 }
 

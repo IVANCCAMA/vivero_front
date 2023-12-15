@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { Formik, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
+import { Icon } from '@iconify/react';
 
 const FormTransacciones = () => {
     const {authState} = useAuth();
@@ -318,11 +319,13 @@ const FormTransacciones = () => {
                     </Row>
 
                 <div className="btn-form">
-                    <Button type="submit" variant="primary">
+                    <Button type="submit" >
                     Guardar
+                    <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                     </Button>{" "}
                     <Button variant="danger" onClick={handleCancelClick}>
                     Cancelar
+                    <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
                     </Button>
                 </div>
                 </Form>

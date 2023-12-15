@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Form from 'react-bootstrap/Form';
 /* import FormUsuario from "./FormUsuario"; */
 import { Link } from "react-router-dom";
 import FormUsuario from "./FormUsuario";
+import { Icon } from '@iconify/react';
+import './Usuario.css'
 function UsuarioLista (){
     const [usuarios, setUsuarios] = useState([]);
     const [usuarioAEditar, setUsuarioAEditar] = useState(null);
@@ -45,7 +48,7 @@ function UsuarioLista (){
 return(
     <div>
             <table className="listaP">
-            <thead>
+            <thead className="txt-usuario">
                 <tr>
                 <th>Nombre completo</th>
                 <th>CI</th>
@@ -57,7 +60,7 @@ return(
                 <th>Acciones</th> 
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="txt-usuario">
             {usuarios.map((usuario) => (
                 <tr key={usuario.id_usuario}>
                 <td>{usuario.nombre_usuario}</td>
@@ -70,16 +73,33 @@ return(
 
                 <td>
                 <Link to={`/usuarios/ver/${usuario.id_usuario}`}>
-                    <button className="verP">Ver</button>
+                    <button className="verP">
+                    <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                        Ver
+                        </button>
                 </Link>
                 <Link to={`/usuarios/editarUsuario/${usuario.id_usuario}`}>
                     <button className="editarP" onClick={() => handleEditar(usuario)}>
+                    <Icon className="icon" icon="mdi:edit" color="white" width="18" height="18" />
                     Editar
                     </button>
                 </Link> 
                 <button className="borrarP" onClick={() => handleDelete(usuario.id_usuario)}>
-                    Borrar
+                <Icon className="icon" icon="material-symbols:delete" color="white" width="18" height="18"/>
+                    Eliminar
                 </button> 
+                <button className="switch">
+                <Form>
+                <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    /* checked={checked}
+                    onChange={onChange} */
+                    className="custom-switch" // Agrega una clase personalizada
+                />
+                </Form>
+                </button>
+                
                 
                 </td> 
                 </tr>

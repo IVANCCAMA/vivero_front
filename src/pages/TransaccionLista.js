@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Icon } from '@iconify/react';
 
 function TransaccionLista (){
     const [transacciones, setTransacciones] = useState([]);
@@ -41,7 +42,10 @@ function TransaccionLista (){
                 <td>{transaccion.cantidad_ingreso}</td>
                 <td>{transaccion.cantidad_salida}</td>
                 <td>{transaccion.fecha_transaccion}</td>
-                <td><button> ver</button></td> 
+                <td><button className="btn-ver-transaccion">
+                <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                    ver
+                    </button></td> 
                 </tr>
                     ))}
                 </tbody> 

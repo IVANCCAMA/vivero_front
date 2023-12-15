@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 import './formproducto.css' 
+import { Icon } from '@iconify/react';
 
 const FormProducto = () => {
   const [categorias, setCategorias] = useState([]);
@@ -278,11 +279,13 @@ const FormProducto = () => {
               </Row>
 
               <div className="btn-form">
-                <Button type="submit" variant="primary">
+                <Button>
                   Guardar
+                  <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
                 </Button>{" "}
                 <Button variant="danger" onClick={handleCancelClick}>
                   Cancelar
+                  <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
                 </Button> 
               </div>
             </Form>
