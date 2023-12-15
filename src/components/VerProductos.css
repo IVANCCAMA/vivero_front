@@ -1,7 +1,7 @@
 
 .h22{
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
     padding:10px;
 }
   .detalle {
@@ -45,11 +45,11 @@
 .botonPdf {
     
     margin-top: 5px;
-    padding: 10px 20px; 
+    padding: 7px; 
     background-color: #5F8D4E; 
     color: #fff; 
     border: none; 
-    border-radius: 5px; 
+    border-radius: 15px; 
     cursor: pointer;
 }
 

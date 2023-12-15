@@ -5,7 +5,7 @@
     import axios from 'axios';
     import './VerProductos.css';
     import penImage from '../img/logo.png'; 
-
+    import { Icon } from '@iconify/react';
 
     const VerProducto = () => {
         const { id_producto } = useParams();
@@ -189,7 +189,10 @@
             </tbody>
         </table>
 
-                        <button className='botonPdf' onClick={generarPDF}>Imprimir</button>
+                        <button className='botonPdf' onClick={generarPDF}>
+                            Descargar PDF
+                            <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDF}/>
+                            </button>
                     </div>
                 ) : (
                     <p>Cargando...</p>

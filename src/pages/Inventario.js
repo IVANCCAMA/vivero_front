@@ -9,7 +9,7 @@ function Inventario() {
   return (
     <div className="">
       <div>
-        <p className="Inventario">Inventario</p>
+        <h5 className="Inventario">Inventario</h5>
         <SubMenuInventario />
       </div>
       <div className="ahi">

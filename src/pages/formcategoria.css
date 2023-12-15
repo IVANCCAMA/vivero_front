@@ -4,28 +4,35 @@
   border: 2px solid #ccc;
   border-radius: 30px;
   margin: 130px 350px;
-  width: 35%;
-  height: 10%;  
+  width: 40%;
+  height: 15%;
+  
+  
 }
 
 .bontosave{
     background-color: #60aa48;
     color: #fff;
-    padding: 10px 20px; 
+    padding: 5px 20px; 
     border: none;
     border-radius: 10px;
     margin-right: 20px; 
     cursor: pointer;
-    font-size: 15px;
+}
+.bontosave:hover{
+  background-color: #37562c;
 }
 .botoncancel{
     background-color: red; 
     color: #fff;
-    padding: 10px 20px; 
+    padding: 8px 20px; 
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 15px; 
+}
+.botoncancel:hover{
+  background-color: rgb(118, 11, 11);
 }
 
 h2 {
@@ -37,6 +44,7 @@ h2 {
 .labelC {
   display: block;
   margin-bottom: 5px;
+  
 }
 
 /* Estilo para los campos de entrada de texto */
@@ -47,9 +55,19 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #A4BE7B;
+  
+  
 }
 
 .botones-Categoria{
   justify-content: center;
   display: flex;
+}
+
+.txt-form{
+  text-align: center;
+}
+
+.btns-cancel-save{
+  text-align: center;
 }
