@@ -36,15 +36,23 @@ function Usuarios() {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
             doc.setTextColor(0, 0, 0);
-            doc.text('Lista de Usuarios', 90, 20);
+            doc.text('Lista de Usuarios', 90, 40);
 
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(12);
 
-            // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
-            doc.text('Vivero Corazon de Bolivia', 25, 30);
+             // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
+             doc.setFontSize(10);
+             doc.text('Vivero Corazon de Bolivia', 25, 10);
+             doc.text('NIT 5243380015', 25, 15); 
+ 
+             doc.text('PASCUAL CHAMBI DOMINGO', 120, 10);
+             doc.text('CALLE INNOMINADA NRO.', 120, 15); 
+             doc.text('SN ZONA/BARRIO:', 120, 20); 
+             doc.text('TUSCAPUGIO ALTO COCHABAMBA', 120, 25);
+     
 
-            const startY = 40;
+            const startY = 50;
 
             // Agregar detalles de las categorías usando jspdf-autotable
             const columns = ['Id', 'Nombre completo', 'CI', 'Celular', 'Correo Electronico', 'Rol', 'Fecha de Creacion', 'Fecha de modificacion'];

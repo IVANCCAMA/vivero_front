@@ -38,16 +38,22 @@ const VerUsuario = () => {
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
             doc.setTextColor(0, 0, 0);
-            doc.text('Usuario', 95, 20);
+            doc.text('Usuario', 95, 50);
     
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(12);
     
             // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
             doc.setFontSize(10);
-            doc.text('Vivero Corazon de Bolivia', 25, 10); 
+            doc.text('Vivero Corazon de Bolivia', 25, 10);
+            doc.text('NIT 5243380015', 25, 15); 
+
+            doc.text('PASCUAL CHAMBI DOMINGO', 120, 10);
+            doc.text('CALLE INNOMINADA NRO.', 120, 15); 
+            doc.text('SN ZONA/BARRIO:', 120, 20); 
+            doc.text('TUSCAPUGIO ALTO COCHABAMBA', 120, 25);
     
-            const startY = 40;
+            const startY = 60;
             /* const lineHeight = 10; */
 
             // Agregar detalles del usuario usando jspdf-autotable
