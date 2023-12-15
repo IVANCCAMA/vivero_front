@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Icon } from '@iconify/react';
 import './transaccion.css'
+import { Link } from "react-router-dom";
 
 function TransaccionLista (){
     const [transacciones, setTransacciones] = useState([]);
@@ -43,10 +44,14 @@ function TransaccionLista (){
                 <td>{transaccion.cantidad_ingreso}</td>
                 <td>{transaccion.cantidad_salida}</td>
                 <td>{transaccion.fecha_transaccion}</td>
-                <td><button className="btn-ver-transaccion">
+                <td>
+                <Link to={`/transacciones/ver/${transaccion.id_transaccion}`}>
+                <button className="btn-ver-transaccion">
                 <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
                     ver
-                    </button></td> 
+                </button>
+                </Link>
+                </td> 
                 </tr>
                     ))}
                 </tbody> 
