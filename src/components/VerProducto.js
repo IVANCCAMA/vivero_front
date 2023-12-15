@@ -120,8 +120,7 @@
                                 <div className='imagenV'>
                                 {producto.imagen_producto && (
                                     <img
-                                        /* src={`data:image/jpeg;base64,${producto.imagen_producto}`} */
-                                        src="https://picsum.photos/200/200"
+                                        src={producto.imagen_producto}
                                         alt="Producto"
                                         style={{ maxWidth: '180px' }}
                                     />
