@@ -7,8 +7,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
-import './formproducto.css' 
+import './formproducto.css'
+import { deleteFile, recuperarUrlImagen, subirImagen } from "../firebase/config";
 import { Icon } from '@iconify/react';
+
 
 const FormProducto = () => {
   const [categorias, setCategorias] = useState([]);
@@ -24,7 +26,7 @@ const FormProducto = () => {
     margen_producto: margen,
     precio_total_producto: precioTotal, // Inicialmente en blanco
     tamanio_producto: undefined,
-    imagen_producto: undefined,
+    imagen_producto: "",
     descripcion_producto: undefined,
     stok_actual_producto: undefined,
     stok_min_producto: undefined,
@@ -33,7 +35,7 @@ const FormProducto = () => {
   useEffect(() => {
     // Hacer una solicitud GET para obtener la lista de categorías
     if (!isNaN(precioInicial) && !isNaN(margen)) {
-      setPrecioTotal(precioInicial + (precioInicial*margen/100));
+      setPrecioTotal(precioInicial + (precioInicial * margen / 100));
     } else {
       setPrecioTotal(""); // Si el valor no es un número válido, establece una cadena vacía
     }
@@ -54,17 +56,26 @@ const FormProducto = () => {
     producto.precio_inicial_producto = precioInicial;
     producto.margen_producto = margen;
     producto.precio_total_producto = precioTotal;
-    
-    console.log("Producto objeto>>>> ", producto);
+
+    const imagen_archivo = document.getElementById('imagen_producto').files;
+
+    const maxSize = 5 * 1024 * 1024; // 5 MB en bytes
+    if (imagen_archivo[0].size > maxSize) {
+      alert(`Tamaño máximo de 5 MB excedido`);
+      return;
+    }
+    // console.log("Producto objeto>>>> ", producto);
 
     // Verificamos que los campos obligatorios no estén vacíos
-    if (producto.nombre_producto || producto.id_categoria || producto.precio_inicial_producto 
-      || producto.precio_total_producto || producto.margen_producto || producto.tamanio_producto 
-      || producto.stok_actual_producto|| producto.stok_min_producto)
-      {
+    if (producto.nombre_producto || producto.id_categoria || producto.precio_inicial_producto
+      || producto.precio_total_producto || producto.margen_producto || producto.tamanio_producto
+      || producto.stok_actual_producto || producto.stok_min_producto) {
       try {
+        const resultado = await subirFirebase(imagen_archivo[0]);
+        console.log("resultado subida>>>>>>", resultado);
+        producto.imagen_producto = resultado.url;
         const response = await axios.post('http://localhost:4000/api/productos', producto);
-  
+
         if (response.status === 201) {
           console.log("Producto creado con éxito");
           /* window.close(); */
@@ -81,6 +92,16 @@ const FormProducto = () => {
       alert("Llenes los campos");
       console.log('llene todo')
       setSubmitting(false);
+    }
+  };
+
+  const subirFirebase = async (archivo) => {
+    try {
+      const portadaInfo = await subirImagen(archivo);
+      const imageUrl = await recuperarUrlImagen(portadaInfo);
+      return { url: imageUrl, filePath: portadaInfo };
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
@@ -104,51 +125,51 @@ const FormProducto = () => {
   return (
     <div className="form-container">
       <div className="form-content">
-        <Formik 
-        initialValues={initialValues}
+        <Formik
+          initialValues={initialValues}
           onSubmit={handleSubmit}
-          /* validationSchema={validationSchema} */
+        /* validationSchema={validationSchema} */
         >
           {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <h3 className='h3-registrar'>Registrar producto</h3>
               <Row className="mb-3">
                 <Col md="6">
-                <Form.Group as={Col} controlId="validationFormik01">
-                  <Form.Label>Nombre*</Form.Label>
-                  <Field
-                  placeholder="Nombre del producto"
-                    type="text"
-                    name="nombre_producto"
-                    className={`form-control ${errors.nombre_producto ? 'is-invalid' : ''}`}
-                    style={{ backgroundColor: '#A4BE7B' }}
-                  />
-                  <ErrorMessage name="nombre_producto" component="div" className="invalid-feedback" />
-                </Form.Group>
+                  <Form.Group as={Col} controlId="validationFormik01">
+                    <Form.Label>Nombre*</Form.Label>
+                    <Field
+                      placeholder="Nombre del producto"
+                      type="text"
+                      name="nombre_producto"
+                      className={`form-control ${errors.nombre_producto ? 'is-invalid' : ''}`}
+                      style={{ backgroundColor: '#A4BE7B' }}
+                    />
+                    <ErrorMessage name="nombre_producto" component="div" className="invalid-feedback" />
+                  </Form.Group>
                 </Col>
 
                 <Col md="6">
-                <Form.Group as={Col}  controlId="validationFormik02">
-                <Form.Label>Categoría*</Form.Label>
-                <Form.Select
-                  aria-label="Default select example"
-                  className={`form-control ${touched.id_categoria && errors.id_categoria ? 'is-invalid' : ''}`}
-                  name="id_categoria"  // Debe ser "id_categoria" en lugar de "categoria"
-                  value={values.id_categoria}
-                  onChange={handleChange}
-                  style={{ backgroundColor: '#A4BE7B' }}
-                >
-                  <option  value="">Seleccionar</option>
-                  {categorias.map(categoria => (
-                    <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                      {categoria.nombre_categoria}
-                    </option>
-                  ))}
-                </Form.Select>
-                {touched.id_categoria && errors.id_categoria && (
-                  <div className="invalid-feedback">{errors.id_categoria}</div>
-                )}
-                </Form.Group>
+                  <Form.Group as={Col} controlId="validationFormik02">
+                    <Form.Label>Categoría*</Form.Label>
+                    <Form.Select
+                      aria-label="Default select example"
+                      className={`form-control ${touched.id_categoria && errors.id_categoria ? 'is-invalid' : ''}`}
+                      name="id_categoria"  // Debe ser "id_categoria" en lugar de "categoria"
+                      value={values.id_categoria}
+                      onChange={handleChange}
+                      style={{ backgroundColor: '#A4BE7B' }}
+                    >
+                      <option value="">Seleccionar</option>
+                      {categorias.map(categoria => (
+                        <option key={categoria.id_categoria} value={categoria.id_categoria}>
+                          {categoria.nombre_categoria}
+                        </option>
+                      ))}
+                    </Form.Select>
+                    {touched.id_categoria && errors.id_categoria && (
+                      <div className="invalid-feedback">{errors.id_categoria}</div>
+                    )}
+                  </Form.Group>
                 </Col>
               </Row>
 
@@ -172,7 +193,7 @@ const FormProducto = () => {
                 <Col md="4">
                   <Form.Group controlId="validationFormik04">
                     <Form.Label>Margen %*</Form.Label>
-                    
+
                     <Field
                       type="number"
                       name="margen_producto"
@@ -226,6 +247,7 @@ const FormProducto = () => {
                     <Field
                       type="file"
                       name="imagen_producto"
+                      id="imagen_producto"
                       className="form-control"
                       style={{ backgroundColor: '#A4BE7B' }}
                     />

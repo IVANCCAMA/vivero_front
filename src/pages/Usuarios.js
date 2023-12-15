@@ -11,43 +11,43 @@ import { Icon } from '@iconify/react';
 function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
 
-        useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await axios.get('http://localhost:4000/api/usuarios');
-            setUsuarios(response.data);
+                const response = await axios.get('http://localhost:4000/api/usuarios');
+                setUsuarios(response.data);
             } catch (error) {
-            console.error('Error al obtener los usuarios:', error);
+                console.error('Error al obtener los usuarios:', error);
             }
         };
-    
+
         fetchData();
-        }, []);
+    }, []);
 
     const generarPDFUsuarios = () => {
-            if (usuarios.length > 0) {
+        if (usuarios.length > 0) {
             const doc = new jsPDF();
             const imageURL = penImage;
-        
+
             // Asegúrate de que las coordenadas y dimensiones sean válidas
             doc.addImage(imageURL, 'JPEG', 10, 10, 25, 15);
-        
+
             // Definir formato del documento
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(16);
             doc.setTextColor(0, 0, 0);
             doc.text('Lista de Usuarios', 90, 20);
-        
+
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(12);
-        
+
             // Ajusta las coordenadas para "Vivero Corazon de Bolivia"
             doc.text('Vivero Corazon de Bolivia', 25, 30);
-        
+
             const startY = 40;
-        
+
             // Agregar detalles de las categorías usando jspdf-autotable
-            const columns = ['Id', 'Nombre completo', 'CI','Celular','Correo Electronico','Rol','Fecha de Creacion', 'Fecha de modificacion'];
+            const columns = ['Id', 'Nombre completo', 'CI', 'Celular', 'Correo Electronico', 'Rol', 'Fecha de Creacion', 'Fecha de modificacion'];
             const data = usuarios.map((usuario) => [
                 usuario.id_usuario,
                 usuario.nombre_usuario,
@@ -57,38 +57,37 @@ function Usuarios() {
                 usuario.tipo_usuario,
                 usuario.fecha_registro_usuario,
             ]);
-        
+
             doc.autoTable(columns, data, {
                 startY: startY,
                 headStyles: {
-                fillColor: [40, 84, 48], // Color verde fuerte en formato RGB
+                    fillColor: [40, 84, 48], // Color verde fuerte en formato RGB
                 },
                 bodyStyles: {
-                fillColor: [229, 217, 182], // Color verde fuerte en formato RGB
+                    fillColor: [229, 217, 182], // Color verde fuerte en formato RGB
                 },
             });
-        
+
             doc.save('Lista Usuarios.pdf');
-            }
-        };
-        
+        }
+    };
+
     return (
-    <div className="">
-        <h5>Usuarios</h5>
-        <div className='botonUsuario'>
-            <button className='btn-usuarioD' onClick={generarPDFUsuarios}>
-                Descargar PDF
-                <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDFUsuarios}/>
-            </button> {' '}
-            <Link to = '/usuarios/crearUsuario'>
-                <button className='btn-usuarioC'>
-                    Agregar usuario
-                </button>
-            </Link>
+        <div className="">
+            <h5>Usuarios</h5>
+            <div className='botonUsuario'>
+                <button className='btn-usuarioD' onClick={generarPDFUsuarios}>
+                    Descargar PDF
+                    <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDFUsuarios} />
+                </button> {' '}
+                <Link to='/usuarios/crearUsuario'>
+                    <button className='btn-usuarioC'>
+                        Agregar usuario
+                    </button>
+                </Link>
+            </div>
+            <UsuarioLista />
         </div>
-        <UsuarioLista/>
-        
-    </div>
     );
 }
 export default Usuarios;
