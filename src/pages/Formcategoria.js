@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../App.css';
 import './formcategoria.css';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
+import { useNavigate } from "react-router-dom";
 
 const FormCategoria = () => {
+  const navigate = useNavigate();
   const handleSubmit = async (values) => {
     try {
       const { nombre_categoria, descripcion_categoria } = values;
@@ -23,9 +25,9 @@ const FormCategoria = () => {
       });
 
       if (response.status === 201) {
-        console.log("Categoría creada con éxito");
+        alert("Categoría creada con éxito");
         // Puedes realizar otras acciones si es necesario
-        window.close();
+        navigate("/inventario/categoria");
       } else {
         console.error("Error al crear la categoría. Respuesta inesperada:", response);
         // Puedes mostrar un mensaje de error al usuario
@@ -38,6 +40,7 @@ const FormCategoria = () => {
   };
 
   const handleCancelClick = () => {
+   /*  alert("Cancelado"); */
     // Navega hacia atrás en la historia del navegador
     window.history.back();
   };
@@ -60,7 +63,7 @@ const FormCategoria = () => {
             </div>
             
             <div className="botones-Categoria">
-              <button type="submit" className="bontosave btn btn-primary" onClick={handleCancelClick}>
+              <button type="submit" className="bontosave btn btn-primary">
                 Guardar
                 <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
               </button>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import axios from 'axios';
+import { Icon } from '@iconify/react';
 
 import penImage from '../img/logo.png'; 
 
@@ -147,7 +148,10 @@ const VerTransaccion = () => {
         </tbody>
     </table>
 
-                    <button className='botonPdf' onClick={generarPDF}>Descargar PDF</button>
+                    <button className='botonPdf' onClick={generarPDF}>
+                        Descargar PDF
+                        <Icon icon="line-md:download-loop" color="white" width="26" height="24" onClick={generarPDF}/>
+                        </button>
                 </div>
             ) : (
                 <p>Cargando...</p>

@@ -56,7 +56,7 @@ body {
   height: 100vh;
   grid-template: 
       "header" 65px 
-      "navbar" 80px
+      "navbar" 50px
       "main" auto
       "footer" 50px;
 }
@@ -68,7 +68,7 @@ body {
       grid-template-rows:100px 50px auto 100px;
       grid-template: 
           "header header" 65px 
-          "navbar navbar" 80px
+          "navbar navbar" 50px
           "main main" auto
           "footer footer" 50px /
           2500px   auto;
@@ -93,7 +93,6 @@ body {
   vertical-align: middle;
 }
 
-
 .header div {
   line-height: 50px;
   margin-left: 30px;
@@ -103,6 +102,8 @@ body {
 .logo {
   width: 115px;
   vertical-align: middle; 
+  align-items:start;
+  margin-top: -25px;
 }
 
 

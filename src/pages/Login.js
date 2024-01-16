@@ -95,7 +95,7 @@ function Login() {
                 id="EmailInput"
                 name="EmailInput"
                 aria-describedby="emailHelp"
-                placeholder="Ingrese correo_usuario"
+                placeholder="Ingrese correo electronico"
                 style={{ backgroundColor: "#E0E0E0" }}
                 onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
               />

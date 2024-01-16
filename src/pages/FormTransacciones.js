@@ -132,6 +132,7 @@ const FormTransacciones = () => {
                     console.log("Respuesta del servidor:", response); // Aquí se muestra la respuesta del servidor
                     
                     if (response.status === 201) {
+                        const confirmacion = window.confirm("¿Estás seguro de realizar la transacción?");
                         console.log("Transaccion realizada con éxito");
                         navegar('/transacciones');
                     } else {
@@ -148,6 +149,28 @@ const FormTransacciones = () => {
             console.log('llene todo');
             setSubmitting(false);
         }
+
+        //sss
+    
+        // Verificar si algún campo obligatorio está vacío
+        const camposObligatorios = [
+            "id_tipo_transaccion",
+            "id_producto",
+            "cod_producto",
+            "id_usuario",
+            "cantidad_ingreso_salida",
+            "cantidad_ingreso",
+        ];
+    
+
+    const campoVacio = camposObligatorios.find(campo => !values[campo]);
+
+    if (campoVacio) {
+        alert(`Llene todos los campos  por favor es obligatorio..`);
+        setSubmitting(false);
+        return;
+    }
+    //sss
     };
 
     const handleCancelClick = () => {
