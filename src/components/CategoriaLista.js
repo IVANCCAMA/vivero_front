@@ -13,7 +13,7 @@ const CategoriaLista = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/categorias");
+        const response = await axios.get("https://viverobackend-production.up.railway.app/api/categorias");
         setCategorias(response.data);
       } catch (error) {
         console.error("Error al obtener las categorías:", error);
@@ -26,7 +26,7 @@ const CategoriaLista = () => {
     console.log("ID de categoría a eliminar:", id_categoria);
     // Realiza la solicitud de eliminación con el ID de la categoría
     axios
-      .delete(`http://localhost:4000/api/categorias/${id_categoria}`)
+      .delete(`https://viverobackend-production.up.railway.app/api/categorias/${id_categoria}`)
       .then((response) => {
         if (response.status === 200) {
           // Actualiza el estado después de eliminar la categoría

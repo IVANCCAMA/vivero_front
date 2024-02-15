@@ -14,7 +14,7 @@ const VerTransaccion = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/transaccion/${id_transaccion}`);
+                const response = await axios.get(`https://viverobackend-production.up.railway.app/api/transaccion/${id_transaccion}`);
                 setTransaccion(response.data);
             } catch (error) {
                 console.error("Error al obtener los detalles del transaccion:", error);

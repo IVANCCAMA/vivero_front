@@ -16,7 +16,7 @@ const Categoria = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/categorias');
+        const response = await axios.get('https://viverobackend-production.up.railway.app/api/categorias');
         setCategorias(response.data);
       } catch (error) {
         console.error('Error al obtener las categorías:', error);

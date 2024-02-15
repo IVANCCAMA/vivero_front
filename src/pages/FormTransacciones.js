@@ -38,7 +38,7 @@ const FormTransacciones = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:4000/api/tipotransaccion')
+        axios.get('https://viverobackend-production.up.railway.app/api/tipotransaccion')
         .then(response => {
             setTransacciones(response.data); // Almacena las categorías en el estado
         })
@@ -46,7 +46,7 @@ const FormTransacciones = () => {
             console.error("Error al cargar las transacciones:", error);
         });
 
-        axios.get("http://localhost:4000/api/productos")
+        axios.get("https://viverobackend-production.up.railway.app/api/productos")
         .then((response) => {
             setProductos(response.data);
         })
@@ -127,7 +127,7 @@ const FormTransacciones = () => {
                 alert('Cantidad insuficiente en inventario');
             } else {
                 try {
-                    const response = await axios.post('http://localhost:4000/api/transaccion', transaccion);
+                    const response = await axios.post('https://viverobackend-production.up.railway.app/api/transaccion', transaccion);
                     
                     console.log("Respuesta del servidor:", response); // Aquí se muestra la respuesta del servidor
                     

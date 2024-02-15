@@ -14,7 +14,7 @@ const Home = () => {
     const [UsuariosCantidad, setUsuariosCantidad] = useState(0);
     const [TransaccionesCantidad, setTransaccionesCantidad] = useState(0);
     useEffect(() => {
-        fetch('http://localhost:4000/api/productos')
+        fetch('https://viverobackend-production.up.railway.app/api/productos')
             .then((response) => response.json())
             .then((data) => {
                 // Aquí asumimos que la respuesta es un array de productos y obtenemos la longitud
@@ -27,7 +27,7 @@ const Home = () => {
             });
 
 
-            fetch('http://localhost:4000/api/categorias')
+            fetch('https://viverobackend-production.up.railway.app/api/categorias')
             .then((response) => response.json())
             .then((data) => {
                 // Aquí asumimos que la respuesta es un array de productos y obtenemos la longitud
@@ -40,7 +40,7 @@ const Home = () => {
             });
 
 
-            fetch('http://localhost:4000/api/usuarios')
+            fetch('https://viverobackend-production.up.railway.app/api/usuarios')
             .then((response) => response.json())
             .then((data) => {
                 // Aquí asumimos que la respuesta es un array de productos y obtenemos la longitud
@@ -53,7 +53,7 @@ const Home = () => {
             });
 
 
-            fetch('http://localhost:4000/api/transaccion')
+            fetch('https://viverobackend-production.up.railway.app/api/transaccion')
             .then((response) => response.json())
             .then((data) => {
                 // Aquí asumimos que la respuesta es un array de productos y obtenemos la longitud

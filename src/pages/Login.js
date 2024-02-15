@@ -47,7 +47,7 @@ function Login() {
   
       try {
         // Realiza una solicitud POST para autenticar al usuario
-        const validacion = await axios.post("http://localhost:4000/api/usuarios/autenticar", {
+        const validacion = await axios.post("https://viverobackend-production.up.railway.app/api/usuarios/autenticar", {
           correo_usuario: correo_usuario,
           contrasenia_usuario: contrasenia_usuario,
         });

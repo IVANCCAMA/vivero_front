@@ -18,7 +18,7 @@ function UsuarioLista (){
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/usuarios");
+            const response = await axios.get("https://viverobackend-production.up.railway.app/api/usuarios");
             setUsuarios(response.data);
         } catch (error) {
             console.error("Error al obtener los usuarios:", error);
@@ -27,7 +27,7 @@ function UsuarioLista (){
 
     const handleDelete = async (id_usuario) => {
         try {
-            const response = await axios.delete(`http://localhost:4000/api/usuarios/${id_usuario}`);
+            const response = await axios.delete(`https://viverobackend-production.up.railway.app/api/usuarios/${id_usuario}`);
             if (response.status === 200) {
                 // Actualiza el estado después de eliminar el producto
                 setUsuarios((prevUsuarios) => prevUsuarios.filter((usuario) => usuario.id_usuario !== id_usuario));
@@ -46,7 +46,7 @@ function UsuarioLista (){
 
     const handleToggleActivity = async (id_usuario, isActive) => {
         try {
-            const response = await axios.put(`http://localhost:4000/api/usuarios/${id_usuario}`, {
+            const response = await axios.put(`https://viverobackend-production.up.railway.app/api/usuarios/${id_usuario}`, {
                 activo_usuario: !isActive, // Invertir el estado actual
             });
 

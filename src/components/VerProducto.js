@@ -18,7 +18,7 @@ const VerProducto = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/productos/${id_producto}`);
+                const response = await axios.get(`https://viverobackend-production.up.railway.app/api/productos/${id_producto}`);
                 setProducto(response.data);
                 setURL_imagen(response.data.imagen_producto)
             } catch (error) {

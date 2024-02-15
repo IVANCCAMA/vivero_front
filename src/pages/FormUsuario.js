@@ -19,7 +19,7 @@ function FormUsuario() {
 
   useEffect(() => {
     // Hacer una solicitud GET para obtener la lista de categorías
-    axios.get('http://localhost:4000/api/tipoUsuario')
+    axios.get('https://viverobackend-production.up.railway.app/api/tipoUsuario')
       .then(response => {
         settipodeUsuarios(response.data); // Almacena las categorías en el estado
       })
@@ -40,7 +40,7 @@ function FormUsuario() {
       || usuario.genero_usuario|| usuario.rol_usuario)
       {
       try {
-        const response = await axios.post('http://localhost:4000/api/usuarios', usuario);
+        const response = await axios.post('https://viverobackend-production.up.railway.app/api/usuarios', usuario);
   
         if (response.status === 201) {
           console.log("usuario creado con éxito");

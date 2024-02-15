@@ -40,7 +40,7 @@ const FormProducto = () => {
       setPrecioTotal(""); // Si el valor no es un número válido, establece una cadena vacía
     }
 
-    axios.get('http://localhost:4000/api/categorias')
+    axios.get('https://viverobackend-production.up.railway.app/api/categorias')
       .then(response => {
         setCategorias(response.data); // Almacena las categorías en el estado
       })
@@ -74,7 +74,7 @@ const FormProducto = () => {
         const resultado = await subirFirebase(imagen_archivo[0]);
         console.log("resultado subida>>>>>>", resultado);
         producto.imagen_producto = resultado.url;
-        const response = await axios.post('http://localhost:4000/api/productos', producto);
+        const response = await axios.post('https://viverobackend-production.up.railway.app/api/productos', producto);
 
         if (response.status === 201) {
           console.log("Producto creado con éxito");
