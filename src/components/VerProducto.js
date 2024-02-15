@@ -7,16 +7,20 @@ import './VerProductos.css';
 import penImage from '../img/logo.png';
 import { Icon } from '@iconify/react';
 
+
 const VerProducto = () => {
     const { id_producto } = useParams();
     const [producto, setProducto] = useState(null);
+    const [imagen, setImagen] = useState(null);
+    const [URL_imagen, setURL_imagen] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://localhost:4000/api/productos/${id_producto}`);
                 setProducto(response.data);
-                console.log("DATOS PRODUCTO>>>", producto);
+                setURL_imagen(response.data.imagen_producto)
             } catch (error) {
                 console.error("Error al obtener los detalles del producto:", error);
             }
@@ -54,34 +58,23 @@ const VerProducto = () => {
             doc.text('SN ZONA/BARRIO:', 130, 20);
             doc.text('TUSCAPUGIO ALTO COCHABAMBA', 130, 25);
 
-            console.log("URL PRODUCTO>>>", producto.imagen_producto);
-
             if (producto.imagen_producto) {
                 try {
-                    const imgData = decodeURIComponent(producto.imagen_producto);
-                    console.log("DESPUES>>>",imgData);
+
+                    console.log("ANTES>>>", URL_imagen);
+                    
                     const imgX = 2;
                     const imgY = 100;
                     const imgWidth = 80;
                     const imgHeight = 80;
-                    doc.addImage(imgData, 'JPEG', imgX, imgY, imgWidth, imgHeight);
+
+                    // Agregar la imagen al documento
+                    doc.addImage(URL_imagen, 'JPEG', imgX, imgY, imgWidth, imgHeight);
                 } catch (error) {
-                    console.error('Error al cargar la imagen:', error);
+                    console.error('Error al cargar o agregar la imagen:', error.message);
                 }
-            } else {
-                // URL de una imagen de marcador de posición de Lorem Picsum
-                const placeholderImageURL = 'https://picsum.photos/200/200'; //URLLLLLLLLLLLL
-
-                // Asegúrate de que las coordenadas sean válidas
-                const imgX = 70;
-                const imgY = 30;
-
-                // Ajusta el tamaño de la imagen según tus necesidades
-                const imgWidth = 80;
-                const imgHeight = 80;
-
-                doc.addImage(placeholderImageURL, 'JPEG', imgX, imgY, imgWidth, imgHeight);
             }
+
             doc.text('Detalle de producto:', 15, 118);
             const startY = 120;
             /* const lineHeight = 10; */
@@ -116,30 +109,9 @@ const VerProducto = () => {
                     fillColor: [229, 217, 182]
                 }
             });
-            
 
             doc.save(`VerProducto_${producto.id_producto}.pdf`);
         }
-    };
-    const loadImage = async (url) => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, img.width, img.height);
-                const dataURL = canvas.toDataURL('image/jpeg');
-                resolve(dataURL);
-            };
-            img.onerror = (errorEvent) => {
-                console.error('Error al cargar la imagen:', errorEvent);
-                reject(errorEvent);
-            };
-            img.src = url;
-        });
     };
 
     return (
