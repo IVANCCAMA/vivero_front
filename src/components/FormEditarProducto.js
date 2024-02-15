@@ -31,7 +31,7 @@ const navegar = useNavigate();
 
 useEffect(() => {
   // Hacer una solicitud GET para obtener la lista de categorías
-  axios.get('http://localhost:4000/api/categorias')
+  axios.get('https://viverobackend-production.up.railway.app/api/categorias')
     .then(response => {
       setCategorias(response.data); // Almacena las categorías en el estado
     })
@@ -45,7 +45,7 @@ useEffect(() => {
 useEffect(() => {
   const fetchProducto = async () => {
     try {
-      const responseProducto = await axios.get(`http://localhost:4000/api/productos/${id_producto}`);
+      const responseProducto = await axios.get(`https://viverobackend-production.up.railway.app/api/productos/${id_producto}`);
       const infoProduct = responseProducto.data;
       infoProducto.id_categoria = infoProduct.id_categoria 
       infoProducto.precio_total_producto = infoProduct.precio_total_producto
@@ -85,7 +85,7 @@ const handleSubmit = async (values) => {
       console.log('valores enviados', values);
 
     // Realiza una solicitud PUT para actualizar el producto
-    const response = await axios.put(`http://localhost:4000/api/productos/${id_producto}`, {
+    const response = await axios.put(`https://viverobackend-production.up.railway.app/api/productos/${id_producto}`, {
       id_categoria,
       nombre_producto,
       precio_total_producto,

@@ -13,7 +13,7 @@ function TransaccionLista (){
     
         const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/transaccion");
+            const response = await axios.get("https://viverobackend-production.up.railway.app/api/transaccion");
             setTransacciones(response.data);
         } catch (error) {
             console.error("Error al obtener las transacciones:", error);

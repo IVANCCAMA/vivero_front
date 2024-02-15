@@ -17,7 +17,7 @@ function FormEditarCategoria() {
   useEffect(() => {
     const fetchCategoria = async () => {
       try {
-        const responseCategoria = await axios.get(`http://localhost:4000/api/categorias/${id_categoria}`);
+        const responseCategoria = await axios.get(`https://viverobackend-production.up.railway.app/api/categorias/${id_categoria}`);
         const infoCategoria = responseCategoria.data;
         infoCate.nombre_categoria = infoCategoria.nombre_categoria 
         infoCate.descripcion_categoria = infoCategoria.descripcion_categoria
@@ -36,7 +36,7 @@ function FormEditarCategoria() {
       const { nombre_categoria, descripcion_categoria } = values;
 
       // Realiza una solicitud PUT para actualizar la categoría
-      const response = await axios.put(`http://localhost:4000/api/categorias/${id_categoria}`, {
+      const response = await axios.put(`https://viverobackend-production.up.railway.app/api/categorias/${id_categoria}`, {
         nombre_categoria,
         descripcion_categoria,
       });

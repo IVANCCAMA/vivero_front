@@ -31,7 +31,7 @@ function FormEditarUsuario() {
 
         useEffect(() => {
     // Hacer una solicitud GET para obtener la lista de categorías
-    axios.get('http://localhost:4000/api/tipoUsuario')
+    axios.get('https://viverobackend-production.up.railway.app/api/tipoUsuario')
         .then(response => {
             settipodeUsuarios(response.data); // Almacena las categorías en el estado
         })
@@ -45,7 +45,7 @@ function FormEditarUsuario() {
             useEffect(() => {
                 const fetchUsuario = async () => {
                 try {
-                    const responseUsuario = await axios.get(`http://localhost:4000/api/usuarios/${id_usuario}`);
+                    const responseUsuario = await axios.get(`https://viverobackend-production.up.railway.app/api/usuarios/${id_usuario}`);
                     const infoUser = responseUsuario.data;
                     infoUsuario.id_tipo_usuario = infoUser.id_tipo_usuario 
                     infoUsuario.nombre_usuario = infoUser.nombre_usuario
@@ -82,7 +82,7 @@ function FormEditarUsuario() {
         console.log('valores enviados', values);
   
       // Realiza una solicitud PUT para actualizar el producto
-      const response = await axios.put(`http://localhost:4000/api/usuarios/${id_usuario}`, {
+      const response = await axios.put(`https://viverobackend-production.up.railway.app/api/usuarios/${id_usuario}`, {
         nombre_usuario,
         id_tipo_usuario,
         ci_usuario,

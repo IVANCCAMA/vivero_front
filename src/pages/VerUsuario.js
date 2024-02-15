@@ -15,7 +15,7 @@ const VerUsuario = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/usuarios/${id_usuario}`);
+                const response = await axios.get(`https://viverobackend-production.up.railway.app/api/usuarios/${id_usuario}`);
                 setUsuario(response.data);
             } catch (error) {
                 console.error("Error al obtener los detalles del usuario:", error);

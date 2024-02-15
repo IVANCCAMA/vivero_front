@@ -17,7 +17,7 @@ const FormCategoria = () => {
       }
 
       // Realiza una solicitud POST para crear la categoría
-      const response = await axios.post('http://localhost:4000/api/categorias', {
+      const response = await axios.post('https://viverobackend-production.up.railway.app/api/categorias', {
         nombre_categoria,
         descripcion_categoria,
       });

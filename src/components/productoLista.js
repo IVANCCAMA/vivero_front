@@ -21,7 +21,7 @@ function ProductoLista({ searchQuery }) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/productos");
+      const response = await axios.get("https://viverobackend-production.up.railway.app/api/productos");
       setProductos(response.data);
     } catch (error) {
       console.error("Error al obtener los productos:", error);
@@ -48,7 +48,7 @@ function ProductoLista({ searchQuery }) {
 
   const handleDelete = async (id_producto) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/productos/${id_producto}`);
+      const response = await axios.delete(`https://viverobackend-production.up.railway.app/api/productos/${id_producto}`);
       if (response.status === 200) {
         // Actualiza el estado después de eliminar el producto
         setProductos((prevProductos) => prevProductos.filter((producto) => producto.id_producto !== id_producto));
