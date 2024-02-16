@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import imgLogin from "../img/imgLogin.png";
+import imgLogin from "../../img/imgLogin.png";
 import axios from "axios";
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 
 
 function Login() {

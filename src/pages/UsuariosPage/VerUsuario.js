@@ -5,7 +5,7 @@ import 'jspdf-autotable';
 import axios from 'axios';
 /* import './VerProductos.css'; */
 
-import penImage from '../img/logo.png'; 
+import logoPDF from '../../img/logo.png'; 
 
 
 const VerUsuario = () => {
@@ -29,7 +29,7 @@ const VerUsuario = () => {
         if (usuario) {
             const doc = new jsPDF();
     
-            const imageURL = penImage;
+            const imageURL = logoPDF;
 
             // Asegúrate de que las coordenadas y dimensiones sean válidas
             doc.addImage(imageURL, 'JPEG', 1, 1,25,15);

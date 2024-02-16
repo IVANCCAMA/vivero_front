@@ -1,8 +1,8 @@
 import React from "react";
 import './inventario.css';
-import '../App.css';
-import SubMenuInventario from "../components/SubMenuInventario";
-import ProductoLista from "../components/productoLista";
+import '../../App.css';
+import SubMenuInventario from "../../components/SubMenuInventario";
+import ProductoLista from "../../components/productoLista";
 
 function Inventario() {
 

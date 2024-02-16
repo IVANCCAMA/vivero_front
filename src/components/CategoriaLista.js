@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FormCategoria from "../pages/Formcategoria";
+import FormCategoria from "../pages/FormCategoriaPage/Formcategoria";
 import { Link } from "react-router-dom";
 import "./CategoriaLista.css";
 import { Icon } from '@iconify/react';

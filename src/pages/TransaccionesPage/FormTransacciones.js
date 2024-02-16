@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 import * as yup from "yup";
 import { Formik, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext";
+import { useAuth } from "../../auth/AuthContext";
 import { Icon } from '@iconify/react';
 
 const FormTransacciones = () => {
