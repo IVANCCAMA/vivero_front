@@ -1,95 +1,6 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  height: 100%;
-  background-color: #E5D9B6;
-}
-
-#root {
-  min-height: 100%;
-  background-color: #F3F4E9;
-}
-
-.header {
-  grid-area: header;
-  background-color: #285430;
-}
-
-.navbar {
-  grid-area: navbar;
-  background-color: #E5D9B6;
-}
-
-
-.main {
-  grid-area: main;
-  background-color: #F3F4E9;
-}
-
-.footer {
-  grid-area: footer;
-  background-color: #285430;
+.texto {
   color: white;
-  text-align: center;
-}
-
-.grid-container>* {
-  box-shadow: -1px 1px 6px 0px rgba(0, 0, 0, 0.75);
-  padding: 7px;
-  box-sizing: border-box;
-}
-
-.grid-container {
-  display: grid;
-  gap: 1px;
-  height: 100vh;
-  grid-template: 
-      "header" 65px 
-      "navbar" 80px
-      "main" auto
-      "footer" 50px;
-}
-
-@media (min-width: 600px) {
-
-  .grid-container {     
-      grid-template-columns: 200px auto;  
-      grid-template-rows:100px 50px auto 100px;
-      grid-template: 
-          "header header" 65px 
-          "navbar navbar" 80px
-          "main main" auto
-          "footer footer" 50px /
-          2500px   auto;
-  }
-  
-}
-
-@media (min-width: 900px) {
-
-  .grid-container {     
-      grid-template: 
-          "header header header" 65px             
-          "navbar main main " auto                
-          "footer footer footer" 50px /
-          250px   auto   200px;
-  }
-  
-}
-.texto{
-  color: white;
-  display: inline; 
+  display: inline;
   vertical-align: middle;
 }
 
@@ -100,10 +11,23 @@ body {
   margin: 0;
 }
 
-.logo {
-  width: 115px;
-  vertical-align: middle; 
+
+
+.header {
+  grid-area: header;
+  background-color: #285430;
 }
 
+.footer {
+  grid-area: footer;
+  background-color: #285430;
+  color: white;
+  text-align: center;
 
 
+}
+
+.logo {
+  width: 115px;
+  vertical-align: middle;
+}
