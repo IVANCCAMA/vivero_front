@@ -5,7 +5,7 @@ import FormProducto from "./FormProducto";
 import { Link } from "react-router-dom";
 import 'jspdf-autotable';
 import { jsPDF } from 'jspdf';
-import logoPDF from '../img/logo.png';
+import logoPDF from '../../img/logo.png';
 import { Icon } from '@iconify/react';
 
 function ProductoLista({ searchQuery }) {

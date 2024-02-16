@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import axios from 'axios';
 import './VerProductos.css';
-import logoPDF from '../img/logo.png';
+import logoPDF from '../../img/logo.png';
 import { Icon } from '@iconify/react';
 
 

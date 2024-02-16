@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import SubMenuInventario from '../../components/SubMenuInventario';
+import SubMenuInventario from '../../components/Menu/SubMenuInventario';
 import { Link } from 'react-router-dom';
 import './categoria.css';
-import CategoriaLista from '../../components/CategoriaLista';
+import CategoriaLista from '../../components/Categoria/CategoriaLista';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import axios from 'axios';
