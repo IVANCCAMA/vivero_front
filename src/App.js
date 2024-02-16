@@ -35,12 +35,13 @@ function App() {
             element={(
               <>
                 <Header />
+                <div className='container-fluid'>
                 <div className='row'>
                   <div className='col-2'>
                     <Menu />
                   </div>
                   <div className='col-10'>
-                    <main className='main'>
+                    <main className='container'>
                       <Routes>
                         <Route element={<PrivateRoutes />}>
                           <Route path='/' exact element={<Home />} />
@@ -65,6 +66,7 @@ function App() {
                       </Routes>
                     </main>
                   </div>
+                </div>
                 </div>
                 <Footer />
               </>
