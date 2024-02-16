@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './menu.css';
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 
 function Menu() {
     const location = useLocation();

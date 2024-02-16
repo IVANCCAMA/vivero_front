@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import * as yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 import './formproducto.css'
-import { deleteFile, recuperarUrlImagen, subirImagen } from "../firebase/config";
+import { deleteFile, recuperarUrlImagen, subirImagen } from "../../firebase/config";
 import { Icon } from '@iconify/react';
 
 

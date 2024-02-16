@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import SubMenuInventario from '../components/SubMenuInventario';
+import SubMenuInventario from '../../components/Menu/SubMenuInventario';
 import { Link } from 'react-router-dom';
 import './categoria.css';
-import CategoriaLista from '../components/CategoriaLista';
+import CategoriaLista from '../../components/Categoria/CategoriaLista';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import axios from 'axios';
-import penImage from '../img/logo.png';
+import logoPDF from '../../img/logo.png';
 import { Icon } from '@iconify/react';
 
 
@@ -29,7 +29,7 @@ const Categoria = () => {
   const generarPDFcategorias = () => {
     if (categorias.length > 0) {
       const doc = new jsPDF();
-      const imageURL = penImage;
+      const imageURL = logoPDF;
   
       // Asegúrate de que las coordenadas y dimensiones sean válidas
       doc.addImage(imageURL, 'JPEG', 10, 10, 25, 15);

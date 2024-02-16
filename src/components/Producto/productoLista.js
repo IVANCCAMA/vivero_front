@@ -5,7 +5,7 @@ import FormProducto from "./FormProducto";
 import { Link } from "react-router-dom";
 import 'jspdf-autotable';
 import { jsPDF } from 'jspdf';
-import penImage from '../img/logo.png';
+import logoPDF from '../../img/logo.png';
 import { Icon } from '@iconify/react';
 
 function ProductoLista({ searchQuery }) {
@@ -73,7 +73,7 @@ const generarPDFListaProductos = () => {
   if (productos.length>0) {
       const doc = new jsPDF();
 
-      const imageURL = penImage;
+      const imageURL = logoPDF;
 
       // Asegúrate de que las coordenadas y dimensiones sean válidas
       doc.addImage(imageURL, 'JPEG', 1, 1,25,15);

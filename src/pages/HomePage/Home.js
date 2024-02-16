@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxes, faListAlt, faUsers, faExchangeAlt, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './home.css';
-import { useAuth } from '../auth/AuthContext';
+import { useAuth } from '../../auth/AuthContext';
 
 
 const Home = () => {

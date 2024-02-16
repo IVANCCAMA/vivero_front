@@ -1,10 +1,10 @@
-import '../App.css';
+import '../../App.css';
 import './Usuario.css'
 import React, { useState, useEffect } from 'react';
 import UsuarioLista from './UsuarioLista';
 import axios from 'axios';
 import { jsPDF } from 'jspdf';
-import penImage from '../img/logo.png';
+import logoPDF from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
@@ -27,7 +27,7 @@ function Usuarios() {
     const generarPDFUsuarios = () => {
         if (usuarios.length > 0) {
             const doc = new jsPDF();
-            const imageURL = penImage;
+            const imageURL = logoPDF;
 
             // Asegúrate de que las coordenadas y dimensiones sean válidas
             doc.addImage(imageURL, 'JPEG', 10, 10, 25, 15);
