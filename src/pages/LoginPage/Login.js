@@ -42,9 +42,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (correo_usuario !== "" && contrasenia_usuario !== "") {
-      /* console.log("Correo recibido:", correo_usuario);
-      console.log("Contraseña recibida:", contrasenia_usuario); */
-  
+
       try {
         // Realiza una solicitud POST para autenticar al usuario
         const validacion = await axios.post("https://viverobackend-production.up.railway.app/api/usuarios/autenticar", {
@@ -53,7 +51,7 @@ function Login() {
         });
 
         console.log("USUARIO LOGEADO>>", validacion.data.user);
-  
+
         if (validacion) {
           const user = validacion.data.user
           dispatch({ type: 'LOGIN', payload: user });
@@ -77,58 +75,62 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="row d-flex justify-content-center align-items-center">
-        <div className="col-md-6">
-          <div className="login-sidebar">
-            <img className="sidebar-image" src={imgLogin} alt="imgLogin" />
+    <div className="fondo-login-hero">
+      <div className="container d-flex justify-content-center align-items-center py-5">
+        <div className="fondo-login p-5">
+          <div className="row justify-content-center g-5">
+            <div className="col-md-6">
+              <div className="login-sidebar">
+                <img className="sidebar-image img-fluid object-fit-cover" src={imgLogin} alt="logo vivero corazon de Bolivia" />
+              </div>
+            </div>
+            <div className="col-md-5 d-flex align-items-center justify-content-center">
+              <form id="loginform" onSubmit={loginSubmit}>
+                  <h2 className="text-center ">Iniciar sesión</h2>
+                <div className="form-group">
+                  <div className="text-start">Email</div>
+                  <input
+                    type="correo_usuario"
+                    className="form-control"
+                    id="EmailInput"
+                    name="EmailInput"
+                    aria-describedby="emailHelp"
+                    placeholder="Ingrese correo_usuario"
+                    style={{ backgroundColor: "#E0E0E0" }}
+                    onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
+                  />
+                  <small id="emailHelp" className="text-danger form-text">
+                    {Correo_usuarioError}
+                  </small>
+                </div>
+                <div className="form-group">
+                  <div className="text-start">Contraseña</div>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Ingrese contraseña"
+                    style={{ backgroundColor: "#E0E0E0" }}
+                    onChange={(event) => setContrasenia_usuario(event.target.value)}
+                  />
+                  <small id="passworderror" className="text-danger form-text">
+                    {passwordError}
+                  </small>
+                </div>
+                <div className="form-group form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="exampleCheck1"
+                  />
+                  <div className="form-check-label text-start">Recordar contraseña</div>
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  <div className="text-boton">Iniciar sesión</div>
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div className="col-md-5">
-          <form id="loginform" onSubmit={loginSubmit}>
-            <div className="form-group">
-              <h2 className="text-center">Iniciar Sesión</h2>
-              <label>Email</label>
-              <input
-                type="correo_usuario"
-                className="form-control"
-                id="EmailInput"
-                name="EmailInput"
-                aria-describedby="emailHelp"
-                placeholder="Ingrese correo_usuario"
-                style={{ backgroundColor: "#E0E0E0" }}
-                onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
-              />
-              <small id="emailHelp" className="text-danger form-text">
-                {Correo_usuarioError}
-              </small>
-            </div>
-            <div className="form-group">
-              <label>Contraseña</label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                placeholder="Ingrese contraseña"
-                style={{ backgroundColor: "#E0E0E0" }}
-                onChange={(event) => setContrasenia_usuario(event.target.value)}
-              />
-              <small id="passworderror" className="text-danger form-text">
-                {passwordError}
-              </small>
-            </div>
-            <div className="form-group form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label">Recordar contraseña</label>
-            </div>
-            <button type="submit" className="btn-login btn-primary">
-              Iniciar Sesión
-            </button>
-          </form>
         </div>
       </div>
     </div>
