@@ -3,7 +3,6 @@ import './inventario.css';
 import '../../App.css';
 import SubMenuInventario from "../../components/Menu/SubMenuInventario";
 import ProductoLista from "../../components/Producto/productoLista";
-/*IVI FEO */
 function Inventario() {
 
   return (
