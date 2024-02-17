@@ -4,6 +4,9 @@
   vertical-align: middle;
 }
 
+:root {
+  background-color: #F3F4E9;
+}
 
 .header div {
   line-height: 50px;

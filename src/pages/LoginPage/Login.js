@@ -86,7 +86,7 @@ function Login() {
             </div>
             <div className="col-md-5 d-flex align-items-center justify-content-center">
               <form id="loginform" onSubmit={loginSubmit}>
-                  <h2 className="text-center ">Iniciar sesión</h2>
+                <h2 className="text-center ">Iniciar sesi&oacute;n  </h2>
                 <div className="form-group">
                   <div className="text-start">Email</div>
                   <input
@@ -95,7 +95,7 @@ function Login() {
                     id="EmailInput"
                     name="EmailInput"
                     aria-describedby="emailHelp"
-                    placeholder="Ingrese correo_usuario"
+                    placeholder="Ingrese correo electronico"
                     style={{ backgroundColor: "#E0E0E0" }}
                     onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
                   />
