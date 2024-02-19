@@ -5,6 +5,7 @@ img {
 }
 
 .form-group {
+  width: auto;
   margin-bottom: 15px;
 }
 
@@ -26,9 +27,15 @@ h2 {
 }
 
 .btn {
+  background-color: #5F8D4E;
   border-radius: 25px;
   padding-left: 66px;
   padding-right: 66px;
+  border: none;
+}
+
+.btn:hover  {
+  background-color: #2c5e1a;
 }
 
 .text-boton {

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import imgLogin from "../../img/imgLogin.png";
 import axios from "axios";
-import { useAuth } from '../../auth/AuthContext';
-
+import { useAuth } from "../../auth/AuthContext";
 
 function Login() {
   const { dispatch } = useAuth();
@@ -12,7 +11,16 @@ function Login() {
   const [correo_usuario, setCorreo_usuario] = useState(""); // Corregido el nombre aquí
   const [passwordError, setpasswordError] = useState("");
   const [Correo_usuarioError, setCorreo_usuarioError] = useState("");
+  const [recordarContrasenia, setRecordarContrasenia] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const passwordFromCookie = localStorage.getItem("rememberedPassword");
+    if (passwordFromCookie) {
+      setContrasenia_usuario(passwordFromCookie);
+      setRecordarContrasenia(true);
+    }
+  }, []);
 
   const handleValidation = () => {
     let formIsValid = true;
@@ -31,7 +39,9 @@ function Login() {
       ) */
     ) {
       formIsValid = false;
-      setpasswordError("La contraseña debe cumplir con los requisitos de seguridad.");
+      setpasswordError(
+        "La contraseña debe cumplir con los requisitos de seguridad."
+      );
     } else {
       setpasswordError("");
     }
@@ -42,19 +52,19 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (correo_usuario !== "" && contrasenia_usuario !== "") {
-
       try {
         // Realiza una solicitud POST para autenticar al usuario
-        const validacion = await axios.post("https://viverobackend-production.up.railway.app/api/usuarios/autenticar", {
-          correo_usuario: correo_usuario,
-          contrasenia_usuario: contrasenia_usuario,
-        });
-
-        console.log("USUARIO LOGEADO>>", validacion.data.user);
+        const validacion = await axios.post(
+          "https://viverobackend-production.up.railway.app/api/usuarios/autenticar",
+          {
+            correo_usuario: correo_usuario,
+            contrasenia_usuario: contrasenia_usuario,
+          }
+        );
 
         if (validacion) {
-          const user = validacion.data.user
-          dispatch({ type: 'LOGIN', payload: user });
+          const user = validacion.data.user;
+          dispatch({ type: "LOGIN", payload: user });
           navigate("/");
         } else {
           alert("Usuario no encontrado");
@@ -74,19 +84,25 @@ function Login() {
     }
   };
 
-  return (
+  const { authState } = useAuth();
+
+  return !authState.isAuthenticated ? (
     <div className="fondo-login-hero">
       <div className="container d-flex justify-content-center align-items-center py-5">
         <div className="fondo-login p-5">
           <div className="row justify-content-center g-5">
             <div className="col-md-6">
               <div className="login-sidebar">
-                <img className="sidebar-image img-fluid object-fit-cover" src={imgLogin} alt="logo vivero corazon de Bolivia" />
+                <img
+                  className="sidebar-image img-fluid object-fit-cover"
+                  src={imgLogin}
+                  alt="logo vivero corazon de Bolivia"
+                />
               </div>
             </div>
             <div className="col-md-5 d-flex align-items-center justify-content-center">
               <form id="loginform" onSubmit={loginSubmit}>
-                  <h2 className="text-center ">Iniciar sesión</h2>
+                <h2 className="text-center ">Iniciar sesi&oacute;n </h2>
                 <div className="form-group">
                   <div className="text-start">Email</div>
                   <input
@@ -95,12 +111,12 @@ function Login() {
                     id="EmailInput"
                     name="EmailInput"
                     aria-describedby="emailHelp"
-                    placeholder="Ingrese correo_usuario"
+                    placeholder="Ingrese correo electronico"
                     style={{ backgroundColor: "#E0E0E0" }}
                     onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
                   />
                   <small id="emailHelp" className="text-danger form-text">
-                    {Correo_usuarioError}
+                    <p className="text-start">{Correo_usuarioError}</p>
                   </small>
                 </div>
                 <div className="form-group">
@@ -111,10 +127,12 @@ function Login() {
                     id="exampleInputPassword1"
                     placeholder="Ingrese contraseña"
                     style={{ backgroundColor: "#E0E0E0" }}
-                    onChange={(event) => setContrasenia_usuario(event.target.value)}
+                    onChange={(event) =>
+                      setContrasenia_usuario(event.target.value)
+                    }
                   />
                   <small id="passworderror" className="text-danger form-text">
-                    {passwordError}
+                    <p className="text-start">{passwordError}</p>
                   </small>
                 </div>
                 <div className="form-group form-check">
@@ -122,8 +140,12 @@ function Login() {
                     type="checkbox"
                     className="form-check-input"
                     id="exampleCheck1"
+                    checked={recordarContrasenia}
+                    onChange={() => setRecordarContrasenia(!recordarContrasenia)}
                   />
-                  <div className="form-check-label text-start">Recordar contraseña</div>
+                  <div className="form-check-label text-start">
+                    Recordar contraseña
+                  </div>
                 </div>
                 <button type="submit" className="btn btn-primary">
                   <div className="text-boton">Iniciar sesión</div>
@@ -134,6 +156,8 @@ function Login() {
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 }
 
