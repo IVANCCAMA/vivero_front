@@ -5,6 +5,7 @@ img {
 }
 
 .form-group {
+  width: auto;
   margin-bottom: 15px;
 }
 

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import imgLogin from "../../img/imgLogin.png";
 import axios from "axios";
 import { useAuth } from "../../auth/AuthContext";
-import Home from "../HomePage/Home";
 
 function Login() {
   const { dispatch } = useAuth();
@@ -12,7 +11,16 @@ function Login() {
   const [correo_usuario, setCorreo_usuario] = useState(""); // Corregido el nombre aquí
   const [passwordError, setpasswordError] = useState("");
   const [Correo_usuarioError, setCorreo_usuarioError] = useState("");
+  const [recordarContrasenia, setRecordarContrasenia] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const passwordFromCookie = localStorage.getItem("rememberedPassword");
+    if (passwordFromCookie) {
+      setContrasenia_usuario(passwordFromCookie);
+      setRecordarContrasenia(true);
+    }
+  }, []);
 
   const handleValidation = () => {
     let formIsValid = true;
@@ -54,8 +62,6 @@ function Login() {
           }
         );
 
-        console.log("USUARIO LOGEADO>>", validacion.data.user);
-
         if (validacion) {
           const user = validacion.data.user;
           dispatch({ type: "LOGIN", payload: user });
@@ -80,8 +86,7 @@ function Login() {
 
   const { authState } = useAuth();
 
-  return (
-    !authState.isAuthenticated ?
+  return !authState.isAuthenticated ? (
     <div className="fondo-login-hero">
       <div className="container d-flex justify-content-center align-items-center py-5">
         <div className="fondo-login p-5">
@@ -111,7 +116,7 @@ function Login() {
                     onChange={(event) => setCorreo_usuario(event.target.value)} // Corregido el nombre aquí
                   />
                   <small id="emailHelp" className="text-danger form-text">
-                    {Correo_usuarioError}
+                    <p className="text-start">{Correo_usuarioError}</p>
                   </small>
                 </div>
                 <div className="form-group">
@@ -127,7 +132,7 @@ function Login() {
                     }
                   />
                   <small id="passworderror" className="text-danger form-text">
-                    {passwordError}
+                    <p className="text-start">{passwordError}</p>
                   </small>
                 </div>
                 <div className="form-group form-check">
@@ -135,6 +140,8 @@ function Login() {
                     type="checkbox"
                     className="form-check-input"
                     id="exampleCheck1"
+                    checked={recordarContrasenia}
+                    onChange={() => setRecordarContrasenia(!recordarContrasenia)}
                   />
                   <div className="form-check-label text-start">
                     Recordar contraseña
@@ -148,7 +155,9 @@ function Login() {
           </div>
         </div>
       </div>
-    </div> : <Navigate to='/' />
+    </div>
+  ) : (
+    <Navigate to="/" />
   );
 }
 
