@@ -15,7 +15,7 @@ function Menu() {
     };
 
     return (
-        <div className="Menu">
+        <div className="col-2 Menu">
             {!ocultarMenu && (
                 <div className="menu-lateral">
                 </div>

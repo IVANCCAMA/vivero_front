@@ -35,11 +35,8 @@ function App() {
             element={(
               <>
                 <Header />
-                <div className='container-fluid'>
                 <div className='row'>
-                  <div className='col-2'>
-                    <Menu />
-                  </div>
+                  <Menu />
                   <div className='col-10'>
                     <main className='container'>
                       <Routes>
@@ -66,7 +63,6 @@ function App() {
                       </Routes>
                     </main>
                   </div>
-                </div>
                 </div>
                 <Footer />
               </>
