@@ -110,7 +110,7 @@ function App() {
               <Footer />
             </>
           ) : (
-            <Login />
+            <Navigate to='/login' />
           )
         }
       />
