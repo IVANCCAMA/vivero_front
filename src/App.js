@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Menu from "./components/Menu/menu";
 import Home from "./pages/HomePage/Home";
@@ -26,6 +26,12 @@ import PrivateRoutes from "./PrivateRoutes";
 
 function App() {
   const { authState } = useAuth();
+  const [isLightTheme, setIsLightTheme] = useState(() => !localStorage.getItem('light'));
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed((prevCollapsed) => !prevCollapsed);
+  };
 
   return (
     <Routes>
@@ -36,10 +42,9 @@ function App() {
           authState.isAuthenticated ? (
             <>
               <Header />
-              <div className="row">
-                <Menu />
-                <div className="col-10">
-                  <main className="container">
+              <div className={`wrapper ${isSidebarCollapsed ? 'collapsed' : ''}`}>
+                <Menu isLightTheme={isLightTheme} toggleSidebar={toggleSidebar} />
+                  <div className="container">
                     <Routes>
                       <Route element={<PrivateRoutes />}>
                         <Route path="/" exact element={<Home />} />
@@ -104,8 +109,7 @@ function App() {
                       </Route>
                       <Route path="/*" element={<NotFound />} />
                     </Routes>
-                  </main>
-                </div>
+                  </div>
               </div>
               <Footer />
             </>

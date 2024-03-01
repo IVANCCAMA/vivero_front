@@ -8,13 +8,13 @@
 }
 
 
-.container{
+/* .container{
   display: flex;
   align-items: center;
   text-align: center;
   padding: 10px;
   border-radius: 30px;
-}
+} */
 
 /* Estilos para el botón de "Agregar producto" */
 .botonA {
