@@ -179,25 +179,25 @@ const generarPDFListaProductos = () => {
         <div className="emoji-sad">😞</div>
       </div>
       ) : (
-        <table className="listaP">
+        <table className="table">
           <thead>
             <tr>
-              <th>Codigo</th>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th>Stock actual</th>
-              <th>Stock minimo</th>
-              <th>Precio total</th>
-              <th>Tamaño</th>
-              <th>Fecha creacion</th>
-              <th>Fecha modificacion</th>
-              <th>Acciones</th> 
+              <th scope="col">Codigo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Stock actual</th>
+              <th scope="col">Stock minimo</th>
+              <th scope="col">Precio total</th>
+              <th scope="col">Tamaño</th>
+              <th scope="col">Fecha creacion</th>
+              <th scope="col">Fecha modificacion</th>
+              <th scope="col">Acciones</th> 
             </tr>
           </thead>
           <tbody>
             {productos.map((producto) => (
               <tr key={producto.id_producto}>
-                <td>{producto.cod_producto}</td>
+                <th scope="row">{producto.cod_producto}</th>
                 <td>{producto.nombre_producto}</td>
                 <td>{producto.nombre_categoria}</td>
                 <td>{producto.stok_actual_producto}</td>
