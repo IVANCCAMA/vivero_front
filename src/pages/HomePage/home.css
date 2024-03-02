@@ -1,84 +1,81 @@
-.division {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-.panel-letras{
-    display: block;
+.panel-letras {
+  display: block;
 }
 
-.panel-Producto{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color: #008789;
-    color: white;
-    text-decoration: none;
-}
-.panel-Categoria{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color:#FF9900;
-    color: white;
-    text-decoration: none;
-}
-.panel-Usuario{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color: #6A46BC;
-    color: white;
-    text-decoration: none;
-}
-.panel-Transaccion{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color: #3C55BB;
-    color: white;
-    text-decoration: none;
-}
-.panel-Reporte{
-    width: calc(33.33% - 20px);
-    height: 130px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1px;
-    background-color: #FA3663;
-    color: white;
-    text-decoration: none;
+.panel-Producto {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: #008789;
+  color: white;
+  text-decoration: none;
 }
 
+.panel-Categoria {
+  width: calc(33.33% - 20px);
+  height: 130px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: #ff9900;
+  color: white;
+  text-decoration: none;
+}
+
+.panel-Usuario {
+  width: calc(33.33% - 20px);
+  height: 130px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: #6a46bc;
+  color: white;
+  text-decoration: none;
+}
+
+.panel-Transaccion {
+  width: calc(33.33% - 20px);
+  height: 130px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: #3c55bb;
+  color: white;
+  text-decoration: none;
+}
+
+.panel-Reporte {
+  width: calc(33.33% - 20px);
+  height: 130px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: #fa3663;
+  color: white;
+  text-decoration: none;
+}
 
 .icon-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Toma el 100% de la altura del div */
-    width: 100px;
-    border-radius: 8px;
-    background-color: rgba(200, 200, 200, 0.5);
-    margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  /* Toma el 100% de la altura del div */
+  width: 100px;
+  border-radius: 8px;
+  background-color: rgba(200, 200, 200, 0.5);
+  margin-right: 20px;
 }
 
 .panel-Producto p,
@@ -87,46 +84,51 @@
 .panel-Transaccion p,
 .panel-Reporte p,
 .panel-F p {
-    font-size: 1.2em; /* Tamaño del texto del párrafo */
-    display: block;
-    text-align: center; /* Alineación del texto */
+  font-size: 1.2em;
+  /* Tamaño del texto del párrafo */
+  display: block;
+  text-align: center;
+  /* Alineación del texto */
 }
+
 /* Estilos para las pantallas más pequeñas */
 @media (max-width: 768px) {
-    .division {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
+  .division {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-    .panel-Producto,
-    .panel-Categoria,
-    .panel-Usuario,
-    .panel-Transaccion,
-    .panel-Reporte,
-    .panel-F {
-        width: 90%; /* Cambia el ancho al 90% del contenedor en pantallas pequeñas */
-        margin-bottom: 10px;
-    }
+  .panel-Producto,
+  .panel-Categoria,
+  .panel-Usuario,
+  .panel-Transaccion,
+  .panel-Reporte,
+  .panel-F {
+    width: 90%;
+    /* Cambia el ancho al 90% del contenedor en pantallas pequeñas */
+    margin-bottom: 10px;
+  }
 }
 
 /* Estilos para pantallas más grandes */
 @media (min-width: 769px) {
-    .division {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-    }
+  .division {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    height: 100vh;
+  }
 
-    .panel-Producto,
-    .panel-Categoria,
-    .panel-Usuario,
-    .panel-Transaccion,
-    .panel-Reporte,
-    .panel-F {
-        width: calc(33.33% - 20px);
-        height: 130px;
-        /* Resto de tus estilos */
-    }
+  .panel-Producto,
+  .panel-Categoria,
+  .panel-Usuario,
+  .panel-Transaccion,
+  .panel-Reporte,
+  .panel-F {
+    width: auto;
+    height: 130px;
+    /* Resto de tus estilos */
+  }
 }

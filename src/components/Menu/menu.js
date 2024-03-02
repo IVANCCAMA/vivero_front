@@ -24,16 +24,16 @@ const Menu = () => {
   };
 
   return (
-    <div className="wrapper d-flex flex-column">
+    <div className="wrapper">
       {!ocultarMenu && <div className="menu-lateral"></div>}
       <aside
         id="sidebar"
         className={`js-sidebar ${isLightTheme ? "" : "collapsed"}`}
       >
-        <div className="h-100 d-flex flex-column flex-shrink-0 margin-5 ">
+        <div className="d-flex flex-column flex-shrink-0 margin-5 ">
           <ul className="menu-list">
             <li>
-              <Link to="/"  className="sidebar-link">
+              <Link to="/" className="sidebar-link">
                 <i className="fa-solid fa-house"></i> Inicio
               </Link>
             </li>
@@ -59,17 +59,15 @@ const Menu = () => {
             </li>
           </ul>
           <div class="sidebar-footer">
-          <Link to="/" className="menu-link" onClick={handleLogout}>
-                <i className="fas fa-sign-out-alt"></i>
-                <span>
-                Cerrar Sesion
-                </span>
-              </Link>
-            </div>
+            <Link to="/" className="menu-link" onClick={handleLogout}>
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Cerrar Sesion</span>
+            </Link>
+          </div>
         </div>
       </aside>
     </div>
   );
-}
+};
 
 export default Menu;

@@ -4,19 +4,22 @@
   max-width: 100%;
   padding: 8px;
   font-size: 14px;
-  
 }
+
 .botones-A-I {
-  width: 100%; /* Ancho completo en dispositivos móviles */
+  width: 100%;
+  /* Ancho completo en dispositivos móviles */
   flex-direction: column;
   align-items: end;
-  text-align: end; /* Centra el contenido en dispositivos móviles */
+  text-align: end;
+  /* Centra el contenido en dispositivos móviles */
   justify-content: end;
 }
 
 .listaP {
   width: 100%;
   border-collapse: collapse;
+  height: 100vh;
 }
 
 
@@ -29,11 +32,10 @@
 .listaP th {
   background-color: #5F8D4E;
   color: #fff;
-  
 }
 
 .botonPdfListaP {
-  padding: 5px ;
+  padding: 5px;
   margin: 20px;
   background-color: #b0b0b5;
   border: 1px solid #285430;
@@ -43,7 +45,10 @@
   height: 40px;
   font-weight: bold;
 }
-.verP, .borrarP, .editarP{
+
+.verP,
+.borrarP,
+.editarP {
   padding: 5px;
   margin: 3px;
   background-color: #ff9900;
@@ -61,15 +66,20 @@
   background-color: #007BFF;
 }
 
-.verP:hover{
+.verP:hover {
   background-color: #875306;
-}; 
-.borrarP:hover{
+}
+
+;
+
+.borrarP:hover {
   background-color: #731a0d;
 }
-.editarP:hover{
+
+.editarP:hover {
   background-color: #13365c;
 }
+
 .botonPdfListaP:hover {
   background-color: #858589;
 }
@@ -93,7 +103,6 @@
 }
 
 .botonPdfListaP {
-  margin-left: 0; /* Ajustado margen izquierdo para centrar en pantallas más pequeñas */
+  margin-left: 0;
+  /* Ajustado margen izquierdo para centrar en pantallas más pequeñas */
 }
-
-

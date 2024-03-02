@@ -1,12 +1,11 @@
 import React from "react";
-import './inventario.css';
-import '../../App.css';
+import "./inventario.css";
+import "../../App.css";
 import SubMenuInventario from "../../components/Menu/SubMenuInventario";
 import ProductoLista from "../../components/Producto/productoLista";
 function Inventario() {
-
   return (
-    <div className="">
+    <div className="main-inventario">
       <div>
         <h5 className="Inventario">Inventario</h5>
         <SubMenuInventario />
