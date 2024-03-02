@@ -3,127 +3,118 @@
 }
 
 .div-reporte {
-  background-color: #A4BE7B;
+  background-color: #a4be7b;
   display: flex;
   justify-content: space-around;
   text-align: center;
-  align-items: center; 
+  align-items: center;
 }
 .valor {
   display: flex;
   justify-content: center;
 }
 
-
 .L-Reporte p:first-child {
-  margin-right: 5px; 
+  margin-right: 5px;
 }
 .L-Reporte .cuadradito-rojo {
   width: 10px;
   height: 10px;
   background-color: red;
-  margin-right: 5px; 
+  margin-right: 5px;
   margin-top: 7px;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 .L-Reporte .cuadradito-naranja {
   width: 10px;
   height: 10px;
-  background-color: #FE8F02;
-  margin-right: 5px; 
+  background-color: #fe8f02;
+  margin-right: 5px;
   margin-top: 7px;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 .L-Reporte .cuadradito-azul {
   width: 10px;
   height: 10px;
-  background-color: #25B651;
+  background-color: #25b651;
   margin-right: 5px;
   margin-top: 7px;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
-
-
-
-
 .graficas1 {
-    display: flex;
-    justify-content: space-around;
-    
-    
-  }
-  
-  /* Estilos específicos para cada gráfico dentro de la clase graficas1 */
-  .graficas1 .grafica-barra {
-    width: 45%; 
-    
-  }
-  .Letra-Reporte{
-    font-weight: bold;
-    text-align: center
-    
-  }
-  
-  .grafica-torta {
-    width: 40%; 
-  }
+  display: flex;
+  justify-content: space-around;
+}
 
-  .graficas2 {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
-  
-  /* Estilos específicos para cada gráfico dentro de la clase graficas2 */
-  .graficas2 .grafica-linea2,
-  .graficas2 .grafica-linea1, 
-  .graficas2 .grafica-Indicador {
-    width: 30%; /* Ajusta el ancho según tus necesidades */
-  }
+/* Estilos específicos para cada gráfico dentro de la clase graficas1 */
+.graficas1 .grafica-barra {
+  width: 45%;
+}
+.Letra-Reporte {
+  font-weight: bold;
+  text-align: center;
+}
 
-  .leyenda {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-  }
-  
-  .item-leyenda {
-    display: flex;
-    align-items: center;
-  }
-  
-  .color-cuadrado {
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-    /* Puedes ajustar estos estilos según tus preferencias */
-  }
-  .item-leyenda p {
-    margin: 0; /* Elimina el margen predeterminado de los párrafos */
-  }
+.grafica-torta {
+  width: 40%;
+}
 
-  .graficas2 {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .grafica-linea2,
-  .grafica-Indicador,
-  .grafica-linea1 {
-    width: 30%; /* Ajusta el ancho según tus preferencias */
-  }
-  .grafica-Indicador {
-    width: 30%; /* Ajusta el ancho según tus preferencias */
-    margin-bottom: 0; /* Agregado para eliminar el margen inferior */
-  }
-  .grafica-linea2 p,
-  .grafica-Indicador p,
-  .grafica-linea1 p {
-    text-align: center;
-    font-weight: bold;
-  }
+.graficas2 {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+/* Estilos específicos para cada gráfico dentro de la clase graficas2 */
+.graficas2 .grafica-linea2,
+.graficas2 .grafica-linea1,
+.graficas2 .grafica-Indicador {
+  width: 30%; /* Ajusta el ancho según tus necesidades */
+}
+
+.leyenda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.item-leyenda {
+  display: flex;
+  align-items: center;
+}
+
+.color-cuadrado {
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  /* Puedes ajustar estos estilos según tus preferencias */
+}
+.item-leyenda p {
+  margin: 0; /* Elimina el margen predeterminado de los párrafos */
+}
+
+.graficas2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grafica-linea2,
+.grafica-Indicador,
+.grafica-linea1 {
+  width: 30%; /* Ajusta el ancho según tus preferencias */
+}
+.grafica-Indicador {
+  width: 30%; /* Ajusta el ancho según tus preferencias */
+  margin-bottom: 0; /* Agregado para eliminar el margen inferior */
+}
+.grafica-linea2 p,
+.grafica-Indicador p,
+.grafica-linea1 p {
+  text-align: center;
+  font-weight: bold;
+}
