@@ -24,45 +24,48 @@ const Menu = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper d-flex flex-column">
       {!ocultarMenu && <div className="menu-lateral"></div>}
       <aside
         id="sidebar"
         className={`js-sidebar ${isLightTheme ? "" : "collapsed"}`}
       >
-        <div className="h-100">
+        <div className="h-100 d-flex flex-column flex-shrink-0 margin-5 ">
           <ul className="menu-list">
-            <li className="menu-listM">
-              <Link to="/" className="menu-link">
+            <li>
+              <Link to="/"  className="sidebar-link">
                 <i className="fa-solid fa-house"></i> Inicio
               </Link>
             </li>
-            <li className="menu-listM">
-              <Link to="/inventario/producto" className="menu-link bg-cyan">
+            <li>
+              <Link to="/inventario/producto" className="sidebar-link">
                 <i className="fa-solid fa-seedling"></i> Inventario
               </Link>
             </li>
-            <li className="menu-listM">
-              <Link to="/usuarios" className="menu-link bg-cyan">
+            <li>
+              <Link to="/usuarios" className="sidebar-link ">
                 <i className="fa-solid fa-users"></i> Usuarios
               </Link>
             </li>
-            <li className="menu-listM">
-              <Link to="/transacciones" className="menu-link bg-cyan">
+            <li>
+              <Link to="/transacciones" className="sidebar-link">
                 <i className="fa-solid fa-layer-group"></i> Transacciones
               </Link>
             </li>
-            <li className="menu-listM">
-              <Link to="/reportes" className="menu-link bg-cyan">
+            <li>
+              <Link to="/reportes" className="sidebar-link">
                 <i className="fa-solid fa-signal"></i> Reportes
               </Link>
             </li>
-            <li className="cerrarSesion">
-              <Link to="/" className="menu-link bg-cyan" onClick={handleLogout}>
-                <i className="fas fa-sign-out-alt"></i> Cerrar Sesion
-              </Link>
-            </li>
           </ul>
+          <div class="sidebar-footer">
+          <Link to="/" className="menu-link" onClick={handleLogout}>
+                <i className="fas fa-sign-out-alt"></i>
+                <span>
+                Cerrar Sesion
+                </span>
+              </Link>
+            </div>
         </div>
       </aside>
     </div>
