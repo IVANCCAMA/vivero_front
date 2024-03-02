@@ -118,10 +118,10 @@ const Home = () => {
                                 <p>9</p>
                             </div>
                         </Link>
-                        <div className='panel-F'>
+                        {/* <div className='panel-F'>
                             <div className='panel-letras'>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             ) : (
