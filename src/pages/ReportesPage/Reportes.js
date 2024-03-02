@@ -130,7 +130,7 @@ const reporteGraficas = [
                 { name: 'Diciembre', uv: 0, Stock: 0, amt: 2100},
             ];
 return (
-    <div className='main-container'>
+    <div className='main-dashboard'>
         <div className='main-title'>
         <h5>Dashboards Interactivos</h5>
         </div>

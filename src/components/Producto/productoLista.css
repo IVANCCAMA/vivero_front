@@ -17,6 +17,7 @@
 .listaP {
   width: 100%;
   border-collapse: collapse;
+  height: 100vh;
 }
 
 

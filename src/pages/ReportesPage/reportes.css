@@ -1,3 +1,7 @@
+.main-dashboard {
+  height: 100vh;
+}
+
 .div-reporte {
   background-color: #A4BE7B;
   display: flex;

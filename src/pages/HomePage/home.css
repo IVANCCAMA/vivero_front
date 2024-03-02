@@ -1,15 +1,16 @@
-.division {
+/* .division {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-}
-.panel-letras{
+} */
+
+.panel-letras {
     display: block;
 }
 
-.panel-Producto{
-    width: calc(33.33% - 20px);
+.panel-Producto {
+
     height: 130px;
     display: flex;
     align-items: center;
@@ -20,7 +21,8 @@
     color: white;
     text-decoration: none;
 }
-.panel-Categoria{
+
+.panel-Categoria {
     width: calc(33.33% - 20px);
     height: 130px;
     display: flex;
@@ -28,11 +30,12 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 1px;
-    background-color:#FF9900;
+    background-color: #FF9900;
     color: white;
     text-decoration: none;
 }
-.panel-Usuario{
+
+.panel-Usuario {
     width: calc(33.33% - 20px);
     height: 130px;
     display: flex;
@@ -44,7 +47,8 @@
     color: white;
     text-decoration: none;
 }
-.panel-Transaccion{
+
+.panel-Transaccion {
     width: calc(33.33% - 20px);
     height: 130px;
     display: flex;
@@ -56,7 +60,8 @@
     color: white;
     text-decoration: none;
 }
-.panel-Reporte{
+
+.panel-Reporte {
     width: calc(33.33% - 20px);
     height: 130px;
     display: flex;
@@ -74,7 +79,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%; /* Toma el 100% de la altura del div */
+    height: 100%;
+    /* Toma el 100% de la altura del div */
     width: 100px;
     border-radius: 8px;
     background-color: rgba(200, 200, 200, 0.5);
@@ -87,10 +93,13 @@
 .panel-Transaccion p,
 .panel-Reporte p,
 .panel-F p {
-    font-size: 1.2em; /* Tamaño del texto del párrafo */
+    font-size: 1.2em;
+    /* Tamaño del texto del párrafo */
     display: block;
-    text-align: center; /* Alineación del texto */
+    text-align: center;
+    /* Alineación del texto */
 }
+
 /* Estilos para las pantallas más pequeñas */
 @media (max-width: 768px) {
     .division {
@@ -105,7 +114,8 @@
     .panel-Transaccion,
     .panel-Reporte,
     .panel-F {
-        width: 90%; /* Cambia el ancho al 90% del contenedor en pantallas pequeñas */
+        width: 90%;
+        /* Cambia el ancho al 90% del contenedor en pantallas pequeñas */
         margin-bottom: 10px;
     }
 }
@@ -117,6 +127,7 @@
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
+        height: 100vh;
     }
 
     .panel-Producto,
@@ -125,7 +136,7 @@
     .panel-Transaccion,
     .panel-Reporte,
     .panel-F {
-        width: calc(33.33% - 20px);
+        width: auto;
         height: 130px;
         /* Resto de tus estilos */
     }
