@@ -1,0 +1,34 @@
+.botonC {
+  background-color: #5f8d4e;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+}
+.botonC:hover {
+  background-color: #fff;
+  color: #5f8d4e;
+}
+
+.btn.btn-success {
+  background-color: #5f8d4e;
+  color: #fff;
+  cursor: pointer;
+}
+.btn.btn-success:hover {
+  background-color: #c6debe;
+}
+@media (max-width: 768px) {
+  .btn-Categorias {
+    text-align: center;
+    /* .btn {
+      margin-left: 0;
+    } */
+  }
+}
+
+.btn-Categorias {
+  .btn {
+    width: 171px;
+  }
+}

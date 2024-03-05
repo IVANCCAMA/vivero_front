@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SubMenuInventario from "../../components/Menu/SubMenuInventario";
 import { Link } from "react-router-dom";
-import "./categoria.css";
+import "./categoria.scss";
 import CategoriaLista from "../../components/Categoria/CategoriaLista";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -94,7 +94,7 @@ const Categoria = () => {
         <div className="row btn-Categorias">
           <div className="col text-end ">
             <button
-              className="btn btn-secondary mb-2"
+              className="btn btn-secondary mb-2 text-center"
               onClick={generarPDFcategorias}
             >
               <Icon
@@ -107,7 +107,7 @@ const Categoria = () => {
               Descargar PDF
             </button>
             <Link to="/inventario/categoria/formcategoria">
-              <button className="btn btn-success ms-2">
+              <button className="btn btn-success ms-md-2 text-center">
                 <Icon
                   icon="gridicons:create"
                   color="white"
