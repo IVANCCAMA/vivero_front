@@ -11,9 +11,9 @@
     border: 1px solid #285430;
     border-radius: 15px;
 }
-.btn-transacciones:hover {
+/* .btn-transacciones:hover {
     background-color: #2c5c1b !important;                    
-}
+} */
 .btn-ver-transaccion{
     padding: 5px 8px;
     margin: 5px;

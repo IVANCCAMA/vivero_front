@@ -1,57 +1,26 @@
-.crearcat {
-text-align: end;
-  font-size: 15px;
-}
 
-
-.botonesCat button {
-  margin: 0 5px; /* Agrega un margen entre los botones */
-}
-
-/* Estilo para el botón "Crear categoria" */
 .botonC {
   background-color: #5F8D4E;
-  color: #fff;
-  padding: 7px 15px;
   border: none;
-  border-radius: 15px;
   cursor: pointer;
   font-weight: bold;
-  margin-right: 30px;
-  margin-left: 20px;
-}
-
-/* Estilo para el botón "Crear categoria" al pasar el mouse por encima */
-.botonC:hover {
-  background-color: #435c3a;
-}
-
-.CategoriaLista {
-  padding: 14px;
-}
-.botonImprimirLista {
-  background-color: #b0b0b5;
-  border: 1px solid #285430;
   color: #fff; 
-  padding: 8px ; 
-  border-radius: 15px;
-  cursor: pointer; 
-  font-weight: bold; 
+}
+.botonC:hover{
+  background-color: #fff;
+  color:#5F8D4E;
 }
 
-.botonImprimirLista:hover {
-  background-color: #858589;
-}
-
-.botonCategoria{
+.btn.btn-success{
   background-color: #5F8D4E; 
   color: #fff; 
-  padding: 10px;
-  border: 1px solid #285430;
-  border-radius: 15px; 
-  cursor: pointer; 
-  font-weight: bold; 
+  cursor: pointer;
 }
-.botonCategoria:hover{
-  background-color: #435c3a;
+.btn.btn-success:hover{
+  background-color: #c6debe;
+}  
+@media (max-width: 768px) {
+  .btn-Categorias{
+    text-align: center;
+  }
 }

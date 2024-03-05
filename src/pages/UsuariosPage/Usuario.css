@@ -5,7 +5,7 @@
     text-align: end;
     padding: 15px;
 }
-.btn-usuarioC{
+/* .btn-usuarioC{
     background-color: #5F8D4E;
     border: 1px solid #285430;
     color: white;
@@ -13,10 +13,10 @@
     padding: 7px;
     border-radius: 15px;
     font-style: bold;
-}
-.btn-usuarioC:hover{
+} */
+/* .btn-usuarioC:hover{
     background-color: #285118;
-}
+} */
 .btn-usuarioD{
     background-color: #b0b0b5;
     border: 1px solid #285430;
@@ -26,9 +26,9 @@
     border-radius: 15px;
     font-style: bold;
 }
-.btn-usuarioD:hover{
+/* .btn-usuarioD:hover{
     background-color: #59595b
-}
+} */
 .txt-usuario{
     font-size: 14px;
 }
@@ -46,5 +46,3 @@
   }
   
   /* Otras reglas de estilo según sea necesario */
-  
-  

@@ -19,9 +19,9 @@
     margin-right: 20px; 
     cursor: pointer;
 }
-.bontosave:hover{
+/* .bontosave:hover{
   background-color: #37562c;
-}
+} */
 .botoncancel{
     background-color: red; 
     color: #fff;

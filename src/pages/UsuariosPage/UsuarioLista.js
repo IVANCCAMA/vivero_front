@@ -66,19 +66,19 @@ function UsuarioLista (){
     };
 
     return (
-        <div>
-            <table className="listaP">
-            <thead className="txt-usuario">
+        <div className="table-responsive">
+            <table className="listaP table">
+            <thead className="txt-usuario ">
                 <tr>
-                <th>Nombre completo</th>
-                <th>CI</th>
-                <th>Celular</th>
-                <th>Correo Electronico</th>
-                <th>Rol</th>
-                <th>Fecha de creacion</th>
-                <th>Fecha de modificacion</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                <th scope="col">Nombre completo</th>
+                <th scope="col">CI</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Correo Electronico</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Fecha de modificacion</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody className="txt-usuario">
@@ -104,23 +104,22 @@ function UsuarioLista (){
                             {usuario.activo_usuario ? "Activo" : "Inactivo"}
                         </label>
                     </div>
-                </td>
-                            
+                </td>            
                 <td>
                 <Link to={`/usuarios/ver/${usuario.id_usuario}`}>
                     <button className="verP">
-                    <Icon className="icon"  icon="carbon:view-filled" color="white" width="18" height="18" />
+                    <Icon className="icon"  icon="carbon:view-filled" color="white" width="16" height="16" />
                         Ver
                         </button>
                 </Link>
                 <Link to={`/usuarios/editarUsuario/${usuario.id_usuario}`}>
                     <button className="editarP" onClick={() => handleEditar(usuario)}>
-                    <Icon className="icon" icon="mdi:edit" color="white" width="18" height="18" />
+                    <Icon className="icon" icon="mdi:edit" color="white" width="16" height="16" />
                     Editar
                     </button>
                 </Link> 
                 <button className="borrarP" onClick={() => handleDelete(usuario.id_usuario)}>
-                <Icon className="icon" icon="material-symbols:delete" color="white" width="18" height="18"/>
+                <Icon className="icon" icon="material-symbols:delete" color="white" width="16" height="16"/>
                     Eliminar
                 </button> 
                 </td> 

@@ -1,57 +1,20 @@
-/* CategoriaLista.css */
-.listaCategoria {
-  max-width: 1000px;
-  margin: 0 auto;
-  justify-content: center;
-  font-size: 14px;
-  
-}
-
-.listaCat {
-  width: 100%;
-  border-collapse: collapse;
-  
-}
-
-.listaCat th,
-.listaCat td {
-  padding: 8px;
-  text-align: left;
-  
-}
 
 .listaCat th {
   background-color:#5F8D4E;
   color: #fff;
-}
-
-.Botonborrar{
-  padding: 5px 10px;
-  margin: 5px;
-  background-color: #de2b10;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
   text-align: center;
+  font-size: 16px;
+  padding: 10px;
 }
-.editar {
-  padding: 5px 10px;
-  margin: 5px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
+.btn.btn-primary{
+    margin: 3px;
 }
-
-.Botonborrar:hover{
-  background-color: #b22e1a;
+.tbody{
+  font-size: 15px;
 }
-.editar:hover {
-  background-color: #0f5095;
-}
-.icon{
-  margin-top: -4px  
-};
+/* 
+@media (max-width: 768px) {
+  .tbody{
+    font-size: 12px;
+  }
+} */
