@@ -8,7 +8,7 @@ import {
   faChartBar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "./home.css";
+import "./home.scss";
 import { useAuth } from "../../auth/AuthContext";
 
 const Home = () => {
@@ -72,7 +72,7 @@ const Home = () => {
       {authState.isAuthenticated ? (
         <div className="Inventario">
           <h5>Paneles</h5>
-          <div className="paneles row row-cols-1 row-cols-md-3">
+          <div className="paneles row row-cols-1 row-cols-md-3 ">
             <div className="col-md">
               <Link to="/inventario/producto" className="panel-Producto">
                 <div className="icon-panel">
