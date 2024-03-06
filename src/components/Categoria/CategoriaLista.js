@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormCategoria from "../../pages/FormCategoriaPage/Formcategoria";
 import { Link } from "react-router-dom";
-import "./CategoriaLista.css";
+import "./CategoriaLista.scss";
 import { Icon } from "@iconify/react";
 
 const CategoriaLista = () => {
@@ -61,7 +61,7 @@ const CategoriaLista = () => {
       <table className="listaCat table">
         <thead>
           <tr>
-            <th scope="col">Nombre de la Categoría</th>
+            <th scope="col" >Nombre de la Categoría</th>
             <th scope="col">Descripción</th>
             <th scope="col">Acciones</th>
           </tr>
@@ -70,44 +70,32 @@ const CategoriaLista = () => {
           {categorias.map((categoria) => (
             <tr key={categoria.id_categoria}>
               <td>{categoria.nombre_categoria}</td>
-              <td>{categoria.descripcion_categoria}</td>
-              <td>
-                <div className="row">
-                  <div className="col">
-                    <Link
-                      to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`}
-                      key={categoria.id_categoria}
-                    >
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={() => handleEditar(categoria)}
-                      >
-                        <Icon
-                          icon="mdi:edit"
-                          color="white"
-                          width="16"
-                          height="16"
-                        />
-                        Editar
-                      </button>
-                    </Link>
-                  </div>
-                  <div className="col">
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      onClick={() => handleDelete(categoria.id_categoria)}
-                    >
-                      <Icon
-                        icon="material-symbols:delete"
-                        color="white"
-                        width="18"
-                        height="18"
-                      />
-                      Eliminar
-                    </button>
-                  </div>
+              <td >{categoria.descripcion_categoria}</td>
+              <td >
+                <div className="d-flex align-items-center">
+                  <Link
+                    className="btn btn-warning me-2"
+                    role="button"
+                    to={`/inventario/categoria/editarCategoria/${categoria.id_categoria}`}
+                    key={categoria.id_categoria}
+                  >
+                    <Icon
+                      icon="tabler:edit"
+                      width="18"
+                      height="18"
+                      className="mb-1"
+                    />
+                    Editar
+                  </Link>
+                  <button type="button" className="btn btn-danger">
+                    <Icon
+                      icon="material-symbols:delete-sharp"
+                      width="18"
+                      height="18"
+                      className="mb-1"
+                    />
+                    Eliminar
+                  </button>
                 </div>
               </td>
             </tr>

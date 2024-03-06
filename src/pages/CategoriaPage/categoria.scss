@@ -18,17 +18,19 @@
 .btn.btn-success:hover {
   background-color: #c6debe;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .btn-Categorias {
     text-align: center;
-    /* .btn {
-      margin-left: 0;
-    } */
+    button{
+      margin-bottom: 10px;
+    }
   }
 }
 
 .btn-Categorias {
   .btn {
-    width: 171px;
+    width: 170px;
+    margin-right: 3px;
   }
 }
+

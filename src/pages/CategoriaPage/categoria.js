@@ -91,8 +91,8 @@ const Categoria = () => {
         </div>
       </div>
       <div className="container">
-        <div className="row btn-Categorias">
-          <div className="col text-end ">
+        <div className="row btn-Categorias text-end">
+          <div className="col">
             <button
               className="btn btn-secondary mb-2 text-center"
               onClick={generarPDFcategorias}
@@ -106,16 +106,14 @@ const Categoria = () => {
               />
               Descargar PDF
             </button>
-            <Link to="/inventario/categoria/formcategoria">
-              <button className="btn btn-success ms-md-2 text-center">
+            <Link  className="btn btn-success ms-md-2  mb-2 text-center" to="/inventario/categoria/formcategoria">
                 <Icon
                   icon="gridicons:create"
                   color="white"
-                  width="26"
+                  width="24"
                   height="24"
                 />
                 Crear Categoría
-              </button>
             </Link>
           </div>
         </div>
