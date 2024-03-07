@@ -43,8 +43,8 @@ const FormCategoria = () => {
 
   return (
     <div className="container formulario">
-      <div className="row ">
-        <div className="col-md-6 mx-auto  p-3 border-form">
+      <div className="row px-md-2">
+        <div className=" mx-auto  p-md-5 border-form">
           <h3 className="text-center">Registrar categoría</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="my-3">
