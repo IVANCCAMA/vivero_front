@@ -1,27 +1,6 @@
-.division2 {
-  background-color: #FFFFFF;
-  padding: 18px;
-  border: 2px solid #ccc;
-  border-radius: 30px;
-  margin: 130px 350px;
-  width: 40%;
-  height: 15%;
-  
-  
-}
 
-.bontosave{
-    background-color: #60aa48;
-    color: #fff;
-    padding: 5px 20px; 
-    border: none;
-    border-radius: 10px;
-    margin-right: 20px; 
-    cursor: pointer;
-}
-.bontosave:hover{
-  background-color: #37562c;
-}
+
+
 .botoncancel{
     background-color: red; 
     color: #fff;
@@ -59,10 +38,7 @@ h2 {
   
 }
 
-.botones-Categoria{
-  justify-content: center;
-  display: flex;
-}
+
 
 .txt-form{
   text-align: center;
@@ -70,4 +46,32 @@ h2 {
 
 .btns-cancel-save{
   text-align: center;
+}
+.formulario{
+  padding-top: 70px;
+  input, textarea{
+    border: #60aa48 2px solid;
+  }
+  .border-form{
+    border-radius: 20px;
+    border: #60aa48 3px solid;
+  }
+  .botones-Categoria{
+    justify-content: center;
+    display: flex;
+    .btn.btn-primary{
+      background: #60aa48;
+      border: #60aa48;
+    }
+    .Icon{
+      margin-top: -4px;
+    }
+  }
+  
+}
+
+@media (max-width: 768px){
+  .formulario{
+    padding-top: 50px;
+  }
 }

@@ -58,7 +58,7 @@ const Menu = () => {
               </Link>
             </li>
           </ul>
-          <div class="sidebar-footer">
+          <div className="sidebar-footer">
             <Link to="/" className="menu-link" onClick={handleLogout}>
               <i className="fas fa-sign-out-alt"></i>
               <span>Cerrar Sesion</span>

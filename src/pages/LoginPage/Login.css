@@ -30,17 +30,17 @@ h2 {
   border-radius: 12px;
 }
 
-.btn {
+/* .btn {
   background-color: #5F8D4E;
   border-radius: 25px;
   padding-left: 66px;
   padding-right: 66px;
   border: none;
-}
+} */
 
-.btn:hover  {
+/* .btn:hover  {
   background-color: #2c5e1a;
-}
+} */
 
 .text-boton {
   font-size: 20px;

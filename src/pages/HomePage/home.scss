@@ -132,3 +132,12 @@
     /* Resto de tus estilos */
   }
 }
+
+@media (max-width: 768px) {
+  .paneles {
+    .row {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+  }
+}

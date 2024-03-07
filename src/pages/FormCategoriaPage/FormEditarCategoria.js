@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import { useParams } from "react-router-dom";
 import '../../App.css';
-import './formcategoria.css';
+import './formcategoria.scss';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
 
