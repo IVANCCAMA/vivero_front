@@ -1,54 +1,6 @@
 
-
-
-.botoncancel{
-    background-color: red; 
-    color: #fff;
-    padding: 8px 20px; 
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px; 
-}
-.botoncancel:hover{
-  background-color: rgb(118, 11, 11);
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-/* Estilo para las etiquetas de los campos de entrada */
-.labelC {
-  display: block;
-  margin-bottom: 5px;
-  
-}
-
-/* Estilo para los campos de entrada de texto */
-.inputC {
-  width: 90%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #A4BE7B;
-  
-  
-}
-
-
-
-.txt-form{
-  text-align: center;
-}
-
-.btns-cancel-save{
-  text-align: center;
-}
 .formulario{
-  padding-top: 70px;
+  padding-top: 60px;
   input, textarea{
     border: #60aa48 2px solid;
   }
@@ -57,11 +9,18 @@ h2 {
     border: #60aa48 3px solid;
   }
   .botones-Categoria{
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    align-items: center;
     .btn.btn-primary{
       background: #60aa48;
       border: #60aa48;
+      font-size: 15px;
+      width: 120px;
+    }
+    .btn.btn-danger{
+      font-size: 15px;
+      width: 120px;
     }
     .Icon{
       margin-top: -4px;
@@ -69,9 +28,14 @@ h2 {
   }
   
 }
-
 @media (max-width: 768px){
   .formulario{
-    padding-top: 50px;
+    padding-top: 30px;
   }
+}
+@media (min-width: 768px){
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 65%;
+}
 }
