@@ -87,7 +87,7 @@ const CategoriaLista = () => {
                     />
                     Editar
                   </Link>
-                  <button type="button" className="btn btn-danger">
+                  <button type="button" className="btn btn-danger"onClick={() => handleDelete(categoria.id_categoria)}>
                     <Icon
                       icon="material-symbols:delete-sharp"
                       width="18"

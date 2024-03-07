@@ -1,76 +1,73 @@
-import React from "react";
+import React,{ useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../../App.css';
-import './formcategoria.css';
+import './formcategoria.scss';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const FormCategoria = () => {
-  const handleSubmit = async (values) => {
+  const [cars, setCars] = useState([]);
+
+  const schema = yup.object({
+    nombre_categoria: yup.string().required('El campo categoría es requerido'),
+    descripcion_categoria: yup.string(),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = async (data) => {
     try {
-      const { nombre_categoria, descripcion_categoria } = values;
-
-      // Validar que el nombre de la categoría esté presente
-      if (!nombre_categoria) {
-        alert("El nombre de categoría es obligatorio");
-        return;
-      }
-
-      // Realiza una solicitud POST para crear la categoría
-      const response = await axios.post('https://viverobackend-production.up.railway.app/api/categorias', {
-        nombre_categoria,
-        descripcion_categoria,
-      });
+      const response = await axios.post('https://viverobackend-production.up.railway.app/api/categorias', data);
 
       if (response.status === 201) {
         console.log("Categoría creada con éxito");
-        // Puedes realizar otras acciones si es necesario
         window.close();
       } else {
         console.error("Error al crear la categoría. Respuesta inesperada:", response);
-        // Puedes mostrar un mensaje de error al usuario
       }
-      
     } catch (error) {
       console.error("Error al enviar los datos:", error);
-      // Puedes mostrar un mensaje de error al usuario
     }
   };
-
   const handleCancelClick = () => {
-    // Navega hacia atrás en la historia del navegador
     window.history.back();
   };
 
   return (
-    <div>
-      <div className="division2">
-        <Formik initialValues={{ nombre_categoria: "", descripcion_categoria: "" }} onSubmit={handleSubmit}>
-          <Form>
-            <h2 className="txt-form">Crear categoría</h2>
-            <div className="form-group">
-              <label htmlFor="nombre_categoria" className="labelC">Nombre de categoría*</label>
-              <Field id="nombre_categoria" name="nombre_categoria" className="inputC form-control" type="text" placeholder="Ingrese nombre de categoria" />
-              <ErrorMessage name="nombre_categoria" component="div" className="error-message" />
+    <div className="container formulario">
+      <div className="row ">
+        <div className="col-md-6 mx-auto  p-3 border-form">
+          <h3 className="text-center">Registrar categoría</h3>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="my-3">
+              <label className="form-label">Nombre de categoría</label>
+              <input type="text" placeholder="Ingrese nombre de categoria" className={`form-control ${errors.nombre_categoria ? 'is-invalid' : ''}`} {...register('nombre_categoria')} />
+              {errors.nombre_categoria && <span className="badge text-bg-danger">{errors.nombre_categoria.message}</span>}
             </div>
-
-            <div className="form-group">
-              <label htmlFor="descripcion_categoria" className="labelC">Descripción (opcional)</label>
-              <Field id="descripcion_categoria" name="descripcion_categoria" type="text" className="inputC form-control" placeholder="Ingrese descripcion" />
+            <div className="my-3">
+              <label className="form-label">Descripción (opcional)</label>
+              <textarea class="form-control" type="text" placeholder="Ingrese descripci&oacute;n" rows="3" {...register('descripcion_categoria')} ></textarea>
             </div>
-            
             <div className="botones-Categoria">
-              <button type="submit" className="bontosave btn btn-primary" onClick={handleCancelClick}>
+              <button type="submit" className="bontosave btn btn-primary mb-2">
+              <Icon icon="material-symbols-light:save-as" className="Icon" width="25" height="25" />
                 Guardar
-                <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
               </button>
-              <button type="button" className="botoncancel btn btn-secondary" onClick={handleCancelClick}>
+              <button type="button" className="botoncancel btn btn-secondary mb-2 ms-2" onClick={handleCancelClick}>
+              <Icon icon="mdi:cancel-box-multiple" className="Icon" width="25" height="25" />
                 Cancelar
-                <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
               </button>
             </div>
-          </Form>
-        </Formik>
+          </form>
+        </div>
       </div>
     </div>
   );

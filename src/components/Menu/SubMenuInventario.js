@@ -7,8 +7,8 @@ function SubMenuInventario() {
     <div className="container">
       <div className="row">
         <div className="col pb-5">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
+          <ul className="nav nav-tabs">
+            <li className="nav-item">
               <Link
                 className="nav-link botonC"
                 aria-current="page"
@@ -17,7 +17,7 @@ function SubMenuInventario() {
                 Producto
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
                 className="nav-link botonC"
                 to="/inventario/categoria"
