@@ -7,7 +7,7 @@ function Inventario() {
   return (
     <div className="main-inventario">
       <div>
-        <h5 className="Inventario">Inventario</h5>
+        <h5 className="Inventario ms-2">Inventario</h5>
         <SubMenuInventario />
       </div>
       <div className="ahi">

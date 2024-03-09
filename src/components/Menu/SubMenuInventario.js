@@ -6,7 +6,7 @@ function SubMenuInventario() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col pb-5">
+        <div className="col pb-3">
           <ul className="nav nav-tabs">
             <li className="nav-item">
               <Link
