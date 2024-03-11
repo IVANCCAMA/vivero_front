@@ -161,49 +161,48 @@ function ProductoLista({ searchQuery }) {
   return (
     <div>
       <div className="container">
-        <div className="col-8 px-auto pb-2">
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2 "
-              type="search"
-              placeholder="Buscar..."
-              aria-label="Search"
-              onChange={(event) => filterProducts(event.target.value)}
-            />
-          </form>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row btn-Categorias text-end">
-          <div className="col">
-          <button
-          className="btn btn-secondary mb-2"
-          onClick={generarPDFListaProductos}
-        >
-          <Icon
-            icon="line-md:download-loop"
-            color="white"
-            width="26"
-            height="24"
-            onClick={generarPDFListaProductos}
-          />
-          Descargar PDF
-        </button>
-        <Link
-          to="/inventario/producto/formProducto"
-          className="btn btn-success ms-2 mb-2"
-        >
-          <Icon
-                  icon="gridicons:create"
-                  color="white"
-                  width="26"
-                  height="24"
-                />  
-          Crear producto
-        </Link>
+        <div className="row row-cols-1 row-cols-md-2 ">
+          <div className="col px-auto pb-2">
+            <form className="d-flex" role="search">
+              <input
+                className="form-control  "
+                type="search"
+                placeholder="Buscar..."
+                aria-label="Search"
+                onChange={(event) => filterProducts(event.target.value)}
+              />
+            </form>
+          </div>
+          <div className="col text-end">
+            <button
+              className="btn btn-secondary ms-2 mb-2 text-end"
+              onClick={generarPDFListaProductos}
+            >
+              <Icon
+                icon="line-md:download-loop"
+                color="white"
+                width="26"
+                height="24"
+                onClick={generarPDFListaProductos}
+              />
+              Descargar PDF
+            </button>
+            <Link
+              to="/inventario/producto/formProducto"
+              className="btn btn-success ms-2 mb-2"
+            >
+              <Icon
+                icon="gridicons:create"
+                color="white"
+                width="26"
+                height="24"
+              />
+              Crear producto
+            </Link>
           </div>
         </div>
       </div>
+
       <div className="listaProductos">
         <div className="listaProducto">
           {productoNoEncontrado ? (
@@ -244,34 +243,35 @@ function ProductoLista({ searchQuery }) {
                       <td>{producto.fecha_creacion}</td>
                       <td>{producto.fecha_modificacion}</td>
                       <td className="d-flex align-items-center">
-                        <Link className="btn btn-dark verP"
+                        <Link
+                          className="btn btn-dark verP"
                           to={`/inventario/producto/ver/${producto.id_producto}`}
                         >
-                            <Icon
-                              className="icon"
-                              icon="carbon:view-filled"
-                              color="white"
-                              width="18"
-                              height="18"
-                            />
-                            Ver
+                          <Icon
+                            className="icon"
+                            icon="carbon:view-filled"
+                            color="white"
+                            width="18"
+                            height="18"
+                          />
+                          Ver
                         </Link>
                         <Link
                           to={`/inventario/producto/editarProducto/${producto.id_producto}`}
                           className="btn btn-warning me-2 editarP ms-2"
-                            onClick={() => handleEditar(producto)}
+                          onClick={() => handleEditar(producto)}
                         >
-                            <Icon
-                              className="icon mb-1"
-                              icon="mdi:edit"
-                              color="white"
-                              width="18"
-                              height="18"
-                            />
-                            Editar
+                          <Icon
+                            className="icon mb-1"
+                            icon="mdi:edit"
+                            color="white"
+                            width="18"
+                            height="18"
+                          />
+                          Editar
                         </Link>
                         <button
-                        type="button"
+                          type="button"
                           className="btn btn-danger borrarP"
                           onClick={() => handleDelete(producto.id_producto)}
                         >
