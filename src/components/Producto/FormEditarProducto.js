@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -17,7 +16,6 @@ import { Icon } from "@iconify/react";
 
 const FormEditarProducto = () => {
   const { id_producto } = useParams();
-  const navigate = useNavigate();
 
   const [categorias, setCategorias] = useState([]);
   const [precioInicial, setPrecioInicial] = useState(0);
@@ -143,13 +141,13 @@ const FormEditarProducto = () => {
       setPrecioTotal("");
     }
 
-    const precioTotalCalculado =
+    /* const precioTotalCalculado =
       parseFloat(precioInicial) +
-      (parseFloat(precioInicial) * parseFloat(margen)) / 100;
+      (parseFloat(precioInicial) * parseFloat(margen)) / 100; */
 
-    console.log("Precio Inicial:", precioInicial);
+    /* console.log("Precio Inicial:", precioInicial);
     console.log("Margen:", margen);
-    console.log("Precio Total Calculado:", precioTotalCalculado);
+    console.log("Precio Total Calculado:", precioTotalCalculado); */
 
     axios
       .get("https://viverobackend-production.up.railway.app/api/categorias")
@@ -290,13 +288,9 @@ const FormEditarProducto = () => {
                   className={`form-control ${
                     errors.imagen_producto ? "is-invalid" : ""
                   }`}
-                  {...register('imagen_producto')}
+                  {...register('nombre_producto')}
                 />
-                {errors.imagen_producto && (
-                  <span className="badge text-bg-danger">
-                    {errors.imagen_producto.message}
-                  </span>
-                )}
+                
               </div>
               <div className="col-12">
                 <label className="form-label">Descripción (opcional)</label>
@@ -354,7 +348,7 @@ const FormEditarProducto = () => {
                 />
                 Guardar
               </button>
-              <Link to="/inventario/categoria" className="btn btn-danger ms-2">
+              <Link to="/inventario/producto" className="btn btn-danger ms-2">
                 <Icon
                   icon="mdi:cancel-box-multiple"
                   className="Icon"

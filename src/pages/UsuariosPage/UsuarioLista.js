@@ -39,7 +39,6 @@ function UsuarioLista (){
         }
     };
     const handleEditar = (usuario) => {
-        console.log("Handle Editar llamado con el producto:", usuario);
         setUsuarioAEditar(usuario);
         setFormularioAbierto(true);
     };
