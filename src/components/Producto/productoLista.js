@@ -72,7 +72,6 @@ function ProductoLista({ searchQuery }) {
   };
 
   const handleEditar = (producto) => {
-    console.log("Handle Editar llamado con el producto:", producto);
     setProductoAEditar(producto);
     setFormularioAbierto(true);
   };

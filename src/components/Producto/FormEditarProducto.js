@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./formproducto.scss";
 import { Link } from "react-router-dom";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 import {
   deleteFile,
@@ -17,12 +16,12 @@ import { Icon } from "@iconify/react";
 
 const FormEditarProducto = () => {
   const { id_producto } = useParams();
-  const navigate = useNavigate();
 
   const [categorias, setCategorias] = useState([]);
   const [precioInicial, setPrecioInicial] = useState(0);
   const [margen, setMargen] = useState(0);
   const [precioTotal, setPrecioTotal] = useState("");
+  const [urlImagen, setUrlImagen] = useState("");
 
   const schema = yup.object({
     id_categoria: yup.string().required("El campo categoría es requerido"),
@@ -56,13 +55,14 @@ const FormEditarProducto = () => {
         const response = await axios.get(
           `https://viverobackend-production.up.railway.app/api/productos/${id_producto}`
         );
-    
+
         if (response.status === 200) {
           const producto = response.data;
-  
+
           console.log("Producto recuperado:", producto);
           console.log("img recuperado:", producto.imagen_producto);
-    
+          setUrlImagen(producto.imagen_producto);
+
           setValue("id_categoria", producto.id_categoria);
           setValue("nombre_producto", producto.nombre_producto);
           setValue("precio_inicial_producto", producto.precio_inicial_producto);
@@ -70,10 +70,10 @@ const FormEditarProducto = () => {
           setValue("precio_total_producto", producto.precio_total_producto);
           setValue("tamanio_producto", producto.tamanio_producto);
           setValue("imagen_producto", producto.imagen_producto);
-          setValue("descripcion_producto",producto.descripcion_producto);
+          setValue("descripcion_producto", producto.descripcion_producto);
           setValue("stok_actual_producto", producto.stok_actual_producto);
           setValue("stok_min_producto", producto.stok_min_producto);
-  
+
           setPrecioInicial(producto.precio_inicial_producto);
           setMargen(producto.margen_producto);
           setPrecioTotal(producto.precio_total_producto || "");
@@ -85,6 +85,10 @@ const FormEditarProducto = () => {
     loadProducto();
   }, [id_producto, setValue]);
 
+  // Funcion subir a firebase y recuperar url
+
+
+  // subir cambios
   const onSubmit = async (data) => {
     try {
       const producto = {
@@ -102,6 +106,7 @@ const FormEditarProducto = () => {
         return;
       }
 
+      // Subida y recupearacion de firebase]
       const resultado = await subirFirebase(
         imagen_archivo ? imagen_archivo[0] : null
       );
@@ -143,13 +148,13 @@ const FormEditarProducto = () => {
       setPrecioTotal("");
     }
 
-    const precioTotalCalculado =
+    /* const precioTotalCalculado =
       parseFloat(precioInicial) +
-      (parseFloat(precioInicial) * parseFloat(margen)) / 100;
+      (parseFloat(precioInicial) * parseFloat(margen)) / 100; */
 
-    console.log("Precio Inicial:", precioInicial);
+    /* console.log("Precio Inicial:", precioInicial);
     console.log("Margen:", margen);
-    console.log("Precio Total Calculado:", precioTotalCalculado);
+    console.log("Precio Total Calculado:", precioTotalCalculado); */
 
     axios
       .get("https://viverobackend-production.up.railway.app/api/categorias")
@@ -280,24 +285,25 @@ const FormEditarProducto = () => {
                   </span>
                 )}
               </div>
-              
+
               <div className="col-md-6">
                 <label className="form-label">Imagen(opcional)</label>
                 <input
+                  onChange={subirFirebase}
                   type="file"
-                  id="imagen_producto"
-                  placeholder="Ingrese nombre de producto"
                   className={`form-control ${
                     errors.imagen_producto ? "is-invalid" : ""
                   }`}
-                  {...register('imagen_producto')}
+                  {...register("imagen_producto")}
                 />
-                {errors.imagen_producto && (
-                  <span className="badge text-bg-danger">
-                    {errors.imagen_producto.message}
-                  </span>
-                )}
               </div>
+
+              <img
+                className="sidebar-image img-fluid object-fit-cover"
+                src={urlImagen}
+                alt="logo vivero corazon de Bolivia"
+              />
+
               <div className="col-12">
                 <label className="form-label">Descripción (opcional)</label>
                 <textarea
@@ -306,7 +312,7 @@ const FormEditarProducto = () => {
                   type="text"
                   placeholder="Ingrese descripci&oacute;n"
                   rows="3"
-                  {...register('descripcion_producto')}
+                  {...register("descripcion_producto")}
                 ></textarea>
               </div>
               <div className="col-md-6">
@@ -345,24 +351,24 @@ const FormEditarProducto = () => {
                 )}
               </div>
               <div className="col-12 botones-Categoria">
-              <button type="submit" className="btn btn-primary ms-2">
-                <Icon
-                  icon="material-symbols-light:save-as"
-                  className="Icon"
-                  width="20"
-                  height="20"
-                />
-                Guardar
-              </button>
-              <Link to="/inventario/categoria" className="btn btn-danger ms-2">
-                <Icon
-                  icon="mdi:cancel-box-multiple"
-                  className="Icon"
-                  width="20"
-                  height="20"
-                />
-                Cancelar
-              </Link>
+                <button type="submit" className="btn btn-primary ms-2">
+                  <Icon
+                    icon="material-symbols-light:save-as"
+                    className="Icon"
+                    width="20"
+                    height="20"
+                  />
+                  Guardar
+                </button>
+                <Link to="/inventario/producto" className="btn btn-danger ms-2">
+                  <Icon
+                    icon="mdi:cancel-box-multiple"
+                    className="Icon"
+                    width="20"
+                    height="20"
+                  />
+                  Cancelar
+                </Link>
               </div>
             </div>
           </form>

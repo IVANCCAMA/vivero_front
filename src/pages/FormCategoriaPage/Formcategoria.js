@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "../../App.css";
 import "./formcategoria.scss";
 import axios from "axios";
