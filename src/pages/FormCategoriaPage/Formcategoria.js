@@ -8,7 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 const FormCategoria = () => {
-  const [cars, setCars] = useState([]);
 
   const schema = yup.object({
     nombre_categoria: yup.string().required("El campo categoría es requerido"),
@@ -68,7 +67,7 @@ const FormCategoria = () => {
             <div className="my-3">
               <label className="form-label">Descripción (opcional)</label>
               <textarea
-                class="form-control"
+                className="form-control"
                 type="text"
                 placeholder="Ingrese descripci&oacute;n"
                 rows="3"

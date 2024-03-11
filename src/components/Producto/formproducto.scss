@@ -1,0 +1,57 @@
+
+
+.btn-cancelar{
+  background-color: red !important;
+  border: 1px solid red !important;
+  margin-left: 30px;
+}
+.btn-cancelar:hover{
+  background-color: rgb(125, 13, 13) !important;;
+}
+
+.form-producto{
+  padding-bottom: 30px;
+  .form-p{
+  padding-top: 16px;
+  padding-bottom: 30px;
+  }
+  input, textarea{
+    border: 3px solid #e5d9b6;
+  }
+  .border-form{
+    border-radius: 20px;
+    border: 3px solid #A4BE7B;
+  }
+  .botones-Categoria{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    .btn.btn-primary{
+      background: #60aa48;
+      border: #60aa48;
+      font-size: 15px;
+      width: 120px;
+    }
+    .btn.btn-danger{
+      font-size: 15px;
+      width: 120px;
+    }
+    .Icon{
+      margin-top: -4px;
+    }
+  }
+}
+@media (max-width: 768px){
+  .form-producto{
+    .form-p{
+      padding-top: 0;
+      padding-bottom: 50px;
+      .px-5 {
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+      }
+    }
+    
+  }
+}

@@ -1,97 +1,130 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import * as yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
-import './formproducto.css'
-import { deleteFile, recuperarUrlImagen, subirImagen } from "../../firebase/config";
-import { Icon } from '@iconify/react';
-
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import "./formproducto.scss";
+import { Link } from "react-router-dom";
+import {
+  deleteFile,
+  recuperarUrlImagen,
+  subirImagen,
+} from "../../firebase/config";
+import { Icon } from "@iconify/react";
 
 const FormProducto = () => {
   const [categorias, setCategorias] = useState([]);
   const navegar = useNavigate();
   const [precioInicial, setPrecioInicial] = useState(0);
   const [margen, setMargen] = useState(0);
-  const [precioTotal, setPrecioTotal] = useState(''); // Estado para Precio Total
+  const [precioTotal, setPrecioTotal] = useState("");
 
-  const initialValues = {
-    id_categoria: "",
-    nombre_producto: "",
-    precio_inicial_producto: precioInicial,
-    margen_producto: margen,
-    precio_total_producto: precioTotal, // Inicialmente en blanco
-    tamanio_producto: "",
-    imagen_producto: "",
-    descripcion_producto: "",
-    stok_actual_producto: "",
-    stok_min_producto: "",
-  };
+  const schema = yup.object({
+    id_categoria: yup.string().required("El campo categoría es requerido"),
+    nombre_producto: yup.string().required("El campo nombre es requerido"),
+    precio_inicial_producto: yup
+      .number()
+      .required("El campo precio inicial es requerido"),
+    margen_producto: yup.number().required("El campo margen es requerido"),
+    precio_total_producto: yup.string(),
+    tamanio_producto: yup.string().required("El campo tamanio es requerido"),
+    imagen_producto: yup.string(),
+    descripcion_categoria: yup.string(),
+    stok_actual_producto: yup
+      .string()
+      .required("El campo de stock actual es requerido"),
+    stok_min_producto: yup
+      .string()
+      .required("El campo de stock minimo es requerido"),
+  });
+
+  
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+
 
   useEffect(() => {
-    // Hacer una solicitud GET para obtener la lista de categorías
     if (!isNaN(precioInicial) && !isNaN(margen)) {
-      setPrecioTotal(precioInicial + (precioInicial * margen / 100));
+      setPrecioTotal(precioInicial + (precioInicial * margen) / 100);
     } else {
       setPrecioTotal(""); // Si el valor no es un número válido, establece una cadena vacía
     }
 
-    axios.get('https://viverobackend-production.up.railway.app/api/categorias')
-      .then(response => {
-        setCategorias(response.data); // Almacena las categorías en el estado
+    const precioTotalCalculado =
+      parseFloat(precioInicial) +
+      (parseFloat(precioInicial) * parseFloat(margen)) / 100;
+
+    console.log("Precio Inicial:", precioInicial);
+    console.log("Margen:", margen);
+    console.log("Precio Total Calculado:", precioTotalCalculado);
+
+    axios
+      .get("https://viverobackend-production.up.railway.app/api/categorias")
+      .then((response) => {
+        setCategorias(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error al cargar las categorías:", error);
       });
   }, [margen, precioInicial, precioTotal]);
 
-  const handleSubmit = async (values, { setSubmitting }) => {
-    setSubmitting(true);
+  const onSubmit = async (data) => {
+    try {
+      const producto = {
+        ...data,
+        precio_inicial_producto: precioInicial,
+        margen_producto: margen,
+        precio_total_producto: precioTotal,
+      };
 
-    const producto = values;
-    producto.precio_inicial_producto = precioInicial;
-    producto.margen_producto = margen;
-    producto.precio_total_producto = precioTotal;
+      const imagen_archivo = document.getElementById("imagen_producto").files;
 
-    const imagen_archivo = document.getElementById('imagen_producto').files;
+      const maxSize = 5 * 1024 * 1024; // 5 MB en bytes
+      if (imagen_archivo[0].size > maxSize) {
+        alert(`Tamaño máximo de 5 MB excedido`);
+        return;
+      }
 
-    const maxSize = 5 * 1024 * 1024; // 5 MB en bytes
-    if (imagen_archivo[0].size > maxSize) {
-      alert(`Tamaño máximo de 5 MB excedido`);
-      return;
-    }
-    // console.log("Producto objeto>>>> ", producto);
-
-    // Verificamos que los campos obligatorios no estén vacíos
-    if (producto.nombre_producto || producto.id_categoria || producto.precio_inicial_producto
-      || producto.precio_total_producto || producto.margen_producto || producto.tamanio_producto
-      || producto.stok_actual_producto || producto.stok_min_producto) {
-      try {
+      if (
+        producto.nombre_producto &&
+        producto.id_categoria &&
+        producto.precio_inicial_producto &&
+        producto.precio_total_producto &&
+        producto.margen_producto &&
+        producto.tamanio_producto &&
+        producto.stok_actual_producto &&
+        producto.stok_min_producto
+      ) {
         const resultado = await subirFirebase(imagen_archivo[0]);
-        console.log("resultado subida>>>>>>", resultado);
+        console.log("Resultado subida:", resultado);
+
         producto.imagen_producto = resultado.url;
-        const response = await axios.post('https://viverobackend-production.up.railway.app/api/productos', producto);
+
+        const response = await axios.post(
+          "https://viverobackend-production.up.railway.app/api/productos",
+          producto
+        );
 
         if (response.status === 201) {
           console.log("Producto creado con éxito");
-          /* window.close(); */
-          navegar('/inventario/producto');
-
+          navegar("/inventario/producto");
         } else {
-          console.error("Error al crear el producto. Respuesta inesperada:", response);
+          console.error(
+            "Error al crear el producto. Respuesta inesperada:",
+            response
+          );
         }
-        setSubmitting(false);
-      } catch (error) {
-        console.error("Error al enviar los datos:", error);
+      } else {
+        alert("Llene todos los campos obligatorios");
       }
-    } else {
-      alert("Llenes los campos");
-      console.log('llene todo')
-      setSubmitting(false);
+    } catch (error) {
+      console.error("Error al enviar los datos:", error);
     }
   };
 
@@ -101,218 +134,215 @@ const FormProducto = () => {
       const imageUrl = await recuperarUrlImagen(portadaInfo);
       return { url: imageUrl, filePath: portadaInfo };
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
-  const handleCancelClick = () => {
-    // Navega hacia atrás en la historia del navegador
-    /* navegar('/inventario/producto') */
-    window.history.back();
-  };
-
-  const validationSchema = yup.object().shape({
-    id_categoria: yup.number().required("Campo obligatorio"),
-    nombre_producto: yup.string().required("Campo obligatorio"),
-    precio_inicial_producto: yup.number().required("Campo obligatorio"),
-    margen_producto: yup.number().required("Campo obligatorio"),
-    precio_total_producto: yup.number().required("Campo obligatorio"),
-    tamanio_producto: yup.string().required("Campo obligatorio"),
-    stok_actual_producto: yup.number().required("Campo obligatorio"),
-    stok_min_producto: yup.number().required("Campo obligatorio"),
-  });
-
   return (
-    <div className="form-container">
-      <div className="form-content">
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-        /* validationSchema={validationSchema} */
-        >
-          {({ handleSubmit, handleChange, values, touched, errors, setFieldValue }) => (
-            <Form noValidate onSubmit={handleSubmit}>
-              <h3 className='h3-registrar'>Registrar producto</h3>
-              <Row className="mb-3">
-                <Col md="6">
-                  <Form.Group as={Col} controlId="validationFormik01">
-                    <Form.Label>Nombre*</Form.Label>
-                    <Field
-                      placeholder="Nombre del producto"
-                      type="text"
-                      name="nombre_producto"
-                      className={`form-control ${errors.nombre_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    />
-                    <ErrorMessage name="nombre_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-
-                <Col md="6">
-                  <Form.Group as={Col} controlId="validationFormik02">
-                    <Form.Label>Categoría*</Form.Label>
-                    <Form.Select
-                      aria-label="Default select example"
-                      className={`form-control ${touched.id_categoria && errors.id_categoria ? 'is-invalid' : ''}`}
-                      name="id_categoria"  // Debe ser "id_categoria" en lugar de "categoria"
-                      value={values.id_categoria}
-                      onChange={handleChange}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    >
-                      <option value="">Seleccionar</option>
-                      {categorias.map(categoria => (
-                        <option key={categoria.id_categoria} value={categoria.id_categoria}>
-                          {categoria.nombre_categoria}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    {touched.id_categoria && errors.id_categoria && (
-                      <div className="invalid-feedback">{errors.id_categoria}</div>
-                    )}
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Row className="mb-3">
-                <Col md="4">
-                  <Form.Group controlId="validationFormik03">
-                    <Form.Label>Precio inicial*</Form.Label>
-                    <Field
-                      type="number"
-                      name="precio_inicial_producto"
-                      placeholder="Precio inicial"
-                      className={`form-control ${touched.precio_inicial_producto && errors.precio_inicial_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                      onChange={(e) => setPrecioInicial(parseFloat(e.target.value))} // Actualiza el estado de Margen
-                      value={precioInicial}
-                    />
-                    <ErrorMessage name="precio_inicial_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-
-                <Col md="4">
-                  <Form.Group controlId="validationFormik04">
-                    <Form.Label>Margen %*</Form.Label>
-
-                    <Field
-                      type="number"
-                      name="margen_producto"
-                      placeholder="Precio inicial"
-                      className={`form-control ${touched.margen_producto && errors.margen_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                      onChange={(e) => setMargen(parseFloat(e.target.value))} // Actualiza el estado de Margen
-                      value={margen}
-                    />
-                    <ErrorMessage name="margen_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-
-                <Col md="4">
-                  <Form.Group controlId="validationFormik05">
-                    <Form.Label>Precio total*</Form.Label>
-                    <Field
-                      type="number"
-                      name="precio_total_producto"
-                      placeholder="Precio total"
-                      className={`form-control `}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                      value={precioTotal}
-                    />
-                    <ErrorMessage name="precio_total_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Row className="mb-3">
-                <Col md="4">
-                  <Form.Group controlId="validationFormik06">
-                    <Form.Label>Tamaño*</Form.Label>
-                    <Field as="select"
-                      name="tamanio_producto"
-                      className={`form-control ${touched.tamanio_producto && errors.tamanio_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    >
-                      <option value="">Seleccionar</option>
-                      <option value="Pequeño">Pequeño</option>
-                      <option value="Mediano">Mediano</option>
-                      <option value="Grande">Grande</option>
-                    </Field>
-                    <ErrorMessage name="tamanio_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-
-                <Col md="8">
-                  <Form.Group controlId="validationFormik07">
-                    <Form.Label>Imagen(opcional)</Form.Label>
-                    <Field
-                      type="file"
-                      name="imagen_producto"
-                      id="imagen_producto"
-                      className="form-control"
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <Row className="mb-3">
-                <Form.Group as={Col} md="12">
-                  <Form.Label>Descripción(opcional)</Form.Label>
-                  <Field
-                    as="textarea"
-                    name="descripcion_producto"
-                    placeholder="Descripcion"
-                    rows="3"
-                    className={`form-control ${touched.descripcion_producto && errors.descripcion_producto ? 'is-invalid' : ''}`}
-                    style={{ backgroundColor: '#A4BE7B' }}
-                  />
-                  <ErrorMessage name="descripcion_producto" component="div" className="invalid-feedback" />
-                </Form.Group>
-              </Row>
-
-              <Row className="mb-3">
-                <Col md="6">
-                  <Form.Group controlId="validationFormik08">
-                    <Form.Label>Stock actual*</Form.Label>
-                    <Field
-                      type="number"
-                      name="stok_actual_producto"
-                      placeholder="Stock actual"
-                      className={`form-control ${touched.stok_actual_producto && errors.stok_actual_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    />
-                    <ErrorMessage name="stok_actual_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-
-                <Col md="6">
-                  <Form.Group controlId="validationFormik09">
-                    <Form.Label>Stock mínimo*</Form.Label>
-                    <Field
-                      type="number"
-                      name="stok_min_producto"
-                      placeholder="Stock minino"
-                      className={`form-control ${touched.stok_min_producto && errors.stok_min_producto ? 'is-invalid' : ''}`}
-                      style={{ backgroundColor: '#A4BE7B' }}
-                    />
-                    <ErrorMessage name="stok_min_producto" component="div" className="invalid-feedback" />
-                  </Form.Group>
-                </Col>
-              </Row>
-
-              <div className="btn-form">
-                <Button type="submit" variant="primary">
-                  Guardar
-                  <Icon icon="lets-icons:check-fill" color="white" width="25" height="25" />
-                </Button>{" "}
-                <Button className="btn-cancelar" onClick={handleCancelClick}>
-                  Cancelar
-                  <Icon icon="material-symbols:cancel" color="white" width="25" height="25" />
-                </Button> 
+    <div className="container form-producto">
+      <div className="row form-p">
+        <div className=" col-md-6 mx-auto px-5 border-form p-2 ">
+          <h3 className="text-center">Registrar producto</h3>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="row g-1">
+              <div className="col-md-6">
+                <label className="form-label">Nombre de producto</label>
+                <input
+                  type="text"
+                  placeholder="Ingrese nombre de producto"
+                  className={`form-control ${
+                    errors.nombre_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("nombre_producto")}
+                />
+                {errors.nombre_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.nombre_producto.message}
+                  </span>
+                )}
               </div>
-            </Form>
-          )}
-        </Formik>
+              <div className="col-md-4">
+                <label className="form-label">Categoria*</label>
+                <select
+                  className={`form-control ${
+                    errors.id_categoria ? "is-invalid" : ""
+                  }`}
+                  {...register("id_categoria")}
+                >
+                  <option value="">Seleccionar</option>
+                  {categorias.map((categoria) => (
+                    <option
+                      key={categoria.id_categoria}
+                      value={categoria.id_categoria}
+                    >
+                      {categoria.nombre_categoria}
+                    </option>
+                  ))}
+                </select>
+                {errors.id_categoria && (
+                  <span className="badge text-bg-danger">
+                    {errors.id_categoria.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Precio inicial*</label>
+                <input
+                  type="number"
+                  placeholder="Ingrese precio inicial"
+                  className={`form-control ${
+                    errors.precio_inicial_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("precio_inicial_producto")}
+                  onChange={(e) => setPrecioInicial(parseFloat(e.target.value))}
+                  value={precioInicial}
+                />
+                {errors.precio_inicial_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.precio_inicial_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Margen %*</label>
+                <input
+                  type="number"
+                  placeholder="Ingrese margen"
+                  className={`form-control ${
+                    errors.margen_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("margen_producto")}
+                  onChange={(e) => setMargen(parseFloat(e.target.value))}
+                  value={margen}
+                />
+                {errors.margen_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.margen_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Precio total*</label>
+                <input
+                  type="number"
+                  name="precio_total_producto"
+                  className={`form-control ${
+                    errors.precio_total_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("precio_total_producto")}
+                  value={precioTotal}
+                />
+                {errors.precio_total_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.precio_total_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Tamaño*</label>
+                <select
+                  className={`form-control ${
+                    errors.tamanio_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("tamanio_producto")}
+                >
+                  <option value="">Seleccionar</option>
+                  <option value="Pequeño">Pequeño</option>
+                  <option value="Mediano">Mediano</option>
+                  <option value="Grande">Grande</option>
+                </select>
+                {errors.tamanio_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.tamanio_producto.message}
+                  </span>
+                )}
+              </div>
+              
+              <div className="col-md-6">
+                <label className="form-label">Imagen(opcional)</label>
+                <input
+                  type="file"
+                  id="imagen_producto"
+                  placeholder="Ingrese nombre de producto"
+                  className={`form-control ${
+                    errors.imagen_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("imagen_producto")}
+                />
+                {errors.imagen_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.imagen_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-12">
+                <label className="form-label">Descripción (opcional)</label>
+                <textarea
+                  className="form-control"
+                  type="text"
+                  placeholder="Ingrese descripci&oacute;n"
+                  rows="3"
+                  {...register("descripcion_producto")}
+                ></textarea>
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Stock actual*</label>
+                <input
+                  type="number"
+                  name="stok_actual_producto"
+                  placeholder="Ingrese stock actual"
+                  className={`form-control ${
+                    errors.stok_actual_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("stok_actual_producto")}
+                />
+
+                {errors.stok_actual_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.stok_actual_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Stock minimo*</label>
+                <input
+                  type="number"
+                  name="stok_min_producto"
+                  placeholder="Ingrese stock mínimo"
+                  className={`form-control ${
+                    errors.stok_min_producto ? "is-invalid" : ""
+                  }`}
+                  {...register("stok_min_producto")}
+                />
+                {errors.stok_min_producto && (
+                  <span className="badge text-bg-danger">
+                    {errors.stok_min_producto.message}
+                  </span>
+                )}
+              </div>
+              <div className="col-12 botones-Categoria">
+              <button type="submit" className="btn btn-primary ms-2">
+                <Icon
+                  icon="material-symbols-light:save-as"
+                  className="Icon"
+                  width="20"
+                  height="20"
+                />
+                Guardar
+              </button>
+              <Link to="/inventario/categoria" className="btn btn-danger ms-2">
+                <Icon
+                  icon="mdi:cancel-box-multiple"
+                  className="Icon"
+                  width="20"
+                  height="20"
+                />
+                Cancelar
+              </Link>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
