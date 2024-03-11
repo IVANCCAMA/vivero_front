@@ -163,7 +163,7 @@ function ProductoLista({ searchQuery }) {
     <div>
       <div className="container">
         <div className="col-8 px-auto pb-2">
-          <form class="d-flex" role="search">
+          <form className="d-flex" role="search">
             <input
               className="form-control me-2 "
               type="search"

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Formik, Form, Field } from "formik";
 import { useParams } from "react-router-dom";
 import "../../App.css";
 import "./formcategoria.scss";
@@ -99,7 +98,7 @@ const FormEditarCategoria = () => {
             <div className="my-3">
               <label className="form-label">Descripción (opcional)</label>
               <textarea
-                class="form-control"
+                className="form-control"
                 type="text"
                 rows="3"
                 {...register("descripcion_categoria")}
