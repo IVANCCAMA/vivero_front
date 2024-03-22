@@ -1,6 +1,6 @@
 import React from "react";
 import "./inventario.css";
-import "../../App.css";
+import "../../App.scss";
 import SubMenuInventario from "../../components/Menu/SubMenuInventario";
 import ProductoLista from "../../components/Producto/productoLista";
 function Inventario() {

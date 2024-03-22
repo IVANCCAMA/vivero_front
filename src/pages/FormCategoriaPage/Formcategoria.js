@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../App.scss";
 import "./formcategoria.scss";
 import axios from "axios";
 import { Icon } from "@iconify/react";

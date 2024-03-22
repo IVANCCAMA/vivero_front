@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./menu.css";
+import './menu.css';
 import { useAuth } from "../../auth/AuthContext";
 import { useState } from "react";
 
@@ -14,9 +14,6 @@ const Menu = () => {
     dispatch({ type: "LOGOUT" });
   };
 
-  const [isLightTheme, setIsLightTheme] = useState(
-    !localStorage.getItem("light")
-  );
 
   const toggleSidebar = () => {
     const sidebar = document.getElementById("sidebar");
@@ -28,7 +25,6 @@ const Menu = () => {
       {!ocultarMenu && <div className="menu-lateral"></div>}
       <aside
         id="sidebar"
-        className={`js-sidebar ${isLightTheme ? "" : "collapsed"}`}
       >
         <div className="d-flex flex-column flex-shrink-0 margin-5 ">
           <ul className="menu-list">

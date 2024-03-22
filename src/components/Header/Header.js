@@ -13,7 +13,7 @@ const Header = () => {
         </button>
         <div>
           <img className='logo' src={logo} alt="Logo" />
-          <h4 className='texto'>GESTION DE INVENTARIO</h4>
+          {/* <h4 className='texto'>GESTION DE INVENTARIO</h4> */}
         </div>
       </header>
     );

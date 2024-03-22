@@ -1,4 +1,4 @@
-import '../../App.css';
+import '../../App.scss';
 function NotFound() {
     return (
     <div className="s">
