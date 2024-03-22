@@ -1,5 +1,5 @@
-import '../../App.css';
-import './Usuario.css'
+import '../../App.scss';
+import './Usuario.scss'
 import React, { useState, useEffect } from 'react';
 import UsuarioLista from './UsuarioLista';
 import axios from 'axios';

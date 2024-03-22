@@ -163,7 +163,7 @@ function ProductoLista({ searchQuery }) {
       <div className="container">
         <div className="row row-cols-1 row-cols-md-2 ">
           <div className="col px-auto pb-2">
-            <form className="d-flex" role="search">
+            <form className=" search d-flex " role="search">
               <input
                 className="form-control  "
                 type="search"
@@ -171,6 +171,7 @@ function ProductoLista({ searchQuery }) {
                 aria-label="Search"
                 onChange={(event) => filterProducts(event.target.value)}
               />
+              <Icon icon="ion:search" width="25" height="25" className="icon-search" />
             </form>
           </div>
           <div className="col text-end">

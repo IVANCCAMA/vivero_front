@@ -1,13 +1,11 @@
 .HomePage {
-  padding-top: 85px;
+  padding-top: 70px;
 }
 .texto {
   color: white;
-  display: inline;
-  vertical-align: middle;
-  font-size: 15px;
+  font-size: 22px;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .texto {
     font-size: 20px;
   }
@@ -19,7 +17,7 @@
   background-color: #285430;
   color: white;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
   font-size: 15px;
 }
 @media (max-width: 768px) {
@@ -29,12 +27,13 @@
   }
 }
 .logo {
-  width: 60px;
+  width: 100px;
   vertical-align: middle;
 }
 @media (min-width: 768px) {
   .logo {
-    width: 115px;
+    width: 100px;
+    height: auto;
     vertical-align: middle;
   }
 }
@@ -65,10 +64,10 @@
   }
 }
 
- .navbar {
-   --bs-navbar-padding-x: 0;
-   --bs-navbar-padding-y: 0.2rem !important;
-};
+.navbar {
+  --bs-navbar-padding-x: 0;
+  --bs-navbar-padding-y: 0 !important;
+}
 
 @media (max-width: 768px) {
   .HomePage.container-md {
